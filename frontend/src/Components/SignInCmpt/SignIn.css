@@ -1,0 +1,68 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+#signinPage{
+    /* background-color: red; */
+    height: 100vh;
+    width: 100vw;
+}
+#signinPage #form{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#signinPage h2{
+    margin-bottom: 40px;
+}
+#signinPage #form form{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#signinPage #form form div{
+    width: 350px; 
+}
+#signinPage #form form div input{
+    background-color: transparent;
+    outline: none;
+    /* border: none; */
+    border: 1px solid black;
+    border-radius: 30px;
+}
+#signinPage #form form #btnTag {
+    display: flex;
+    flex-direction:column;
+    border-bottom: 1px solid black;
+}
+#signinPage #form form #btnTag a{
+    text-align: end;
+    text-decoration: none;
+    color: red;
+}
+#signinPage #form form #btnTag button{
+    width: 200px;
+    align-self: center;
+    border-radius: 30px;
+}
+#signinPage #form form #signup a{
+    text-decoration: none;
+    color: red;
+}
+
+@media (max-width: 767px){
+    #signinPage img{
+        mask-image:url(../Assets/loginpage.jpeg)
+    }
+    #signinPage #form{
+        position: relative;
+        bottom: 500px;
+        width: auto;
+        margin: auto;
+        background-color: rgba(19, 213, 213, 0.8);
+    }
+}
