@@ -26,9 +26,9 @@ const SignIn = () => {
   return (
     <>
         <div className="row m-0" id='signinPage'>
-          <img src={login} alt="" className='col-xl-6 col-lg-6 col-md-6 img-fluid p-0'/>
-          <div className="col-xl-6 col-lg-6 col-md-6" id='form'>
-            <h2>Login</h2>
+          <div className="col-xl-6 col-lg-6 col-md-6 col-12 p-0" id='img'></div>
+          <div className="col-xl-6 col-lg-6 col-md-6 col-12 p-0" id='form'>
+            <h1>Login here</h1>
             <form onSubmit={handleSubmit} className=''>
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>
