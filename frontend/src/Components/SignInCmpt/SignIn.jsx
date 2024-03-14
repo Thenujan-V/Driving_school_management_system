@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import login from '../Assets/login.jpeg'
 import './SignIn.css'
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,6 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
     console.log('Email:', email);
     console.log('Password:', password);
   };
@@ -43,7 +42,7 @@ const SignIn = () => {
                 <button className='btn btn-primary mt-4' type="submit">Login</button>
               </div>
               <div className="form-group text-center mt-3" id='signup'>
-                <a href='#'>Create your account here <FontAwesomeIcon icon={faArrowRight} /></a>
+                <Link to="/signup">Create your account here <FontAwesomeIcon icon={faArrowRight} /></Link>
               </div>
             </form>
           </div>

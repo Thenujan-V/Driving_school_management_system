@@ -12,7 +12,7 @@ body{
     margin: 0;
 }
 
-#signinPage{
+#signupPage{
     background-color: var(--shadeGreen);
     height: 100vh;
     width: 100vw;
@@ -20,55 +20,54 @@ body{
     font-weight: 400;
     padding: 70px;
 }
-#signinPage #img{
-    background-image: url(../Assets/loginPic.jpeg);
+#signupPage #img{
+    background-image: url(../Assets/signupPic.jpeg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-#signinPage #form{
+#signupPage #form{
     background-color:var(--green);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-#signinPage h1{
+#signupPage h1{
     font-family: "Dancing Script", cursive;
     font-weight: 900;
     margin-bottom: 40px;
     font-size: 50px;
     color: var(--violate);
 }
-#signinPage #form form{
+#signupPage #form form{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-#signinPage #form form div{
+#signupPage #form form div{
     width: 350px; 
-    font-size: 20px;
+    height: 90px;
+    font-size: 18px;
     color: var(--liteViolate);
 }
-#signinPage #form form div input{
+#signupPage #form form div input{
     background-color: transparent;
     outline: none;
     border: 2px solid var(--violate);
     border-radius: 30px;
 }
-#signinPage #form form #btnTag {
+#signupPage #form form div p{
+    font-size: 14px;
+    color: red;
+    text-align: end;
+}
+#signupPage #form form #btnTag {
     display: flex;
     flex-direction:column;
-    border-bottom: 1px solid var(--violate);
 }
-#signinPage #form form #btnTag a{
-    text-align: end;
-    text-decoration: none;
-    color: var(--liteViolate);
-    font-size: 16px;
-}
-#signinPage #form form #btnTag button{
+#signupPage #form form #btnTag button{
     width: 200px;
     align-self: center;
     border-radius: 30px;
@@ -76,54 +75,45 @@ body{
     background-color:var(--violate);
     color: var(--green);
 }
-#signinPage #form form #signup a{
-    text-decoration: none;
-    color: var(--liteViolate);
-}
-
 @media (max-width: 973px){
-    #signinPage #form form div{
+    #signupPage #form form div{
         width: 35vw; 
     }
 }
 
 @media (max-width: 767px){
-    #signinPage{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('../Assets/loginPic.jpeg');
+    #signupPage{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('../Assets/signupPic.jpeg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         padding: 0;
     }
-    #signinPage #img{
+    #signupPage #img{
         background: none;
     }
-    #signinPage #form form{
+    #signupPage #form form{
         margin-left: 4vw;
         margin-right: 4vw;
 
     }
-    #signinPage #form{
-        height: 70vh;
+    #signupPage #form{
+        height: 95vh;
         position: relative;
-        bottom: 50px;
         width: auto;
         margin: auto;
         background-color: var(--green);
         opacity: 0.9;
     }
-    #signinPage #form form div{
+    #signupPage #form form div{
         width: 50vw; 
     }
 }
 @media (max-width: 580px){
-    #signinPage #form form div{
+    #signupPage #form form div{
         width: 75vw; 
     }
-    #signinPage #form form #btnTag button{
+    #signupPage #form form #btnTag button{
         width: 50vw;
-    }
-    #signinPage #form form #signup a{
-
     }
 }
