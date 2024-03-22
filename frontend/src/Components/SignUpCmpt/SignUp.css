@@ -36,7 +36,7 @@ body{
 #signupPage h1{
     font-family: "Dancing Script", cursive;
     font-weight: 900;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     font-size: 50px;
     color: var(--violate);
 }
@@ -81,7 +81,7 @@ body{
     }
 }
 
-@media (max-width: 767px){
+@media (max-width: 992px){
     #signupPage{
         background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('../Assets/signupPic.jpeg');
         background-position: center;
@@ -98,7 +98,7 @@ body{
 
     }
     #signupPage #form{
-        height: 95vh;
+        height: 90vh;
         position: relative;
         width: auto;
         margin: auto;
