@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#6C22A6;
+    --liteViolate:#6962AD;
+    --shadeGreen:#83C0C1;
+    --green:#96E9C6;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+#about{
+    background-color: var(--shadeGreen);
+
+}
+#about h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+
+}
+#about #about-us p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+}
+#about #about-us #seemoreBtn{
+    width: 100px;
+}
+#about #our-features{
+    font-family: "Ubuntu", sans-serif;
+}
+#about #our-features #feature{
+    margin-left: auto;
+    margin-bottom: auto;
+    width: 100%;
+}
+#about #our-features #features{
+    padding: 20px;
+}
+#about #our-features #features img{
+    height: 80px;
+    width: 100px;
+}
+#about #our-features #features h2{
+    font-weight: bold;
+}
+#about #our-features #features p{
+    font-size: 16px;
+}
+#choose{
+    background-color: var(--shadeGreen);
+}
+#choose #contents{
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; */
+    padding-left: 100px;
+    padding-right: 100px;
+}
+#choose h2{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#choose p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+}
+#choose #contents #content img {
+    height: 100px;
+    width: 100px;
+    background-color: var(--green);
+}
+#choose #extra-content{
+    background-color: var(--green);
+    padding-left: 100px;
+    padding-right: 100px;
+}
+#choose #extra-content #image{
+    padding: 0;  
+    display: flex;
+    justify-content: center;
+}
+#choose #extra-content img{
+    height: 80px;
+    width: 80px;
+}
+#our-services{
+    background-color: var(--shadeGreen);
+}
+#our-services h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#our-services div #service{
+    background-color: var(--green);
+}
+
+
+
