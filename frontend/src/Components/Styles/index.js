@@ -8,4 +8,9 @@ import AboutIndexStyle from './AboutIndex.css'
 import AboutSectionStyle from './AboutSection.css'
 import ServiceStyle from './ServiceIndex.css'
 import ServicesStyle from './Services.css'
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle}
+import ContactStyle from './Contact.css'
+
+
+
+
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, ContactStyle}

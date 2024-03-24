@@ -151,6 +151,7 @@ const HomeSection = () => {
         <section id='our-courses'>
              <h1 className='text-center pt-5'>OUR POPULAR DRIVING COURSES PACKAGES</h1>
              <p className='text-center p-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam dolorem, ipsum asperiores sequi cupiditate incidunt architecto, aperiam eius odio totam accusantium fuga! Hic quidem vitae, suscipit obcaecati consequuntur iure expedita perferendis animi eos esse modi, quod architecto quam similique quaerat. Laborum sit aperiam voluptatibus quia mollitia quaerat, quos dolorum reiciendis alias nobis animi, distinctio cupiditate doloremque optio tempora ratione similique facilis velit voluptates cum! Delectus porro nulla enim ipsum. Eligendi velit facere provident porro vel! Dolore explicabo suscipit sint veritatis exercitationem commodi corporis? Suscipit vero cum at facere ea molestiae quaerat. Veritatis nulla repudiandae asperiores cupiditate quos dolore adipisci aspernatur?</p>
+            <div className="container">
             <div id='courses' className='row m-0 text-center'>
                 {items.map((item, index) => (
                     <div className="col-lg-3 col-md-3 col-sm-6 col-12 pt-4">
@@ -165,6 +166,7 @@ const HomeSection = () => {
                         </div>
                     </div>
                 ))}
+            </div>
             </div>
         </section>
     </>
