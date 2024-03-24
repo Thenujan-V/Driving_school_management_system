@@ -96,8 +96,42 @@ body{
     font-weight: bolder;
 }
 #our-services div #service{
+    border: 2vw solid var(--shadeGreen);
     background-color: var(--green);
+    text-decoration: none;
+    color: black;
+    font-family: "Ubuntu", sans-serif;
+
 }
-
-
-
+#our-courses h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#our-courses p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+}
+#our-courses{
+    background-color: var(--shadeGreen);
+}
+#our-courses #courses .card{
+    background-color: var(--green);
+    border: 15px solid var(--green);
+}
+#our-courses #courses .card h4{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#our-courses #courses .card p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+}
+#our-courses #courses .card #price{
+    font-size: 16px;
+}
+#our-courses #courses .card #price span{
+    text-decoration: line-through;
+    color: red;
+    font-size: 22px;
+}

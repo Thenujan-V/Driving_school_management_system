@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#6C22A6;
+    --liteViolate:#6962AD;
+    --shadeGreen:#83C0C1;
+    --green:#96E9C6;
+}
+
+#services{
+    background-color: var(--shadeGreen);
+    font-family: "Ubuntu", sans-serif;
+}
+#services h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#services h2{
+    color: var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bold;
+    text-decoration: underline;
+}
+#services #new-license .card{
+    background-color: var(--green);
+    border: 15px solid var(--green);
+}
+#services #new-license .card h4{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#services #new-license .card p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+}
+#services #new-license .card #price{
+    font-size: 16px;
+}
+#services #new-license .card #price span{
+    text-decoration: line-through;
+    color: red;
+    font-size: 22px;
+}
+#services #new-license .card #btn{
+    margin: 10px;
+}

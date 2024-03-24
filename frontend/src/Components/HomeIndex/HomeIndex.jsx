@@ -1,5 +1,5 @@
 import React from 'react'
-import './HomeIndex.css'
+import { HomeIndexStyle } from '../Styles'
 
 const HomeIndex = () => {
   return (

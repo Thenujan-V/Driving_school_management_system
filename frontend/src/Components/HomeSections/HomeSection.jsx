@@ -1,9 +1,16 @@
 import React from 'react'
-import './HomeSections.css'
+import { HomeSectionStyle } from '../Styles'
 import {homeAbout,work,learn,lession,sefty} from '../Assets'
 import { Link } from 'react-router-dom'
 
 const HomeSection = () => {
+    const items = [
+        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
+        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
+        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
+        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' }    
+      ];
+        
   return (
     <>
     {/* AboutUs & our features */}
@@ -120,7 +127,7 @@ const HomeSection = () => {
         <section id='our-services'>
             <h1 className='text-center pt-4'>OUR DIGITAL SERVICES</h1>
             <div className="container" >
-                <div className="row">
+                <div className="row" id='services'>
                     <Link className="col-lg-4 col-md-4 col-12 text-center  p-5" id='service'>
                         <img src={sefty} alt="" className='col-lg-4 col-md-4 col-sm-4 col-12 img-fluid'/>
                         <h3>Road Signs</h3>
@@ -139,7 +146,27 @@ const HomeSection = () => {
                 </div>
             </div>
         </section>
-        
+
+        {/* Courses */}
+        <section id='our-courses'>
+             <h1 className='text-center pt-5'>OUR POPULAR DRIVING COURSES PACKAGES</h1>
+             <p className='text-center p-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam dolorem, ipsum asperiores sequi cupiditate incidunt architecto, aperiam eius odio totam accusantium fuga! Hic quidem vitae, suscipit obcaecati consequuntur iure expedita perferendis animi eos esse modi, quod architecto quam similique quaerat. Laborum sit aperiam voluptatibus quia mollitia quaerat, quos dolorum reiciendis alias nobis animi, distinctio cupiditate doloremque optio tempora ratione similique facilis velit voluptates cum! Delectus porro nulla enim ipsum. Eligendi velit facere provident porro vel! Dolore explicabo suscipit sint veritatis exercitationem commodi corporis? Suscipit vero cum at facere ea molestiae quaerat. Veritatis nulla repudiandae asperiores cupiditate quos dolore adipisci aspernatur?</p>
+            <div id='courses' className='row m-0 text-center'>
+                {items.map((item, index) => (
+                    <div className="col-lg-3 col-md-3 col-sm-6 col-12 pt-4">
+                        <div class="card">
+                            <img src={homeAbout} class="card-img-top" alt="pic1" />
+                            <div class="card-body">
+                                <h4 class="card-title ">{item.title}</h4>
+                                <p class="card-text m-0" id='para'>{item.description}.</p>
+                                <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
+                                <a href="#" class="btn btn-primary">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     </>
   )
 }

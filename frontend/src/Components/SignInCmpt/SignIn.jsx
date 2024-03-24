@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import { SigninStyle } from '../Styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import './SignIn.css'
 import { Link } from 'react-router-dom';
 
 const SignIn = () => {

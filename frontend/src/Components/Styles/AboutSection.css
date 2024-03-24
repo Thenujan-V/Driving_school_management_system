@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#6C22A6;
+    --liteViolate:#6962AD;
+    --shadeGreen:#83C0C1;
+    --green:#96E9C6;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+section{
+    border-bottom: 1px solid black;
+}
+#about-page{
+    background-color: var(--shadeGreen);
+}
+#about-page h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+}
+#about-page #para{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+}
+#about-page h3{
+    color:var(--green);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    background-color: var(--violate);
+    border-radius: 10px;
+}

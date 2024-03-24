@@ -11,6 +11,9 @@ nav{
     background-color:var(--violate);
     font-family: "Ubuntu", sans-serif;
     font-size: 20px;
+    /* position: sticky;
+    top: 0;
+    z-index: -1; */
 }
 #navbarNav #elements{
     flex: 3;
@@ -20,29 +23,29 @@ nav{
     margin-left: 10px;
     margin-right: 10px;
 }
-#navbarNav #elements a{
+#navbarNav #elements #links{
     color: var(--shadeGreen);
 }
-#navbarNav #elements a:hover{
+#navbarNav #elements #links:hover{
     color: var(--green);
     border-bottom: 1px solid var(--green);
 }
 #navbarNav #nav-buttons{
     margin-right: 20px;
 }
-#navbarNav #nav-buttons a{
+#navbarNav #nav-buttons #links{
     margin-right: 10px;
     color: var(--shadeGreen);
     font-Size:1.5em;
 }
-#navbarNav #nav-buttons a:hover{
+#navbarNav #nav-buttons #links:hover{
     color: var(--green);
 }
-#navbarNav #nav-buttons button{
+#navbarNav #nav-buttons #signin{
     background-color: var(--shadeGreen);
     height:40px;
     width: 80px;
 }
-#navbarNav #nav-buttons button:hover{
+#navbarNav #nav-buttons #signin:hover{
     background-color: var(--green);
 }
