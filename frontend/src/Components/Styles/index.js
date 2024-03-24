@@ -8,9 +8,9 @@ import AboutIndexStyle from './AboutIndex.css'
 import AboutSectionStyle from './AboutSection.css'
 import ServiceStyle from './ServiceIndex.css'
 import ServicesStyle from './Services.css'
-import ContactStyle from './Contact.css'
+import ContactStyle from './ContactSection.css'
+import ContactIndexStyle from './ContactIndex.css'
 
 
 
-
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, ContactStyle}
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, ContactStyle, ContactIndexStyle}
