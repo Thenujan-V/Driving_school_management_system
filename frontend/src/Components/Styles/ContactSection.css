@@ -25,12 +25,14 @@ section{
     font-family: "Ubuntu", sans-serif;
     font-weight: bolder;
 }
-#contact-us form {
-    /* width: 600px;
-    margin-left: auto;
-    margin-right: auto; */
+#contact-us form button{
+    background-color: var(--violate);
+    color: var(--shadeGreen);
+    font-size: 18px;
+    font-weight: 600;
 }
-#contact-us #head-off h2{
+
+#contact-us  h2{
     color:var(--liteViolate);
     font-family: "Ubuntu", sans-serif;
     font-weight: bolder;
@@ -44,6 +46,7 @@ section{
     display: flex;
     padding: 10px;
     font-family: "Ubuntu", sans-serif;
+    border-right: 1px solid var(--violate);
 
 }
 #contact-us #head-off #detail p{
@@ -61,7 +64,44 @@ section{
     font-family: "Ubuntu", sans-serif;
     font-size: 16px;
 }
+#contact-us #branches img{
+    height: 30px;
+    width: 30px; 
+}
 
+#contact-us #branches{
+    padding-left: 20px; 
+}
+#contact-us #branches #details{
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 50px;
+    
+}
+#contact-us #branches #details #detail{
+    padding: 0;
+    padding-left: 10px;
+    
+}
+#contact-us #branches h3{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+#contact-us #branches #detail .data :nth-child(1){
+    margin: 0;
+    padding-bottom: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: bolder;
+    color: var(--violate);
+}
+#contact-us #branches #detail .data :nth-child(2){
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+}
 
 /* section style */
 .custom-shape-divider-bottom-1711308386 {

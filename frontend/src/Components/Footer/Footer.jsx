@@ -5,7 +5,9 @@ import { FooterStyle } from '../Styles'
 const Footer = () => {
   return (
     <>
-        
+        <section id='footer'>
+            
+        </section>
     </>
   )
 }
