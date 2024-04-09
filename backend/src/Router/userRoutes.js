@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+var userController = require('../Controller/userController')
+
+
+router.post('/register',userController.createCustomer)
+
+
+module.exports = router
+
