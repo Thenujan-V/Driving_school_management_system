@@ -10,3 +10,21 @@ exports.createCustomer = async (req, res) => {
         }            
     });
 }
+
+exports.signinCustomer = async (req, res) => {
+    console.log(req.body)
+    customerModel.login(req.body, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            var results = JSON.parse(JSON.stringify(customerRes))
+            if(req.body.password == results.password){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    })
+}
