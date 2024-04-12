@@ -9,11 +9,15 @@ var customer = function(customer){
 
 customer.create_customer = function(newcustomer,result){
    console.log(newcustomer)
-    dbconnection.execute("INSERT INTO new_customers (first_name, last_name, email, password) VALUES (?, ?, ?, ?)", [newcustomer.first_name, newcustomer.last_name, newcustomer.email, newcustomer.password] ,function(err,res){
+    dbconnection.execute("INSERT INTO new_customers (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
+     [newcustomer.first_name, newcustomer.last_name, newcustomer.email, newcustomer.password] ,function(err,res){
         if(err){
-            console.log("customer customer error",err)
-            result(err,null);     
-                
+            if(err.errno == 1062){
+                result('exsisting email')
+            }
+            else{
+                result(err,null);             
+            }
         } 
         else{
             console.log(res);
@@ -23,15 +27,13 @@ customer.create_customer = function(newcustomer,result){
 }
 
 customer.sigin_customer = function(userInfo, result){
-    var sql = `SELECT *  FROM new_customers WHERE Username='${userInfo.Username}'`
+    var sql = `SELECT *  FROM new_customers WHERE email='${userInfo.email}'`
     dbconnection.query(sql, function(err, res){
         if(err){
-            console.log("customer customer error",err)
             result(err,null);     
         } 
         else{
-            console.log(res);
-            result(null, res);
+            result(res)
         }
     })
 }
