@@ -39,4 +39,5 @@ customer.sigin_customer = function(userInfo, result){
 }
 
 
+
 module.exports = customer

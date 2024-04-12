@@ -9,8 +9,11 @@ app.use(express.json())
 app.use(bodyParser.json())
 
 const userRoutes = require('./src/Router/userRoutes');
+const studentsRoutes = require('./src/Router/studentsRoutes')
 
 app.use('/api/customers', userRoutes);
+app.use('/api/students',studentsRoutes)
+
 
 module.exports = app;
 
