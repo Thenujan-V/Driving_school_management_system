@@ -10,10 +10,11 @@ app.use(bodyParser.json())
 
 const userRoutes = require('./src/Router/userRoutes');
 const studentsRoutes = require('./src/Router/studentsRoutes')
+const paymentRoutes = require('./src/Router/paymentRouter')
 
 app.use('/api/customers', userRoutes);
 app.use('/api/students',studentsRoutes)
-
+app.use('/api/payment',paymentRoutes)
 
 module.exports = app;
 

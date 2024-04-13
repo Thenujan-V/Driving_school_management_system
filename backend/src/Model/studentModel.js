@@ -37,8 +37,8 @@ students.show_details = function(info, result){
     })
 }
 
-students.show_exam_details = function(info, result){
-    var sql = `SELECT * FROM exam_details WHERE sid = '${info.sId}'`
+students.show_exam_details = function(sId, result){
+    var sql = `SELECT * FROM exam_details WHERE sId = '${sId}'`
     dbconnection.query(sql, function(err, res){
         if(err){
             result(err, null)
@@ -48,5 +48,28 @@ students.show_exam_details = function(info, result){
         }
     })
 }
+
+students.update_details = function(studentUpdate, sId, result){
+    let query = "UPDATE students SET ";
+    const updates = [];
+
+
+    for (const attribute in studentUpdate) {
+        updates.push(`${attribute} = '${studentUpdate[attribute]}'`);
+    }
+
+    query += updates.join(", ");
+    query += ` WHERE sId = ${sId}`;
+
+    dbconnection.query(query, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
 
 module.exports = students
