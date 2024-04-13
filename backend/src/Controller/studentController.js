@@ -37,3 +37,25 @@ exports.examResult = (req, res) => {
            }
        })
 }
+
+exports.showDetails = async (req, res) => {
+    await studentsModel.show_details(req.body, function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}
+
+exports.examDetails = async (req, res) => {
+    await studentsModel.show_exam_details(req.body, function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}

@@ -38,6 +38,40 @@ customer.sigin_customer = function(userInfo, result){
     })
 }
 
+customer.show_details = function(info, result){
+    var sql = `SELECT * FROM new_customers WHERE id = '${info.cId}'`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
+customer.update_details = function(customerUpdate, uId, result){
+    let query = "UPDATE new_customers SET ";
+    const updates = [];
+
+
+    for (const attribute in customerUpdate) {
+        updates.push(`${attribute} = '${customerUpdate[attribute]}'`);
+    }
+
+    query += updates.join(", ");
+    query += ` WHERE id = ${uId}`;
+
+    dbconnection.query(query, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
 
 
 module.exports = customer

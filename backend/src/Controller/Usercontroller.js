@@ -31,3 +31,26 @@ exports.signinCustomer = async (req, res) => {
         }
     })
 }
+
+exports.showDetails = async (req, res) => {
+    await customerModel.show_details(req.body, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}
+
+exports.updateDetails = async (req, res) => {
+    
+    await customerModel.update_details(req.body, req.params.uId, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}

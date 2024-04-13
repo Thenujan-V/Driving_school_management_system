@@ -25,4 +25,28 @@ students.new_student = function(newStudent, result){
     })
 }
 
+students.show_details = function(info, result){
+    var sql = `SELECT * FROM students join new_customers on students.sId = new_customers.id WHERE sId = '${info.sId}'`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
+students.show_exam_details = function(info, result){
+    var sql = `SELECT * FROM exam_details WHERE sid = '${info.sId}'`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
 module.exports = students
