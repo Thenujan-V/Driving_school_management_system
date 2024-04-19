@@ -1,3 +1,4 @@
+const con = require('../Config/Db.config');
 var customerModel = require('../Model/userModel')
 
 exports.createCustomer =  (req, res) => {
@@ -15,20 +16,28 @@ exports.createCustomer =  (req, res) => {
 }
 
 exports.signinCustomer = async (req, res) => {
-    console.log(req.body)
     await customerModel.sigin_customer(req.body, function(err, customerRes){
         if(err){
             return res.send(err)
         }
+        else if(customerRes.length === 0){
+            console.log("noooo")
+            return res.send('false')
+        }
         else{
             var results = JSON.parse(JSON.stringify(customerRes))
-            if(req.body.password == results.password){
-                return true;
+console.log(customerRes)
+            const res_password = results[0].password
+            const req_password = req.body.password
+
+            if(res_password == req_password){
+                return res.send('true');
             }
             else{
-                return false;
+                return res.send('false');
             }
         }
+        
     })
 }
 

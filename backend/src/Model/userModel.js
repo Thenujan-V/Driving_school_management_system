@@ -33,7 +33,8 @@ customer.sigin_customer = function(userInfo, result){
             result(err,null);     
         } 
         else{
-            result(res)
+            console.log('okey: ', res)
+            result(null,res)
         }
     })
 }
