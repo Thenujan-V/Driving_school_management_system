@@ -1,4 +1,7 @@
 const con = require('../Config/Db.config');
+const jwt = require('jsonwebtoken');
+
+
 var customerModel = require('../Model/userModel')
 
 exports.createCustomer =  (req, res) => {
@@ -16,23 +19,24 @@ exports.createCustomer =  (req, res) => {
 }
 
 exports.signinCustomer = async (req, res) => {
-    console.log(req.body)
+    const secretKey = 'qwertyuioplkjhgfdsazxcvbhytrdxbhgfcvbnjhgfdxsdfghjkkjhgfdfghjkkjhgfdsdfghjhgfddfghjhgfdfghjhgfdfghmkjhgfcxnjhgcdertyuk'; 
+
     await customerModel.sigin_customer(req.body, function(err, customerRes){
         if(err){
             return res.send(err)
         }
         else if(customerRes.length === 0){
-            console.log("noooo")
             return res.send('false')
         }
         else{
             var results = JSON.parse(JSON.stringify(customerRes))
-console.log(customerRes)
             const res_password = results[0].password
             const req_password = req.body.password
 
             if(res_password == req_password){
-                return res.send('true');
+                const token = jwt.sign({id: results[0].id, email: results[0].email}, secretKey, {expiresIn:'24h'})
+
+                return res.json({ success: true, token });
             }
             else{
                 return res.send('false');

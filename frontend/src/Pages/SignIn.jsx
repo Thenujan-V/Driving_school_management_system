@@ -36,6 +36,7 @@ const SignIn = () => {
 
       }
       else{
+        localStorage.setItem('authToken', response.token);
         setApiResponse("signin success")
         navigate('/')
       }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ServicesStyle } from '../Styles'
 import { homeAbout, work,sefty,free } from '../Assets';
 import { Link } from 'react-router-dom';
+import {getToken} from '../../Services/getToken'
 
 const Services = () => {
     const items = [
@@ -18,6 +19,7 @@ const Services = () => {
       const [getLicensePackage, setGetLicensePackage] = useState('')
       const [getRenewLicensePackage, setGetReNewLicensePackage] = useState('')
       
+      const token = getToken(); 
       
 
 
@@ -46,7 +48,7 @@ const Services = () => {
                                             <p class="card-text m-0" id='para'>{item.description}.</p>
                                             <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
                                             <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to='' class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <Link  to={token? '/about' : 'signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
 
                                         </div>
                                     </div>
@@ -72,7 +74,7 @@ const Services = () => {
                                             <p class="card-text m-0" id='para'>{item.description}.</p>
                                             <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
                                             <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to='' class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <Link  to={token? '/about' : 'signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
                                         </div>
                                     </div>
                                 </div>
