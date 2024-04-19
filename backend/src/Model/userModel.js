@@ -33,6 +33,7 @@ customer.sigin_customer = function(userInfo, result){
             result(err,null);     
         } 
         else{
+            console.log('mail :',userInfo.email)
             console.log('okey: ', res)
             result(null,res)
         }

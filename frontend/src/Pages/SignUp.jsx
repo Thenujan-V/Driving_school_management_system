@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
-import { SignupStyle } from '../Styles'
+import {signupService} from '../Services/userService'
+import { SignupStyle } from '../Components/Styles'
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
   const [errors, setErrors] = useState({});
+  const [apiResponse, setApiResponse] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
-    if (!formData.firstName.trim()) {
-      errors.firstName = 'First name is required';
+    if (!formData.first_name.trim()) {
+      errors.first_name = 'First name is required';
     }
-    if (!formData.lastName.trim()) {
-      errors.lastName = 'Last name is required';
+    if (!formData.last_name.trim()) {
+      errors.last_name = 'Last name is required';
     }
     if (!formData.email.trim()) {
       errors.email = 'Email is required';
@@ -38,10 +40,22 @@ const SignUp = () => {
       errors.confirmPassword = 'Passwords do not match';
     }
     setErrors(errors);
+    // api call throw signup service function
+    try{
+      const response = await signupService(formData)
+      setApiResponse('signup successfully...!')
+      console.log('Response : ',response.data)
+    }
+    catch(error){
+      setApiResponse('Sign up failed.');
+      console.log('Response : ',error.response.data)
+      if(error.response.data == 'exsisting email'){
+        alert('email is already used please use different email')
+      }
+      console.error('Error:', error);
+    }
 
-    // if (Object.keys(errors).length === 0) {
-    //   console.log('Form submitted:', formData);
-    // }
+
   };
   return (
     <>
@@ -51,14 +65,14 @@ const SignUp = () => {
             <h1>Signup here</h1>
             <form onSubmit={handleSubmit} className=''>
                 <div className="form-group">
-                  <label htmlFor="firstName" className="form-label">First Name</label>
-                  <input className="form-control" type="text" id='firstName' name='firstName' placeholder='First Name' value={formData.firstName} onChange={handleChange}   />
-                  <p>{errors.firstName}</p>
+                  <label htmlFor="first_name" className="form-label">First Name</label>
+                  <input className="form-control" type="text" id='first_name' name='first_name' placeholder='First Name' value={formData.first_name} onChange={handleChange}   />
+                  <p>{errors.first_name}</p>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="lastName" className="form-label">Last Name</label>
-                  <input className="form-control" type="text" id='lastName' name='lastName' placeholder='Last Name' value={formData.lastName} onChange={handleChange} />
-                  <p>{errors.lastName}</p>
+                  <label htmlFor="last_name" className="form-label">Last Name</label>
+                  <input className="form-control" type="text" id='last_name' name='last_name' placeholder='Last Name' value={formData.last_name} onChange={handleChange} />
+                  <p>{errors.last_name}</p>
                 </div>
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>

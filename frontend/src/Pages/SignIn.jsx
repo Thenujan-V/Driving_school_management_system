@@ -1,13 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
-import { SigninStyle } from '../Styles'
+import { SigninStyle } from '../Components/Styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import {signinService} from '../Services/userService'
+import { useNavigate } from 'react-router-dom';
+
+
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [apiResponse, setApiResponse] = useState('')
+
+  const navigate = useNavigate();
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,10 +25,26 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    try{
+      const response = await signinService(email, password)
+      if(response == false){
+        alert('username or password is not valid')
+        setApiResponse('signin faild...!')
+
+      }
+      else{
+        setApiResponse("signin success")
+        navigate('/')
+      }
+
+    }
+    catch(error){
+      setApiResponse('signin faild...!')
+      console.log('Error: ', error)
+    }
   };
   return (
     <>

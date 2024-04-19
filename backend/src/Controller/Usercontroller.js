@@ -16,6 +16,7 @@ exports.createCustomer =  (req, res) => {
 }
 
 exports.signinCustomer = async (req, res) => {
+    console.log(req.body)
     await customerModel.sigin_customer(req.body, function(err, customerRes){
         if(err){
             return res.send(err)

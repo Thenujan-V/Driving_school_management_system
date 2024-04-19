@@ -10,7 +10,8 @@ const HomeSection = () => {
         {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
         {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' }    
       ];
-        
+
+        const uid = null
   return (
     <>
     {/* AboutUs & our features */}
@@ -161,7 +162,7 @@ const HomeSection = () => {
                                 <h4 class="card-title ">{item.title}</h4>
                                 <p class="card-text m-0" id='para'>{item.description}.</p>
                                 <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                <a href="#" class="btn btn-primary">Buy Now</a>
+                                <Link to={uid? 'about' : 'signin'} class="btn btn-primary">Buy Now</Link>
                             </div>
                         </div>
                     </div>
