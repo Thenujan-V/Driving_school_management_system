@@ -10,7 +10,9 @@ import ServiceStyle from './ServiceIndex.css'
 import ServicesStyle from './Services.css'
 import ContactStyle from './ContactSection.css'
 import ContactIndexStyle from './ContactIndex.css'
+import VerifyMsgStyle from './VerifyMsgStyle.css'
 
 
 
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, ContactStyle, ContactIndexStyle}
+
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, ContactStyle, ContactIndexStyle, VerifyMsgStyle}

@@ -10,11 +10,12 @@ var students = function(student){
     this.nic_soft_copy = student.nic_soft_copy;
     this.medical_soft_copy = student.medical_soft_copy;
     this.birth_certificate_soft_copy = student.birth_certificate_soft_copy;
+    this.id = student.id;
 }
 students.new_student = function(newStudent, result){
     console.log(newStudent)
-    dbconnection.execute("INSERT INTO students (phone_number, birth_date, medical_number, medical_date, vechile_class, nic_number, nic_soft_copy, medical_soft_copy, birth_certificate_soft_copy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-     [newStudent.phone_number, newStudent.birth_date, newStudent.medical_number, newStudent.medical_date, newStudent.vechile_class, newStudent.nic_number, newStudent.nic_soft_copy, newStudent.medical_soft_copy, newStudent.birth_certificate_soft_copy] ,function(err,res){
+    dbconnection.execute("INSERT INTO students (phone_number, birth_date, medical_number, medical_date, vechile_class, nic_number, nic_soft_copy, medical_soft_copy, birth_certificate_soft_copy, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+     [newStudent.phone_number, newStudent.birth_date, newStudent.medical_number, newStudent.medical_date, newStudent.vechile_class, newStudent.nic_number, newStudent.nic_soft_copy, newStudent.medical_soft_copy, newStudent.birth_certificate_soft_copy, newStudent.id] ,function(err,res){
         if(err){
             result(err,null);             
         } 
@@ -26,13 +27,14 @@ students.new_student = function(newStudent, result){
 }
 
 students.show_details = function(info, result){
-    var sql = `SELECT * FROM students join new_customers on students.sId = new_customers.id WHERE sId = '${info.sId}'`
+    console.log(info)
+    var sql = `SELECT * FROM students join new_customers on students.id = new_customers.id WHERE students.id = '${info.id}'`
     dbconnection.query(sql, function(err, res){
         if(err){
             result(err, null)
         }
         else{
-            result(res)
+            result(null,res)
         }
     })
 }
@@ -44,7 +46,7 @@ students.show_exam_details = function(sId, result){
             result(err, null)
         }
         else{
-            result(res)
+            result(null,res)
         }
     })
 }
@@ -66,7 +68,7 @@ students.update_details = function(studentUpdate, sId, result){
             result(err, null)
         }
         else{
-            result(res)
+            result(null,res)
         }
     })
 }

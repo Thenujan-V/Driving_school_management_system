@@ -75,6 +75,7 @@ const StudentEntroll = () => {
       setApiResponse('signup successfully...!')
     }
     catch(error){
+      alert('some problem try again')
       setApiResponse('Sign up failed.');
     }
 

@@ -2,9 +2,6 @@ var studentsModel = require('../Model/studentModel')
 var examDetailsModel = require('../Model/examDetailsModel')
 
 exports.addStudent = (req, res) => {
-    console.log(req.body)
-    // var studentDetails = new studentsModel(req.body);
-
     studentsModel.new_student(req.body ,function(err,studentRes){
        if (err){
         return res.status(400).send(err);  
@@ -17,6 +14,8 @@ exports.addStudent = (req, res) => {
 }
 
 exports.showDetails = async (req, res) => {
+    console.log('req:   ',req.body)
+
     await studentsModel.show_details(req.body, function(err, studentRes){
         if(err){
             return res.send(err)

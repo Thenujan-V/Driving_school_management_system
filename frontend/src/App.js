@@ -7,6 +7,8 @@ import About from './Pages/About';
 import Service from './Pages/Service';
 import Contact from './Pages/Contact';
 import StudentEntroll from './Pages/StudentEntroll';
+import VerifyMsg from './Pages/VerifyMes';
+import Message from './Pages/Message';
 
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
         <Route path='/service' element={<Service />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/studententroll' element={<StudentEntroll />} />
+        <Route path='/verifymsg' element={<VerifyMsg />} />
+        <Route path='/message' element={<Message />} />
 
       </Routes>
     </div>

@@ -18,3 +18,19 @@ export const student_entroll = async (formData) => {
         throw error
     }
 }
+
+export const student_details = async (id) => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/students/studentdetails`, {
+            params : {id},
+        })
+        console.log("id : ",id)
+        console.log(response.data)
+        return response.data
+    }
+    catch(error){
+        console.error('Error fetching student details:', error);
+
+        throw error 
+    }
+}
