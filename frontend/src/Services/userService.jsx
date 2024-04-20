@@ -29,6 +29,7 @@ export const signinService = async (email, password) => {
     }
 }
 export const userDetails = async (id) => {
+    console.log(id)
     try{
         const response = await axios.get(`${API_BASE_URL}/customers/userdetails`,id)
         console.log(response.data)
