@@ -16,7 +16,7 @@ exports.addStudent = (req, res) => {
 exports.showDetails = async (req, res) => {
     console.log('req:   ',req.body)
 
-    await studentsModel.show_details(req.body, function(err, studentRes){
+    await studentsModel.show_details(req.params.sId, function(err, studentRes){
         if(err){
             return res.send(err)
         }

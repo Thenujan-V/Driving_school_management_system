@@ -40,8 +40,9 @@ customer.sigin_customer = function(userInfo, result){
     })
 }
 
-customer.show_details = function(info, result){
-    var sql = `SELECT * FROM new_customers WHERE id = '${info.cId}'`
+customer.show_details = function(uId, result){
+    console.log('uid : ', uId)
+    var sql = `SELECT * FROM new_customers WHERE id = '${uId}'`
     dbconnection.query(sql, function(err, res){
         if(err){
             result(err, null)

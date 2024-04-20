@@ -26,9 +26,9 @@ students.new_student = function(newStudent, result){
     })
 }
 
-students.show_details = function(info, result){
-    console.log(info)
-    var sql = `SELECT * FROM students join new_customers on students.id = new_customers.id WHERE students.id = '${info.id}'`
+students.show_details = function(sId, result){
+    console.log(sId)
+    var sql = `SELECT * FROM students join new_customers on students.id = new_customers.id WHERE students.id = '${sId}'`
     dbconnection.query(sql, function(err, res){
         if(err){
             result(err, null)

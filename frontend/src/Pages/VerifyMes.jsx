@@ -8,14 +8,16 @@ import { Link } from 'react-router-dom'
 const VerifyMes = () => {
     
     const id = retrieveId()
+    const [response, setResponse] = useState('')
     const [apiResponse, setApiResponse] = useState('');
 
     useEffect(() => {
         const fetchStudentDetails = async (id) => {
           try{
-            const response = await student_details(id); 
+            const datas = await student_details(id); 
+            setResponse(datas)
             setApiResponse('Getting details successful');
-          } 
+          }
           catch (error){
             console.error('Error fetching student details:', error);
             setApiResponse('Getting details failed');
@@ -25,17 +27,15 @@ const VerifyMes = () => {
         fetchStudentDetails(id); 
       }, [id])
 
-
-
-  return (
+      return (
     <div id='verify'>
         <Navbar />
         <p>
-            Hello thenujan,
+            Hello {response.first_name},
             <br />
             "Your documents are currently being verified. Please allow a few hours for the verification process to complete. Once your documents have been verified, you will need to pay 25% of your total course fee to receive your exam date."
             <br /><br />
-            Thankyou thenujan. <br />
+            Thankyou {response.first_name}. <br />
             <Link to='/' className='btn btn-warning mt-3'>Okey</Link>
             {/* <Link to='' className='btn btn-warning mt-5' id='payment'>PayNow</Link> */}
 

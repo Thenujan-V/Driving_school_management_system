@@ -21,12 +21,8 @@ export const student_entroll = async (formData) => {
 
 export const student_details = async (id) => {
     try{
-        const response = await axios.get(`${API_BASE_URL}/students/studentdetails`, {
-            params : {id},
-        })
-        console.log("id : ",id)
-        console.log(response.data)
-        return response.data
+        const response = await axios.get(`${API_BASE_URL}/students/studentdetails/${id}`)
+        return response.data[0]
     }
     catch(error){
         console.error('Error fetching student details:', error);

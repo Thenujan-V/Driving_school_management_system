@@ -47,7 +47,7 @@ exports.signinCustomer = async (req, res) => {
 }
 
 exports.showDetails = async (req, res) => {
-    await customerModel.show_details(req.body, function(err, customerRes){
+    await customerModel.show_details(req.params.uId, function(err, customerRes){
         if(err){
             return res.send(err)
         }
