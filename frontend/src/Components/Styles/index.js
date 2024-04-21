@@ -13,6 +13,7 @@ import ContactIndexStyle from './ContactIndex.css'
 import VerifyMsgStyle from './VerifyMsgStyle.css'
 import ContentDetailsStyle from './ContentDetailsStyle.css'
 import CourseMeterialStyle from './CourseMeterialStyle.css'
+import timeStyle from './timeStyle.css'
 
 
 
@@ -20,4 +21,4 @@ import CourseMeterialStyle from './CourseMeterialStyle.css'
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, 
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, 
-    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle}
+    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle}

@@ -12,11 +12,16 @@ const userRoutes = require('./src/Router/userRoutes');
 const studentsRoutes = require('./src/Router/studentsRoutes')
 const paymentRoutes = require('./src/Router/paymentRouter')
 const timeRouters = require('./src/Router/timeRouter')
+const examRouters = require('./src/Router/examRouter')
+const e = require('express')
+
 
 app.use('/api/customers', userRoutes);
 app.use('/api/students',studentsRoutes)
 app.use('/api/payment',paymentRoutes)
 app.use('/api/time',timeRouters)
+app.use('/api/exam',examRouters)
+
 
 
 module.exports = app;

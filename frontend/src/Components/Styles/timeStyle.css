@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+#exam #time-table{
+    /* background-color: var(--green); */
+    border-top: 20px solid var(--shadeGreen);
+}
+#exam #time-table #headings{
+    color:var(--shadeGreen);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 25px;
+    margin-top: 22px;
+    border: 3px solid var(--green);
+    border-radius: 20px;
+    text-align: center;
+    background-color: var(--liteViolate);
+}
+#exam #time-table #times{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 22px;
+    border-bottom: 3px solid var(--green);
+    border-radius: 20px;
+    text-align: center;
+}
+#exam #time-table{
+    padding-bottom: 20px;
+}
+#exam #time-table #times #atendance {
+    background-color: var(--violate);
+    width: 10vw;
+    color: var(--shadeGreen);
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}

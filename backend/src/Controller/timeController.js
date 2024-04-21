@@ -23,7 +23,7 @@ exports.attendance = async (req, res) => {
 }
 
 exports.showTimeTable = (req, res) => {
-    timeModel.ShowDetails(req.body, function(err, showRes){
+    timeModel.ShowDetails(req.params.sId, function(err, showRes){
         if(err){
             return res.send(err)
         }

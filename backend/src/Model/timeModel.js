@@ -34,8 +34,8 @@ timeTable.update_attendence = function(attendance, result){
     })
 }
 
-timeTable.ShowDetails = function(times, result){
-    var sql = `select * from practice_time where sid = '${times.sId}'`
+timeTable.ShowDetails = function(sId, result){
+    var sql = `select * from practice_time where sid = '${sId}'`
     dbconnection.execute(sql, function(err, res){
         if(err){
             result(err, null)

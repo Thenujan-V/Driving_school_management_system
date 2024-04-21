@@ -8,7 +8,6 @@ import Service from './Pages/Service';
 import Contact from './Pages/Contact';
 import StudentEntroll from './Pages/StudentEntroll';
 import VerifyMsg from './Pages/VerifyMes';
-import Message from './Pages/Message';
 import Content from './Pages/Content';
 
 
@@ -24,7 +23,6 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/studententroll' element={<StudentEntroll />} />
         <Route path='/verifymsg' element={<VerifyMsg />} />
-        <Route path='/message' element={<Message />} />
         <Route path='/content' element={<Content />} />
 
       </Routes>

@@ -11,6 +11,7 @@ exams.update_exam_date = function(examDate, result){
     dbconnection.execute("INSERT INTO exam_details (exam_date, sid) VALUES (?, ?)",
      [examDate.exam_date,examDate.sid] ,function(err,res){
         if(err){
+            console.log(err)
             result(err,null);             
         } 
         else{
@@ -34,7 +35,8 @@ exams.update_result = function(examResult, result){
 }
 
 exams.show_exam_details = function(sId, result){
-    dbconnection.execute(`select * from exam_details join students on exam_details.sid = students.sId where sid = '${sId}'`, function(err, res){
+    console.log('sid : ',sId)
+    dbconnection.execute(`select * from exam_details join students on exam_details.sid = students.sId where exam_details.sid = '${sId}'`, function(err, res){
         if(err){
             result(err,null);             
         } 
