@@ -47,7 +47,7 @@ const VerifyMes = () => {
           verifingDatas.style.display = 'none'
         }
       }
-
+console.log('sss : ',response)
       return (
       <div id='verify'>
         <Navbar />

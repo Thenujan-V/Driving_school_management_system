@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import {signupService} from '../Services/userService'
 import { SignupStyle } from '../Components/Styles'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -42,9 +45,15 @@ const SignUp = () => {
     setErrors(errors);
     // api call throw signup service function
     try{
-      const response = await signupService(formData)
+      if(Object.keys(errors).length === 0){
+        const response = await signupService(formData)
       setApiResponse('signup successfully...!')
-      console.log('Response : ',response.data)
+        navigate('/signin')
+      }
+      else{
+        alert('Give correct details')
+      }
+      
     }
     catch(error){
       setApiResponse('Sign up failed.');

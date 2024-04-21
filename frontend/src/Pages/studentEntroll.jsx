@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import { SignupStyle } from '../Components/Styles'
 import {student_entroll} from '../Services/studentService'
+import {retrieveId} from '../Services/getToken'
+import { useNavigate } from 'react-router-dom'
 
 const StudentEntroll = () => {
+  const navigate = useNavigate();
+  const id = retrieveId()
   const [formData, setFormData] = useState({
     phone_number: '',
     birth_date: '',
@@ -13,22 +17,23 @@ const StudentEntroll = () => {
     medical_number: '',
     nic_soft_copy: '',
     medical_soft_copy: '',
-    birth_certificate_soft_copy: ''
+    birth_certificate_soft_copy: '',
+    id:id
   });
   const [errors, setErrors] = useState({});
   const [apiResponse, setApiResponse] = useState('');
 
   const handleChange = (e) => {
-      const { name, files, type, value } = e.target;
+      // const { name, files, type, value } = e.target;
 
-      if (type === 'file') {
-          const file = files[0];
-          const newFormData = new FormData();
-          newFormData.append(name, file);
-          setFormData(newFormData);
-      } else {
-          setFormData({ ...formData, [name]: value });
-      }
+      // if (type === 'file') {
+      //     const file = files[0];
+      //     const newFormData = new FormData();
+      //     newFormData.append(name, file);
+      //     setFormData(newFormData);
+      // } else {
+      //     setFormData({ ...formData, [name]: value });
+      // }
 
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -44,12 +49,10 @@ const StudentEntroll = () => {
     }
     if (!formData.nic_number.trim()) {
       errors.nic_number = 'nic_number is required';
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.nic_number)) {
-      errors.nic_number = 'Invalid nic_number address';
-    }
-    if (!formData.vechile_class.trim()) {
-      errors.vechile_class = 'vechile_class is required';
-    }
+    } 
+    // if (!formData.vechile_class.trim()) {
+    //   errors.vechile_class = 'vechile_class is required';
+    // }
     if (!formData.medical_date.trim()) {
       errors.medical_date = 'medical_date is required';
     }
@@ -71,8 +74,14 @@ const StudentEntroll = () => {
 
     // api call throw signup service function
     try{
-      const response = await student_entroll(formData)
-      setApiResponse('signup successfully...!')
+      if(Object.keys(errors).length === 0){
+        const response = await student_entroll(formData)
+        setApiResponse('signup successfully...!')
+        navigate('/verifymsg')
+      }
+      else{
+        alert('fill all details')
+      }
     }
     catch(error){
       alert('some problem try again')
@@ -160,13 +169,14 @@ const StudentEntroll = () => {
                       <p>{errors.medical_soft_copy}</p>
                     </div>
                   </div>
+                  <div className="col-md-6">
+                    <div className="form-group mb-3">
+                      <input className="form-control" type="hidden" id='id' name='id' value={formData.id}  />
+                    </div>
+                  </div>
                 </div>
-
                 
 
-                
-
-                
                 {/* Submit button */}
                 <div className="form-group mt-4">
                     <button className='btn btn-primary' type="submit">Submit</button>

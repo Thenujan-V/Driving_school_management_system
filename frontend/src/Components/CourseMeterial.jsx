@@ -42,11 +42,22 @@ const CourseMeterial = () => {
     fetchPracticeTime(id)
 
 }, [id])
-    
-    const examResult = examResponse.result; 
-    const examElement = document.getElementById('online-services');
-    const trialElement = document.getElementById('time-table');
 
+const examElement = document.getElementById('online-services');
+const trialElement = document.getElementById('time-table');
+console.log("errrr",examResponse)
+  useEffect(() => {
+    if(examResponse){
+      const examResult = examResponse.result; 
+      toggleExamDetails(examResult)
+    }
+    else{
+      if(trialElement){
+        trialElement.style.display = 'none';
+      }
+    }
+  })
+    
     function toggleExamDetails(result) {
         if (result === 0) {
           examElement.style.display = 'block';
@@ -57,7 +68,6 @@ const CourseMeterial = () => {
           examElement.style.display = 'none';
         }
     }
-    toggleExamDetails(examResult)
 
   return (
         <div id="exam">

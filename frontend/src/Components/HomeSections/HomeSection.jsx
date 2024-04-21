@@ -3,6 +3,7 @@ import { HomeSectionStyle } from '../Styles'
 import {homeAbout,work,learn,lession,sefty} from '../Assets'
 import { Link } from 'react-router-dom'
 import {getToken} from '../../Services/getToken'
+import { retrieveId } from '../../Services/getToken'
 
 const HomeSection = () => {
     const items = [
@@ -13,6 +14,8 @@ const HomeSection = () => {
       ];
 
       const token = getToken();
+      const id = retrieveId()
+      console.log('id : ',id)
 
   return (
     <>
@@ -164,7 +167,7 @@ const HomeSection = () => {
                                 <h4 class="card-title ">{item.title}</h4>
                                 <p class="card-text m-0" id='para'>{item.description}.</p>
                                 <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                <Link to={token? 'about' : 'signin'} class="btn btn-primary">Buy Now</Link>
+                                <Link to={token? 'studentEntroll' : 'signin'} class="btn btn-primary">Buy Now</Link>
                             </div>
                         </div>
                     </div>

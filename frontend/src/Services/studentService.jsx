@@ -4,11 +4,7 @@ const API_BASE_URL = 'http://localhost:4000/api'
 
 export const student_entroll = async (formData) => {
     try{
-        const response = await axios.post(`${API_BASE_URL}/students/addDetails`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
+        const response = await axios.post(`${API_BASE_URL}/students/addDetails`, formData)
         console.log('fd : ',formData)
         return response.data
 

@@ -66,3 +66,24 @@ body{
     text-decoration: underline;
     color:var(--shadeGreen);
 }
+
+#content #notAssignd h1{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--violate);
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+#content #notAssignd p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--violate);
+    text-align: center;
+}
+#content #notAssignd p span{
+    text-decoration: underline;
+    color:var(--shadeGreen);
+}
