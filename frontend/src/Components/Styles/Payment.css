@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+#payment{
+    background-color: var(--green);
+    height: 100vh;
+}
+#paymentImg{
+    background-image: url('../Assets/payment.jpg');
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#paymentDetails{
+    margin-top: 150px;
+}
+#paymentDetails h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 50px;
+}
+#paymentDetails label{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-style: 22px;
+}
+#paymentDetails button{
+    width: 100px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}

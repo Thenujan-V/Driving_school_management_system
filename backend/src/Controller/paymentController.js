@@ -1,9 +1,20 @@
 var paymentModel = require('../Model/paymentModel')
 
-exports.addPayment = async (req, res) => {
-    console.log(req.body)
+exports.addTotalPayment = async (req, res) => {
+    await paymentModel.add_total_amount(req.body, req.params.sId, function(err, paymentRes){
+        if(err){
+            return res.status(400).send(err);  
+       }            
+       else{
+        console.log("ok :",res.body)
+           return res.status(200).send(paymentRes)
+       }
+    })
+}
 
+exports.addPayment = async (req, res) => {
     await paymentModel.add_payment(req.body, req.params.sId, function(err, paymentRes){
+        console.log('pr : ',paymentRes)
         if(err){
             return res.status(400).send(err);  
        }            

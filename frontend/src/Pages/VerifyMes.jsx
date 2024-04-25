@@ -67,7 +67,7 @@ console.log('sss : ',response)
            "Your documents have been successfully verified. To proceed, please make a payment of 25% to secure your exam date. Payment can be made using credit card, debit card, or other online methods.  Alternatively,<br /> you may visit our branch in person to complete the payment."
             <br /> <br />
             Thankyou {response.first_name}. <br /><br />
-            <span>If you wish to make the payment online, please <Link to='/' id='btn'>Click here</Link> to proceed.</span>
+            <span>If you wish to make the payment online, please <Link to='/payment' id='btn'>Click here</Link> to proceed.</span>
 
         </p>
       </div>

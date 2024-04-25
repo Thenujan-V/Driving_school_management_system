@@ -176,8 +176,6 @@ const StudentEntroll = () => {
                   </div>
                 </div>
                 
-
-                {/* Submit button */}
                 <div className="form-group mt-4">
                     <button className='btn btn-primary' type="submit">Submit</button>
                 </div>

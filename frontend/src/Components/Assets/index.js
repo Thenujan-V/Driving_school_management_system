@@ -9,10 +9,12 @@ import home from './location.png'
 import mobile from './smartphone.png'
 import phone from './telephone-call.png'
 import time from './time.png'
+import mastercardLogo from './master.png'
+import visaLogo from './visa.png'
+import payment from './payment.jpg'
 
 
 
 
 
-
-export {homeAbout,work,learn,lession,sefty,free,time,mobile,phone,mail,home}
+export {homeAbout,work,learn,lession,sefty,free,time,mobile,phone,mail,home,mastercardLogo,visaLogo, payment}

@@ -14,6 +14,7 @@ import VerifyMsgStyle from './VerifyMsgStyle.css'
 import ContentDetailsStyle from './ContentDetailsStyle.css'
 import CourseMeterialStyle from './CourseMeterialStyle.css'
 import timeStyle from './timeStyle.css'
+import payment from './Payment.css'
 
 
 
@@ -21,4 +22,4 @@ import timeStyle from './timeStyle.css'
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, 
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, 
-    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle}
+    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment}

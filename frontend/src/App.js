@@ -9,6 +9,7 @@ import Contact from './Pages/Contact';
 import StudentEntroll from './Pages/StudentEntroll';
 import VerifyMsg from './Pages/VerifyMes';
 import Content from './Pages/Content';
+import Payment from './Pages/Payment';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/studententroll' element={<StudentEntroll />} />
         <Route path='/verifymsg' element={<VerifyMsg />} />
         <Route path='/content' element={<Content />} />
+        <Route path='/payment' element={<Payment />} />
 
       </Routes>
     </div>
