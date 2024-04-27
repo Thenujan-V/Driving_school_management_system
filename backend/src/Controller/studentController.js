@@ -2,7 +2,9 @@ var studentsModel = require('../Model/studentModel')
 var examDetailsModel = require('../Model/examDetailsModel')
 
 exports.addStudent = (req, res) => {
-    studentsModel.new_student(req.body ,function(err,studentRes){
+    studentsModel.new_student(req.body, req.params.vechile_class, function(err,studentRes){
+    console.log(req.params.vechile_class)
+        
        if (err){
         return res.status(400).send(err);  
        }            

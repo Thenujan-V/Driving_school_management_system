@@ -161,13 +161,13 @@ const HomeSection = () => {
             <div id='courses' className='row m-0 text-center'>
                 {items.map((item, index) => (
                     <div className="col-lg-3 col-md-3 col-sm-6 col-12 pt-4">
-                        <div class="card">
+                        <div class="card" key={index}>
                             <img src={homeAbout} class="card-img-top" alt="pic1" />
                             <div class="card-body">
                                 <h4 class="card-title ">{item.title}</h4>
                                 <p class="card-text m-0" id='para'>{item.description}.</p>
                                 <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                <Link to={token? 'studentEntroll' : 'signin'} class="btn btn-primary">Buy Now</Link>
+                                <Link to={token? `studentEntroll/${index}` : `signin`} class="btn btn-primary">Buy Now</Link>
                             </div>
                         </div>
                     </div>

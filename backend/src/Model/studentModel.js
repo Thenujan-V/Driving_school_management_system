@@ -12,8 +12,9 @@ var students = function(student){
     this.birth_certificate_soft_copy = student.birth_certificate_soft_copy;
     this.id = student.id;
 }
-students.new_student = function(newStudent, result){
+students.new_student = function(newStudent, vechile_class, result){
     console.log(newStudent)
+    console.log(vechile_class)
     dbconnection.execute("INSERT INTO students (phone_number, birth_date, medical_number, medical_date, vechile_class, nic_number, nic_soft_copy, medical_soft_copy, birth_certificate_soft_copy, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
      [newStudent.phone_number, newStudent.birth_date, newStudent.medical_number, newStudent.medical_date, newStudent.vechile_class, newStudent.nic_number, newStudent.nic_soft_copy, newStudent.medical_soft_copy, newStudent.birth_certificate_soft_copy, newStudent.id] ,function(err,res){
         if(err){

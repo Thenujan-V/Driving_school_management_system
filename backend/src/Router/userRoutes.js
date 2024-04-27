@@ -10,3 +10,4 @@ router.post('/updatedetails/:uId',userController.updateDetails)
 
 module.exports = router
 
+

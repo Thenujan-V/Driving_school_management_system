@@ -3,16 +3,19 @@ import Navbar from '../Components/Navbar/Navbar'
 import { SignupStyle } from '../Components/Styles'
 import {student_entroll} from '../Services/studentService'
 import {retrieveId} from '../Services/getToken'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const StudentEntroll = () => {
   const navigate = useNavigate();
   const id = retrieveId()
+  const {index} = useParams()
+  console.log('insex : ',index)
+
   const [formData, setFormData] = useState({
     phone_number: '',
     birth_date: '',
     nic_number: '',
-    vechile_class: '',
+    vechile_class: index,
     medical_date: '',
     medical_number: '',
     nic_soft_copy: '',

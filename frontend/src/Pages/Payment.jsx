@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {visaLogo, mastercardLogo} from '../Components/Assets'
 import { addPaymentDetails } from '../Services/paymentService';
 import { retrieveId } from '../Services/getToken';
-const Payment = () => {
-    const uId = retrieveId()
+import { student_details } from '../Services/studentService';
+import { show_exam_details } from '../Services/examServices';
 
+const Payment = () => {
+
+    const items = [
+        {url:'1', title: 'Item 1', description: 'Description for item 1',price:'1500', newprice:'7200' },
+        {url:'2', title: 'Item 1', description: 'Description for item 1',price:'2500', newprice:'7200' },
+        {url:'3', title: 'Item 1', description: 'Description for item 1',price:'3500', newprice:'7200' },
+        {url:'4', title: 'Item 1', description: 'Description for item 1',price:'4500', newprice:'7200' }    
+      ];
+
+    const uId = retrieveId()
+      console.log(uId)
     const [formData, setFormData] = useState({
         ownerName: '',
         cardNumber: '',
@@ -14,6 +25,9 @@ const Payment = () => {
     const [errors, setErrors] = useState({});
     const [cardType, setCardType] = useState(null);
     const[response, setResponse] = useState('')
+    const[vechileClass, setVechileClass] = useState('')
+    const [courseAmount, setCourseAmount] = useState('')
+    const [examResult, setExamResult] = useState('')
 
     const cardTypes = {
         Visa: /^4/,
@@ -67,6 +81,56 @@ const Payment = () => {
             setResponse('error')
         }
     };
+
+    useEffect(() => {
+        const vechile_class = async(uId) => {
+        try{
+            const response = await student_details(uId)
+            setVechileClass(response.vechile_class)
+        }
+        catch(error){
+            console.log('error :',error)
+            setVechileClass(error)
+        }   
+    }
+
+    const get_amount = (vechileClass) => {
+        console.log('class :',vechileClass)
+
+        items.map((item, index) => {        
+            if(index == vechileClass){
+                setCourseAmount(item.price)
+            }
+        })
+    }
+    const get_exam_result = async(uId) => {
+        try{
+            const response = await show_exam_details(uId)
+            console.log('result :',response.result)
+            setExamResult(response.result)
+        }
+        catch(error){
+            console.log('error :',error)
+            setVechileClass(error)
+        }
+    }
+    vechile_class(uId)
+    get_exam_result(uId)
+    get_amount(vechileClass)
+    })
+
+    const trialPayment = document.getElementById('trialPay')
+    const examPayment = document.getElementById('examPay')
+
+    if(examResult == 0){
+        examPayment.style.display = 'block'
+        trialPayment.style.display = 'none'
+     }
+    else{
+        trialPayment.style.display = 'block'
+        examPayment.style.display = 'none'
+
+    }
 
     return (
         <div id='payment'>
@@ -139,7 +203,8 @@ const Payment = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-warning mt-3">Pay Now</button>
+                            <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.4} LKR</button>
+                            <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now</button>
                         </form>
                     </div>
                 </div>
