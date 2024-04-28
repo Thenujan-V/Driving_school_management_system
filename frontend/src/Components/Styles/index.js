@@ -15,11 +15,13 @@ import ContentDetailsStyle from './ContentDetailsStyle.css'
 import CourseMeterialStyle from './CourseMeterialStyle.css'
 import timeStyle from './timeStyle.css'
 import payment from './Payment.css'
+import verticalNavbar from './VerticalNavbar.css'
+import profile from './Profile.css'
 
 
 
 
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, 
-    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, 
-    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment}
+    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, 
+    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

@@ -10,6 +10,8 @@ import StudentEntroll from './Pages/StudentEntroll';
 import VerifyMsg from './Pages/VerifyMes';
 import Content from './Pages/Content';
 import Payment from './Pages/Payment';
+import UserDashboard from './Pages/UserDashboard';
+import UserProfile from './Pages/UserProfile';
 
 
 const App = () => {
@@ -26,7 +28,8 @@ const App = () => {
         <Route path='/verifymsg' element={<VerifyMsg />} />
         <Route path='/content' element={<Content />} />
         <Route path='/payment' element={<Payment />} />
-
+        <Route path='/userprofile' element={<UserProfile />} />
+        <Route path='/userdashboard' element={<UserDashboard />} />
       </Routes>
     </div>
   )
