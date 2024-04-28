@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {visaLogo, mastercardLogo} from '../Components/Assets'
-import { addPaymentDetails } from '../Services/paymentService';
+import { addPaymentDetails, addBalancePaymentDetails } from '../Services/paymentService';
 import { retrieveId } from '../Services/getToken';
 import { student_details } from '../Services/studentService';
 import { show_exam_details } from '../Services/examServices';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
-
+    const navigate = useNavigate()
     const items = [
         {url:'1', title: 'Item 1', description: 'Description for item 1',price:'1500', newprice:'7200' },
         {url:'2', title: 'Item 1', description: 'Description for item 1',price:'2500', newprice:'7200' },
@@ -15,19 +16,19 @@ const Payment = () => {
       ];
 
     const uId = retrieveId()
-      console.log(uId)
-    const [formData, setFormData] = useState({
-        ownerName: '',
-        cardNumber: '',
-        date: '',
-        cvv: ''
-    });
+    
     const [errors, setErrors] = useState({});
     const [cardType, setCardType] = useState(null);
     const[response, setResponse] = useState('')
     const[vechileClass, setVechileClass] = useState('')
     const [courseAmount, setCourseAmount] = useState('')
     const [examResult, setExamResult] = useState('')
+    const [formData, setFormData] = useState({
+        ownerName: '',
+        cardNumber: '',
+        date: '',
+        cvv: ''        
+    });
 
     const cardTypes = {
         Visa: /^4/,
@@ -71,14 +72,34 @@ const Payment = () => {
         }
 
         setErrors(errors);
-        try{
-            const paymentDetails = await addPaymentDetails(formData, uId)
-            console.log('add success')
-            setResponse('add successfully')
+
+        if (examResult === 0){
+            try{
+                const advanceAmount = courseAmount * 0.25
+                const paymentDetails = await addPaymentDetails(advanceAmount, uId)
+                setResponse('add successfully')
+                alert('payment successfully')
+                navigate('/')
+            }
+            catch(error){
+                console.log('error : ',error)
+                setResponse('error')
+            }
         }
-        catch(error){
-            console.log('error : ',error)
-            setResponse('error')
+        else{
+            try{
+                const balanceAmount = courseAmount * 0.75
+                const paymentDetails = await addBalancePaymentDetails(balanceAmount, uId)
+                console.log('balance : ',formData.balanceAmount)
+                console.log('add success')
+                setResponse('add successfully')
+                alert('payment successfully')
+                navigate('/')
+            }
+            catch(error){
+                console.log('error : ',error)
+                setResponse('error')
+            }
         }
     };
 
@@ -117,21 +138,23 @@ const Payment = () => {
     vechile_class(uId)
     get_exam_result(uId)
     get_amount(vechileClass)
-    })
+    },[])
 
     const trialPayment = document.getElementById('trialPay')
     const examPayment = document.getElementById('examPay')
 
-    if(examResult == 0){
-        examPayment.style.display = 'block'
-        trialPayment.style.display = 'none'
-     }
-    else{
-        trialPayment.style.display = 'block'
-        examPayment.style.display = 'none'
+    if (trialPayment && examPayment) {
+        if (examResult === 0) {
+            examPayment.style.display = 'block';
+            trialPayment.style.display = 'none';
 
+        } else {
+            trialPayment.style.display = 'block';
+            examPayment.style.display = 'none';
+        }
+    } else {
+        console.error("One or both elements with IDs 'trialPay' and 'examPay' do not exist in the DOM.");
     }
-
     return (
         <div id='payment'>
             <div className="container">
@@ -203,7 +226,7 @@ const Payment = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.4} LKR</button>
+                            <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.25} LKR</button>
                             <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now</button>
                         </form>
                     </div>

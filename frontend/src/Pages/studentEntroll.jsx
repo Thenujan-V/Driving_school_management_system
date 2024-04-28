@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import { SignupStyle } from '../Components/Styles'
 import {student_entroll} from '../Services/studentService'
 import {retrieveId} from '../Services/getToken'
 import { useNavigate, useParams } from 'react-router-dom'
+import { addTotalAmount } from '../Services/paymentService'
 
 const StudentEntroll = () => {
+  const items = [
+    {url:'1', title: 'Item 1', description: 'Description for item 1',price:'1500' },
+    {url:'2', title: 'Item 1', description: 'Description for item 1',price:'2500' },
+    {url:'3', title: 'Item 1', description: 'Description for item 1',price:'3500' },
+    {url:'4', title: 'Item 1', description: 'Description for item 1',price:'4500' }    
+  ];
+
   const navigate = useNavigate();
   const id = retrieveId()
   const {index} = useParams()
@@ -25,6 +33,9 @@ const StudentEntroll = () => {
   });
   const [errors, setErrors] = useState({});
   const [apiResponse, setApiResponse] = useState('');
+  const [totalAmount, setTotalAmount] = useState('')
+  const [submitTriggered, setSubmitTriggered] = useState(false);
+
 
   const handleChange = (e) => {
       // const { name, files, type, value } = e.target;
@@ -40,6 +51,15 @@ const StudentEntroll = () => {
 
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+    if (formData.vechile_class) {
+        const vechileClassIndex = parseInt(formData.vechile_class, 10);
+        const selectedItem = items.find((item, index) => index === vechileClassIndex);
+        if (selectedItem) {
+            setTotalAmount(selectedItem.price);
+        }
+    }
+}, [formData.vechile_class, items]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,23 +95,25 @@ const StudentEntroll = () => {
 
     setErrors(errors);
 
-    // api call throw signup service function
-    try{
-      if(Object.keys(errors).length === 0){
-        const response = await student_entroll(formData)
-        setApiResponse('signup successfully...!')
-        navigate('/verifymsg')
+    if (Object.keys(errors).length === 0) {
+      setSubmitTriggered(true);
+      
+      try {
+          const response = await student_entroll(formData);
+          setApiResponse('Signup successfully!');
+          navigate('/verifymsg'); 
+        
+          const paymentResponse = await addTotalAmount(totalAmount, formData.id);
+          console.log('Payment response:', paymentResponse);
+          setApiResponse('ID added successfully!');
+      } catch (error) {
+          console.error('Error:', error);
+          setApiResponse('An error occurred during the submission.');
       }
-      else{
-        alert('fill all details')
-      }
+    } 
+    else {
+      alert('Please fill all required fields.');
     }
-    catch(error){
-      alert('some problem try again')
-      setApiResponse('Sign up failed.');
-    }
-
-
   };
   return (
     <div className="container-fluid">

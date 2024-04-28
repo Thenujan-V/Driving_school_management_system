@@ -19,7 +19,28 @@ payments.add_total_amount = function(paymentInfo, sId, result){
     })
 }
 payments.add_payment = function(paymentInfo, sId, result){
+    console.log('amount :', paymentInfo.paid)
     dbconnection.query(`update payment_details set paid = ? where sId = '${sId}'`, [paymentInfo.paid], function(err, res){
+        if (err) {
+            console.error('Error updating payment details:', err);
+            result(err, null)
+        } 
+        else {
+            console.log('Rows affected:', res.affectedRows);
+                if (res.affectedRows === 0) {
+                    console.log(`No rows found with sId = ${sId}`);
+                    result(null, 'faild')                } 
+                else {
+                    console.log('Payment details updated successfully');
+                    result(null, 'okey')                
+                }
+        }
+    })
+}
+
+payments.add_balance_payment = function(paymentInfo, sId, result){
+    console.log('amount :', paymentInfo.paid)
+    dbconnection.query(`update payment_details set balance_paid = ? where sId = '${sId}'`, [paymentInfo.paid], function(err, res){
         if (err) {
             console.error('Error updating payment details:', err);
             result(err, null)
