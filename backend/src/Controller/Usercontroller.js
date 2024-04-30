@@ -58,7 +58,7 @@ exports.showDetails = async (req, res) => {
 }
 
 exports.updateDetails = async (req, res) => {
-    
+    console.log('uuuuu :',req.params.uId)
     await customerModel.update_details(req.body, req.params.uId, function(err, customerRes){
         if(err){
             return res.send(err)

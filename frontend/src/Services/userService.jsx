@@ -29,10 +29,19 @@ export const signinService = async (email, password) => {
     }
 }
 export const userDetails = async (id) => {
-    console.log(id)
     try{
         const response = await axios.get(`${API_BASE_URL}/customers/userdetails/${id}`)
         return response.data[0]
+    }
+    catch(error){
+        throw(error)
+    }
+}
+
+export const updateUserProfile = async (formData, id) => {
+    try{
+        const response = await axios.post(`${API_BASE_URL}/customers/updatedetails/${id}`,formData)
+        return response.data
     }
     catch(error){
         throw(error)
