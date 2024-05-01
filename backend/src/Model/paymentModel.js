@@ -59,7 +59,7 @@ payments.add_balance_payment = function(paymentInfo, sId, result){
 }
 
 payments.show_details = function(sId, result){
-    dbconnection.query(`select * from payment_details where sId = '${sId}'`, function(err, res){
+    dbconnection.query(`select * from payment_details p join new_customers c on p.sId = c.id where sId = '${sId}'`, function(err, res){
         if(err){
             result(err, null)
         }

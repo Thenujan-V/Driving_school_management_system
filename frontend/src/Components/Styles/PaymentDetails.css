@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+body{
+    padding: 0;
+    margin: 0;
+    /* background-color: var(--shadeGreen); */
+
+}
+.UserPaymentDetails{
+    background-color: var(--green);
+    height: 90vh;
+}
+.UserPaymentDetails h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 20px;
+}
+.UserPaymentDetails .details{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.UserPaymentDetails .details .detail-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.UserPaymentDetails .details .detail-row p {
+    margin-right: 10px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    padding-left: 200px;
+    width: 40vw;
+    text-align: right;
+}
+.UserPaymentDetails .details .detail-row span {
+    margin-right: 10px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-style: italic;
+}

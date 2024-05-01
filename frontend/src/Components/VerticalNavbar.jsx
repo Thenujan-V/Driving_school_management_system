@@ -19,7 +19,7 @@ const VerticalNavbar = () => {
                 <Link to='/userdocuments' className='link'>
                     <FontAwesomeIcon icon={faFolder} /> User Documents
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/paymentDetails' className='link'>
                     <FontAwesomeIcon icon={faCreditCard} /> Payment Details
                 </Link>
                 <Link to='/content' className='link'>
