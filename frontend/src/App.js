@@ -14,6 +14,7 @@ import UserDashboard from './Pages/UserDashboard';
 import UserProfile from './Pages/UserProfile';
 import UserDocuments from './Pages/UserDocuments';
 import PaymentDetails from './Components/PaymentDetails';
+import Results from './Components/Results';
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/userdashboard' element={<UserDashboard />} />
         <Route path='/userdocuments' element={<UserDocuments />} />
         <Route path='/paymentDetails' element={<PaymentDetails />} />
+        <Route path='/results' element={<Results />} />
 
       </Routes>
     </div>

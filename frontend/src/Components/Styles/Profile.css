@@ -32,9 +32,7 @@ body{
     font-weight: 500;
     font-style: italic;
 }
-.user-profile .form .form-group #btnTag{
 
-}
 .user-profile .form .form-group button{
     width: 15vw;
     background-color: var(--violate);

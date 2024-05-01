@@ -25,7 +25,7 @@ const VerticalNavbar = () => {
                 <Link to='/content' className='link'>
                     <FontAwesomeIcon icon={faCalendarDays} /> Exam Date & Practice Time
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/results' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Results
                 </Link>
             </div>

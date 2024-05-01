@@ -19,10 +19,11 @@ import verticalNavbar from './VerticalNavbar.css'
 import profile from './Profile.css'
 import documents from './Documents.css'
 import paymentDetails from './PaymentDetails.css'
+import results from './Results.css'
 
 
 
 
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, 
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results,
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails,
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.results{
+    background-color: var(--green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+.results h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 20px;
+}
+.results .boxes{
+    margin-top: 30px;
+    padding: 0;
+}
+.results .boxes p{
+    font-size: 22px;
+    font-family: "Ubuntu", sans-serif;
+    font-style: italic;
+    color: var(--violate);
+}
+.results .boxes h2{
+    color:var(--shadeGreen);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 20px;
+}
+.results .exam{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    padding: 0;
+    border: 3px solid var(--shadeGreen);
+    border-radius: 30px;
+    box-shadow: 3px 3px 20px black;
+}
+.results .trial{
+    width: 60vw;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    padding: 0;
+    border: 3px solid var(--shadeGreen);
+    border-radius: 30px;
+    box-shadow: 3px 3px 20px black;
+}
