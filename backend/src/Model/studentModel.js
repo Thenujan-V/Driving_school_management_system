@@ -62,7 +62,7 @@ students.update_details = function(studentUpdate, sId, result){
     }
 
     query += updates.join(", ");
-    query += ` WHERE sId = ${sId}`;
+    query += ` WHERE id = ${sId}`;
 
     dbconnection.query(query, function(err, res){
         if(err){

@@ -12,6 +12,7 @@ import Content from './Pages/Content';
 import Payment from './Pages/Payment';
 import UserDashboard from './Pages/UserDashboard';
 import UserProfile from './Pages/UserProfile';
+import UserDocuments from './Pages/UserDocuments';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/payment' element={<Payment />} />
         <Route path='/userprofile' element={<UserProfile />} />
         <Route path='/userdashboard' element={<UserDashboard />} />
+        <Route path='/userdocuments' element={<UserDocuments />} />
       </Routes>
     </div>
   )

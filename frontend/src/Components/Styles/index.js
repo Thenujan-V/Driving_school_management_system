@@ -17,11 +17,11 @@ import timeStyle from './timeStyle.css'
 import payment from './Payment.css'
 import verticalNavbar from './VerticalNavbar.css'
 import profile from './Profile.css'
-
+import documents from './Documents.css'
 
 
 
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, 
-    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, 
+    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents,
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

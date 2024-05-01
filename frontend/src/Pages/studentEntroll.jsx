@@ -121,7 +121,6 @@ const StudentEntroll = () => {
         <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
             <h1 className='text-center mb-5'>Entroll here</h1>
             <form onSubmit={handleSubmit}>
-                {/* Pair of form fields */}
                 <div className="row mb-3">
                     <div className="col-md-6">
                         <div className="form-group">

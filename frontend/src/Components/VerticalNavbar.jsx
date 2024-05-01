@@ -16,7 +16,7 @@ const VerticalNavbar = () => {
                 <Link to='/userprofile' className='link'>
                     <FontAwesomeIcon icon={faIdCard} /> User Profile
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/userdocuments' className='link'>
                     <FontAwesomeIcon icon={faFolder} /> User Documents
                 </Link>
                 <Link to='' className='link'>

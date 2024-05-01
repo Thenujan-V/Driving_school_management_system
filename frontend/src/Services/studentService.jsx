@@ -27,3 +27,16 @@ export const student_details = async (id) => {
         throw error 
     }
 }
+
+export const student_details_update = async (formData, id) => {
+    console.log('fd : ',formData)
+    try{
+        const response = await axios.post(`${API_BASE_URL}/students/updatedetails/${id}`,formData)
+        console.log('res :',response)
+        return response.data[0]
+    }
+    catch(error){
+        console.error('Error fetching student details:', error);
+        throw error 
+    }
+}
