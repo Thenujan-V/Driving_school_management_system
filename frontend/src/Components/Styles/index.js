@@ -26,8 +26,11 @@ import examDate from './ExamDate.css'
 import review from './Review.css'
 import reviewCheck from './ReviewCheck.css'
 import viewReview from './ViewReview.css'
+import assignDate from './AssignDate.css'
 
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, examDate, review, reviewCheck,
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails, viewReview, 
-    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}
+    ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar,
+    assignDate
+}

@@ -16,3 +16,14 @@ export const get_times = async (id) => {
         throw error 
     }
 }
+export const assignDateTime = async (formData) => {
+    try{
+        console.log('fd :',formData)
+        const response = await axios.post(`${API_BASE_URL}/time/addtime`,formData)
+        return response.data
+    }
+    catch(error){
+        console.log('error :', error)
+        throw error
+    }
+} 

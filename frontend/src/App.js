@@ -27,6 +27,10 @@ import ViewReview from './Components/AdminPanel/ViewReview';
 import ReviewCheck from './Components/AdminPanel/ReviewCheck';
 import Instractor from './Components/AdminPanel/Instractor';
 import Profile from './Components/AdminPanel/Profile';
+import EmployeeVerticalNav from './Components/EmployeePanel/EmployeeVerticalNav';
+import EmployeeProfile from './Components/EmployeePanel/Profile';
+import ViewStudents from './Components/EmployeePanel/ViewStudents';
+import AssignDate from './Components/EmployeePanel/AssignDate';
 
 
 const App = () => {
@@ -60,6 +64,10 @@ const App = () => {
         <Route path='/viewreview/:sId' element={<ViewReview />} />
         <Route path='/instractor' element={<Instractor />} />
         <Route path='/adminProfile' element={<Profile />} />
+        <Route path='/employeeVerticalNav' element={<EmployeeVerticalNav />} />
+        <Route path='/employeeProfile' element={<EmployeeProfile />} />
+        <Route path='/viewStudents' element={<ViewStudents />} />
+        <Route path='/assignDate/:sId' element={<AssignDate />} />
         
       </Routes>
     </div>
