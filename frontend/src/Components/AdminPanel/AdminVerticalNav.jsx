@@ -30,7 +30,7 @@ const AdminVerticalNav = () => {
                 <Link to='/result' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Add Results
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/reviewcheck' className='link'>
                     <FontAwesomeIcon icon={faStarHalfStroke} /> Reviews
                 </Link>
             </div>

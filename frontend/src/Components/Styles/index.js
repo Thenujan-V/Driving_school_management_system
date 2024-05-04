@@ -23,10 +23,11 @@ import results from './Results.css'
 import studentsDetails from './StudentsDetails.css'
 import viewDetails from './ViewDetails.css'
 import examDate from './ExamDate.css'
+import review from './Review.css'
+import reviewCheck from './ReviewCheck.css'
+import viewReview from './ViewReview.css'
 
 
-
-
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, examDate, 
-    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails,
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, examDate, review, reviewCheck,
+    FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails, viewReview, 
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

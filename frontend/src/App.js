@@ -22,6 +22,9 @@ import UserDetails from './Components/AdminPanel/UserDetails';
 import ExamDate from './Components/AdminPanel/ExamDate';
 import Exam from './Components/AdminPanel/Exam';
 import Result from './Components/AdminPanel/Result';
+import Review from './Pages/Review';
+import ViewReview from './Components/AdminPanel/ViewReview';
+import ReviewCheck from './Components/AdminPanel/ReviewCheck';
 
 
 const App = () => {
@@ -50,6 +53,9 @@ const App = () => {
         <Route path='/examDate/:sId' element={<ExamDate />} />
         <Route path='/exam' element={<Exam />} />
         <Route path='/result' element={<Result />} />
+        <Route path='/review' element={<Review />} />
+        <Route path='/reviewcheck' element={<ReviewCheck />} />
+        <Route path='/viewreview/:sId' element={<ViewReview />} />
         
       </Routes>
     </div>
