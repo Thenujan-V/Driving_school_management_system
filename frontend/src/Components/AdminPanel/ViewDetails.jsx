@@ -49,7 +49,7 @@ console.log('students :',studentsApi)
     }
     
   return (
-    <div style={{display:'flex', minHeight:'90vh'}}>
+    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
         <AdminVerticalNav />
         <div className='container showDetails' style={{flex:'1'}}>
             {

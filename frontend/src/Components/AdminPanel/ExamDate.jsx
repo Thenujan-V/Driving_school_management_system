@@ -33,7 +33,7 @@ const ExamDate = () => {
     };
     console.log('fd :',examDate)
   return (
-    <div style={{display:'flex', minHeight:'10vh', width:'10vw'}}>
+    <div style={{display:'flex', minHeight:'10vh', width:'10vw', backgroundColor:'var(--green)'}}>
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
             <form onSubmit={addDate} className='d-flex'>
                 <div className="form-group">

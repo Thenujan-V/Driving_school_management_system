@@ -24,7 +24,7 @@ const UserDetails = () => {
 
 
   return (
-    <div style={{display:'flex', minHeight:'100vh'}}>
+    <div style={{display:'flex', minHeight:'100vh', backgroundColor:'var(--green)'}}>
         <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
             <h1 className='text-center mt-4'>User Details</h1>

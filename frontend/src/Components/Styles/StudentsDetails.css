@@ -95,7 +95,8 @@ body{
     background-color:#8fe2e4;
 }
 .studentsDetailsShow .row .addTrailq{
-    background-color: var(--green);
+    background-color: var(--violate);
+    color: var(--shadeGreen);
     width: 15vw;
     height: 15vh;
     border-radius: 20px;
@@ -109,5 +110,6 @@ body{
     padding-top: 30px;
 }
 .studentsDetailsShow .row .addTrailq:hover{
-    background-color:#6fabd6;
+    background-color:#94a7b4;
+    color: var(--violate);
 }
