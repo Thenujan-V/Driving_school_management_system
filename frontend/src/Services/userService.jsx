@@ -47,3 +47,13 @@ export const updateUserProfile = async (formData, id) => {
         throw(error)
     }
 }
+
+export const showAllUsers = async () => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/customers/getusers`)
+        return response.data
+    }
+    catch(error){
+        throw error
+    }
+}

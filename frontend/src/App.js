@@ -18,6 +18,9 @@ import Results from './Components/Results';
 import AdminVerticalNav from './Components/AdminPanel/AdminVerticalNav';
 import StudentsDetails from './Components/AdminPanel/StudentsDetails';
 import ViewDetails from './Components/AdminPanel/ViewDetails';
+import UserDetails from './Components/AdminPanel/UserDetails';
+import ExamDate from './Components/AdminPanel/ExamDate';
+import Exam from './Components/AdminPanel/Exam';
 
 
 const App = () => {
@@ -42,6 +45,9 @@ const App = () => {
         <Route path='/adminverticalnav' element={<AdminVerticalNav />} />
         <Route path='/studentsdetails' element={<StudentsDetails />} />
         <Route path='/viewdetails/:user_id' element={<ViewDetails />} />
+        <Route path='/userdetails' element={<UserDetails />} />
+        <Route path='/examDate/:sId' element={<ExamDate />} />
+        <Route path='/exam' element={<Exam />} />
         
       </Routes>
     </div>

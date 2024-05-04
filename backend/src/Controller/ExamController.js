@@ -1,6 +1,7 @@
 var examDetailsModel = require('../Model/examDetailsModel')
 
 exports.examDate = (req, res) => {
+    console.log('req ',req.body)
     examDetailsModel.update_exam_date(req.body, function(err, studentRes){
         if (err){
             console.log(err)
@@ -34,3 +35,4 @@ exports.examDetails =  (req, res) => {
         }
     })
 }
+

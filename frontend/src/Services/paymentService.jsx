@@ -62,3 +62,14 @@ export const showDetails = async (id) => {
         throw error
     }
 }
+
+export const examEligibleStudents = async () => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/payment/exameligiblestudents`)
+        return response.data
+    }
+    catch(error){
+        console.log('error : ',error)
+        throw error
+    }
+}

@@ -7,7 +7,7 @@ var exams = function(exam){
 }
 
 exams.update_exam_date = function(examDate, result){
-    console.log(examDate)
+    console.log('examdateee : ',examDate)
     dbconnection.execute("INSERT INTO exam_details (exam_date, sid) VALUES (?, ?)",
      [examDate.exam_date,examDate.sid] ,function(err,res){
         if(err){

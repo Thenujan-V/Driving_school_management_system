@@ -74,6 +74,17 @@ customer.update_details = function(customerUpdate, uId, result){
         }
     })
 }
+customer.show_all_users = function(result){
+    var sql = `SELECT * FROM new_customers`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
 
 
 

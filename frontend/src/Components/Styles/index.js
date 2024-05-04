@@ -22,10 +22,11 @@ import paymentDetails from './PaymentDetails.css'
 import results from './Results.css'
 import studentsDetails from './StudentsDetails.css'
 import viewDetails from './ViewDetails.css'
+import examDate from './ExamDate.css'
 
 
 
 
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, 
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, examDate, 
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails,
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

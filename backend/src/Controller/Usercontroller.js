@@ -68,3 +68,13 @@ exports.updateDetails = async (req, res) => {
         }
     })
 }
+exports.allUsers = async (req, res) => {
+    await customerModel.show_all_users(function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}

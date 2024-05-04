@@ -52,3 +52,13 @@ exports.showPayment = async (req, res) => {
 
     })
 }
+exports.examEligibleStudents = (req, res) => {
+    paymentModel.find_eligible_students(function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}

@@ -12,16 +12,16 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 const AdminVerticalNav = () => {
   return (
     <>
-        <div className="vertical-menu" style={{height:'100vh'}}>
+        <div className="vertical-menu" style={{minHeight:'100vh'}}>
             <h2>DashBoard</h2>
             <div className="links">
                 <Link to='/studentsdetails' className='link'>
                     <FontAwesomeIcon icon={faIdCard} /> View Student
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/userdetails' className='link'>
                     <FontAwesomeIcon icon={faUser} /> View Users 
                 </Link>
-                <Link to='' className='link'>
+                <Link to='/exam' className='link'>
                     <FontAwesomeIcon icon={faCalendarDays} /> Add Exam Date
                 </Link>
                 <Link to='' className='link'>

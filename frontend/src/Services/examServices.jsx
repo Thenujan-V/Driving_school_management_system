@@ -14,3 +14,15 @@ export const show_exam_details = async (id) => {
         throw error 
     }
 }
+
+export const addExamDate = async (formData) => {
+    try{
+        const response = await axios.post(`${API_BASE_URL}/exam/addexamdate`,formData)
+        const exam_details = response.data[0]
+        return exam_details
+    }
+    catch(error){
+        console.error('Error:', error);
+        throw error 
+    }
+}

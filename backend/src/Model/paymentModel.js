@@ -68,5 +68,17 @@ payments.show_details = function(sId, result){
         }
     })
 }
-
+payments.find_eligible_students = function(result){
+    const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id WHERE balance_paid IS NULL`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            console.log('err :',err)
+            result(err, null)
+        }
+        else{
+            console.log('res :',res)
+            result(null,res)
+        }
+    })
+} 
 module.exports = payments
