@@ -23,7 +23,7 @@ exams.update_exam_date = function(examDate, result){
 
 exams.update_result = function(examResult, result){
     console.log(examResult)
-    dbconnection.execute("UPDATE exam_details SET result = 1 where sid = ? ", [examResult.sId] ,function(err,res){
+    dbconnection.execute("UPDATE exam_details SET result = ? where sid = ? ", [examResult.result,examResult.sId] ,function(err,res){
         if(err){
             result(err,null);             
         } 
@@ -46,5 +46,15 @@ exams.show_exam_details = function(sId, result){
         }  
     })
 }
-
+exams.show_exam_students = function(result){
+    dbconnection.execute(`select * from exam_details e join new_customers c on e.sid = c.id where e.result is null`, function(err, res){
+        if(err){
+            result(err,null);             
+        } 
+        else{
+            console.log(res);
+            result(null, res);
+        } 
+    })
+}
 module.exports = exams

@@ -33,13 +33,10 @@ const ExamDate = () => {
     };
     console.log('fd :',examDate)
   return (
-    <div style={{display:'flex', minHeight:'90vh'}}>
-        <AdminVerticalNav />
+    <div style={{display:'flex', minHeight:'10vh', width:'10vw'}}>
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
-            <h1 className='text-center mt-4'>Student Details</h1>
-            <form onSubmit={addDate}>
+            <form onSubmit={addDate} className='d-flex'>
                 <div className="form-group">
-                    <label htmlFor="date" className="form-label">Exam Date</label>
                     <input className="form-control" type="date" id='date' value={examDate.exam_date} onChange={handleDateChange} required />
                 </div>
                     <input className="form-control" type="hidden" id='userId' value={examDate.sid}/>

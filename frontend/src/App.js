@@ -21,6 +21,7 @@ import ViewDetails from './Components/AdminPanel/ViewDetails';
 import UserDetails from './Components/AdminPanel/UserDetails';
 import ExamDate from './Components/AdminPanel/ExamDate';
 import Exam from './Components/AdminPanel/Exam';
+import Result from './Components/AdminPanel/Result';
 
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
         <Route path='/userdetails' element={<UserDetails />} />
         <Route path='/examDate/:sId' element={<ExamDate />} />
         <Route path='/exam' element={<Exam />} />
+        <Route path='/result' element={<Result />} />
         
       </Routes>
     </div>

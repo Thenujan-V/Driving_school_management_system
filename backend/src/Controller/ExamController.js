@@ -35,4 +35,14 @@ exports.examDetails =  (req, res) => {
         }
     })
 }
+exports.showStudents = (req,res) => {
+    examDetailsModel.show_exam_students(function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}
 

@@ -73,3 +73,41 @@ body{
     font-weight: bold;
     margin-left: 20px;
 }
+.studentsDetailsShow .row{
+    display: flex;
+    justify-content: center;
+}
+.studentsDetailsShow .row .addExamination{
+    background-color: var(--shadeGreen);
+    width: 15vw;
+    height: 15vh;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(82, 77, 77);
+    font-size: 22px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    padding-top: 30px;
+    margin: 30px;
+}
+.studentsDetailsShow .row .addExamination:hover{
+    background-color:#8fe2e4;
+}
+.studentsDetailsShow .row .addTrailq{
+    background-color: var(--green);
+    width: 15vw;
+    height: 15vh;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(82, 77, 77);
+    font-size: 22px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    margin: 30px;
+    padding-top: 30px;
+}
+.studentsDetailsShow .row .addTrailq:hover{
+    background-color:#6fabd6;
+}

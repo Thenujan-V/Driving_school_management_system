@@ -30,7 +30,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <ul class="navbar-nav" id='nav-buttons'>
-                        <Link to='/userdashboard' class="nav-link" aria-current="page" id='links'><FontAwesomeIcon icon={faUser}/></Link>
+                        <Link to='/userprofile' class="nav-link" aria-current="page" id='links'><FontAwesomeIcon icon={faUser}/></Link>
                         <Link to='/signin' class="btn mt-2" id='signin'>SignIn</Link>
                     </ul>
                 </div>
