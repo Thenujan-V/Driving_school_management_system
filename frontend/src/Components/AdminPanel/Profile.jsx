@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { profile } from '../Components/Styles'
-import { retrieveId } from '../Services/getToken'
-import { userDetails } from '../Services/userService'
-import { updateUserProfile } from '../Services/userService'
+import AdminVerticalNav from './AdminVerticalNav'
+import { retrieveId } from '../../Services/getToken'
+import { updateUserProfile, userDetails } from '../../Services/userService'
 
 const Profile = () => {
     const id = retrieveId()
@@ -80,8 +79,9 @@ const Profile = () => {
 
     }
   return (
-    <>
-            <div className='container user-profile' style={{flex:'1', height:'90vh'}}>
+    <div style={{display:'flex', Height:'90vh'}}>
+        <AdminVerticalNav />
+        <div className='container user-profile' style={{flex:'1', height:'100vh'}}>
             <h1>user profile</h1>
             <div className='profile'>
             <div className='pic'>
@@ -109,8 +109,9 @@ const Profile = () => {
             </form>
             </div>
         </div>
-    </>
+    </div>
   )
 }
 
 export default Profile
+

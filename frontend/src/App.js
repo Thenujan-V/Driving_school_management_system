@@ -25,6 +25,8 @@ import Result from './Components/AdminPanel/Result';
 import Review from './Pages/Review';
 import ViewReview from './Components/AdminPanel/ViewReview';
 import ReviewCheck from './Components/AdminPanel/ReviewCheck';
+import Instractor from './Components/AdminPanel/Instractor';
+import Profile from './Components/AdminPanel/Profile';
 
 
 const App = () => {
@@ -56,6 +58,8 @@ const App = () => {
         <Route path='/review' element={<Review />} />
         <Route path='/reviewcheck' element={<ReviewCheck />} />
         <Route path='/viewreview/:sId' element={<ViewReview />} />
+        <Route path='/instractor' element={<Instractor />} />
+        <Route path='/adminProfile' element={<Profile />} />
         
       </Routes>
     </div>

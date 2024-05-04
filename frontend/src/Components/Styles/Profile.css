@@ -42,3 +42,52 @@ body{
     font-style: italic;
     margin-left: 100px;
 }
+.user-profile .pic{
+    background-color: var(--shadeGreen);
+    width: 100px;
+    height: 100px;
+    border-radius: 70px;
+    box-shadow: 3px 3px 10px rgb(137, 132, 132);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-profile .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin-top: 40px;
+    padding:30px;
+    box-shadow: 3px 3px 10px var(--violate);
+}
+.user-profile .profile .pic p{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 90px;
+    font-weight: bold;
+    color: var(--liteViolate);
+}
+.user-profile .form .form-group{
+    display: flex;
+    align-items: center;
+}
+.user-profile label{
+    color: var(--violate);
+    font-size: 18px;
+    font-weight: bold;
+    width: 12vw;
+    position: relative;
+    top: 16px;
+}
+.user-profile input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    font-size: 24px;
+}
+.user-profile input:focus{
+    background-color: transparent;
+}

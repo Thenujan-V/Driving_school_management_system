@@ -15,6 +15,10 @@ const AdminVerticalNav = () => {
         <div className="vertical-menu" style={{minHeight:'100vh'}}>
             <h2>DashBoard</h2>
             <div className="links">
+                <Link to='/adminProfile' className='link'>
+                    <FontAwesomeIcon icon={faClock} /> Profile
+                </Link>
+                <br />
                 <Link to='/studentsdetails' className='link'>
                     <FontAwesomeIcon icon={faIdCard} /> View Student
                 </Link>
@@ -24,14 +28,15 @@ const AdminVerticalNav = () => {
                 <Link to='/exam' className='link'>
                     <FontAwesomeIcon icon={faCalendarDays} /> Add Exam Date
                 </Link>
-                <Link to='' className='link'>
-                    <FontAwesomeIcon icon={faClock} /> Add Time
-                </Link>
                 <Link to='/result' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Add Results
                 </Link>
                 <Link to='/reviewcheck' className='link'>
                     <FontAwesomeIcon icon={faStarHalfStroke} /> Reviews
+                </Link>
+                <br />
+                <Link to='/instractor' className='link'>
+                    <FontAwesomeIcon icon={faClock} /> Instructor
                 </Link>
             </div>
         </div>

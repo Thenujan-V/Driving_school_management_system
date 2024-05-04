@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import AdminVerticalNav from './AdminVerticalNav'
 import { showAllUsers } from '../../Services/userService'
 import { Link } from 'react-router-dom'
-import { viewDetails } from '../Styles'
 
-const UserDetails = () => {
+const Instractor = () => {
     const [usersApi, setUsersApi] = useState([])
 
     useEffect(() => {
@@ -22,12 +21,11 @@ const UserDetails = () => {
         fetchUsersDetails()
     },[])
 
-
   return (
-    <div style={{display:'flex', minHeight:'100vh'}}>
+    <div style={{display:'flex', minHeight:'90vh'}}>
         <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
-            <h1 className='text-center mt-4'>User Details</h1>
+            <h1 className='text-center mt-4'>Instractors Details</h1>
             {
                 usersApi &&
                 usersApi.map((userDetail) => (
@@ -44,4 +42,4 @@ const UserDetails = () => {
   )
 }
 
-export default UserDetails
+export default Instractor
