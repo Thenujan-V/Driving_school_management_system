@@ -20,10 +20,12 @@ import profile from './Profile.css'
 import documents from './Documents.css'
 import paymentDetails from './PaymentDetails.css'
 import results from './Results.css'
+import studentsDetails from './StudentsDetails.css'
+import viewDetails from './ViewDetails.css'
 
 
 
 
-export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results,
+export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, 
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails,
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar}

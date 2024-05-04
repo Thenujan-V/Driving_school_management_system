@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { ContactStyle } from '../Styles'
-import { home,time,mobile,phone,mail} from '../Assets'
+import { ContactStyle } from './Styles'
+import { home,time,mobile,phone,mail} from './Assets'
 
 const ContactSection = () => {
 

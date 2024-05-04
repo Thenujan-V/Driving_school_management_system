@@ -1,5 +1,5 @@
 import React from 'react'
-import { AboutIndexStyle } from '../Styles'
+import { AboutIndexStyle } from './Styles'
 
 const AboutIndex = () => {
   return (

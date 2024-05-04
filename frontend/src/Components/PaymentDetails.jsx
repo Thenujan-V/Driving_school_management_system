@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar/Navbar'
+import Navbar from './Navbar'
 import VerticalNavbar from './VerticalNavbar'
 import { retrieveId } from '../Services/getToken'
 import { showDetails } from '../Services/paymentService'
@@ -38,7 +38,7 @@ const PaymentDetails = () => {
   return (
     <div>
         <Navbar />
-        <div style={{display:'flex', height:'100vh'}}>
+        <div style={{display:'flex', height:'90vh'}}>
             <VerticalNavbar />
             <div className='UserPaymentDetails' style={{flex:'1'}}>
                 <h1>Payment Details</h1>

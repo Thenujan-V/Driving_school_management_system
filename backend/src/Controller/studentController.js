@@ -27,6 +27,16 @@ exports.showDetails = async (req, res) => {
         }
     })
 }
+exports.showStudents = async (req, res) => {
+    await studentsModel.show_all_students(function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}
 
 exports.updateDetails = async (req, res) => {
     

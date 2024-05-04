@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.studentsDetailsShow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.studentsDetailsShow h1{
+    color:var(--violate);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.studentsDetailsShow .row{
+    font-family: "Ubuntu", sans-serif;
+    border-bottom: 2px solid black;
+    width: 70vw;
+    margin-top: 20px;
+}
+.studentsDetailsShow .row p{
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 600;
+}
+.studentsDetailsShow .row .view{
+    text-decoration: none;
+    color: var(--shadeGreen);
+    background-color: var(--violate);
+    width: 120px;
+    height: 4vh;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.studentsDetailsShow .row .verify{
+    text-decoration: none;
+    color: var(--violate);
+    background-color: greenyellow;
+    width: 150px;
+    height: 4vh;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.studentsDetailsShow .row .notVerify{
+    text-decoration: none;
+    color: var(--violate);
+    background-color: var(--shadeGreen);
+    width: 150px;
+    height: 4vh;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 20px;
+}

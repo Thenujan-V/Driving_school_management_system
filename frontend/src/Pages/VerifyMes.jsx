@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {VerifyMsgStyle} from '../Components/Styles/index'
 import {student_details} from '../Services/studentService'
 import {retrieveId} from '../Services/getToken'
-import Navbar from '../Components/Navbar/Navbar'
+import Navbar from '../Components/Navbar'
 import { Link } from 'react-router-dom'
 
 const VerifyMes = () => {

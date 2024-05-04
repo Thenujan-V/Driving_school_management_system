@@ -1,13 +1,13 @@
 import React from 'react'
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavbarStyle } from '../Styles'
+import { NavbarStyle } from './Styles'
 import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
   return (
-    <>
+  
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
@@ -36,7 +36,7 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
-    </>
+    
   )
 }
 

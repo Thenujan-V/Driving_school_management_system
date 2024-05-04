@@ -15,6 +15,9 @@ import UserProfile from './Pages/UserProfile';
 import UserDocuments from './Pages/UserDocuments';
 import PaymentDetails from './Components/PaymentDetails';
 import Results from './Components/Results';
+import AdminVerticalNav from './Components/AdminPanel/AdminVerticalNav';
+import StudentsDetails from './Components/AdminPanel/StudentsDetails';
+import ViewDetails from './Components/AdminPanel/ViewDetails';
 
 
 const App = () => {
@@ -36,7 +39,10 @@ const App = () => {
         <Route path='/userdocuments' element={<UserDocuments />} />
         <Route path='/paymentDetails' element={<PaymentDetails />} />
         <Route path='/results' element={<Results />} />
-
+        <Route path='/adminverticalnav' element={<AdminVerticalNav />} />
+        <Route path='/studentsdetails' element={<StudentsDetails />} />
+        <Route path='/viewdetails/:user_id' element={<ViewDetails />} />
+        
       </Routes>
     </div>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContactIndexStyle } from '../Styles'
+import { ContactIndexStyle } from './Styles'
 
 const ContactIndex = () => {
   return (

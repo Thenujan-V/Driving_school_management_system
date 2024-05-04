@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar/Navbar'
+import Navbar from './Navbar'
 import VerticalNavbar from './VerticalNavbar'
 
 const Results = () => {
@@ -7,7 +7,7 @@ const Results = () => {
   return (
     <div>
         <Navbar />
-        <div style={{display:'flex', height:'100vh'}}>
+        <div style={{display:'flex', height:'90vh'}}>
             <VerticalNavbar />
             <div style={{flex:'1'}} className='results'>
                 <h1>Your Result</h1>

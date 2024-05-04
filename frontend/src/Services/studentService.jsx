@@ -40,3 +40,14 @@ export const student_details_update = async (formData, id) => {
         throw error 
     }
 }
+export const showStudents = async () => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/students/showstudents`)
+        console.log('res :',response.data)
+        return response.data
+    }
+    catch(error){
+        console.error('Error fetching student details:', error);
+        throw error 
+    }
+}

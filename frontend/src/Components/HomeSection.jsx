@@ -1,9 +1,9 @@
 import React from 'react'
-import { HomeSectionStyle } from '../Styles'
-import {homeAbout,work,learn,lession,sefty} from '../Assets'
+import { HomeSectionStyle } from './Styles'
+import {homeAbout,work,learn,lession,sefty} from './Assets'
 import { Link } from 'react-router-dom'
-import {getToken} from '../../Services/getToken'
-import { retrieveId } from '../../Services/getToken'
+import {getToken} from '../Services/getToken'
+import { retrieveId } from '../Services/getToken'
 
 const HomeSection = () => {
     const items = [

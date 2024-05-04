@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Components/Navbar/Navbar'
+import Navbar from '../Components/Navbar'
 import ContentDetails from '../Components/ContentDetails'
 import CourseMeterial from '../Components/CourseMeterial'
 import VerticalNavbar from '../Components/VerticalNavbar'
@@ -8,7 +8,7 @@ const Content = () => {
   return (
     <>
       <Navbar />
-      <div style={{ display: 'flex' , height: '100vh' }}>
+      <div style={{ display: 'flex' , minHeight: '90vh' }}>
         <VerticalNavbar />
         <div style={{ flex: 1 }}>
           <ContentDetails />

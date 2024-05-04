@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Components/Navbar/Navbar'
+import Navbar from '../Components/Navbar'
 import { SignupStyle } from '../Components/Styles'
 import {student_entroll} from '../Services/studentService'
 import {retrieveId} from '../Services/getToken'

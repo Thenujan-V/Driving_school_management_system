@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { ServicesStyle } from '../Styles'
-import { homeAbout, work,sefty,free } from '../Assets';
+import { ServicesStyle } from './Styles'
+import { homeAbout, work,sefty,free } from './Assets';
 import { Link } from 'react-router-dom';
-import {getToken} from '../../Services/getToken'
+import {getToken} from '../Services/getToken'
 
 const Services = () => {
     const items = [

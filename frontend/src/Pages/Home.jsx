@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../Components/Navbar/Navbar'
-import HomeIndex from '../Components/HomeIndex/HomeIndex'
-import HomeSection from '../Components/HomeSections/HomeSection'
+import Navbar from '../Components/Navbar'
+import HomeIndex from '../Components/HomeIndex'
+import HomeSection from '../Components/HomeSection'
 
 
 const Home = () => {

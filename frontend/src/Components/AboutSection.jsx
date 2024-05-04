@@ -1,6 +1,6 @@
 import React from 'react'
-import { AboutSectionStyle } from '../Styles'
-import { homeAbout,sefty,learn } from '../Assets'
+import { AboutSectionStyle } from './Styles'
+import { homeAbout,sefty,learn } from './Assets'
 import { Link } from 'react-router-dom'
 
 const AboutSection = () => {

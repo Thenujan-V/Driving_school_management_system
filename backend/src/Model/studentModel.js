@@ -39,7 +39,17 @@ students.show_details = function(sId, result){
         }
     })
 }
-
+students.show_all_students = function(result){
+    var sql = `select * from students join new_customers on students.id = new_customers.id`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(null, res)
+        }
+    })
+}
 students.show_exam_details = function(sId, result){
     var sql = `SELECT * FROM exam_details WHERE sId = '${sId}'`
     dbconnection.query(sql, function(err, res){
