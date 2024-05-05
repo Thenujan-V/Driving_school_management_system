@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import AdminVerticalNav from './AdminVerticalNav'
 import { showAllUsers } from '../../Services/userService'
 import { Link } from 'react-router-dom'
-import { showAllInstructers } from '../../Services/adminService'
+import { showAllAdmins } from '../../Services/adminService'
 
-const Instractor = () => {
+
+const AdminDetails = () => {
     const [usersApi, setUsersApi] = useState([])
 
     useEffect(() => {
         const fetchUsersDetails = async () => {
             try{
-                const response = await showAllInstructers()
+                const response = await showAllAdmins()
                 console.log('rrreee : ',response)
                 setUsersApi(response)
             }
@@ -21,12 +22,20 @@ const Instractor = () => {
         }
         fetchUsersDetails()
     },[])
-
   return (
     <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
         <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
-            <h1 className='text-center mt-4'>Instractors Details</h1>
+            <h1 className='text-center mt-4'>Admins Details</h1>
+            <div className="row head w-75 text-center">
+                <p className='col-lg-1 col-md-1 col-1'>id</p>
+                <p className='col-lg-2 col-md-2 col-2'>First Name</p>
+                <p className='col-lg-2 col-md-2 col-2'>Last Name</p>
+                <p className='col-lg-2 col-md-2 col-2'>Phone Number</p>
+                <p className='col-lg-3 col-md-3 col-3'>NIC Number</p>
+                <p className='col-lg-2 col-md-2 col-2'>Delete</p>
+
+            </div>
             {
                 usersApi &&
                 usersApi.map((userDetail) => (
@@ -45,4 +54,4 @@ const Instractor = () => {
   )
 }
 
-export default Instractor
+export default AdminDetails

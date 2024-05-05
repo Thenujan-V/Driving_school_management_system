@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faC, faIdCard, faStarHalfStroke, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faC, faIdCard, faStarHalfStroke, faUserAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
@@ -13,12 +13,11 @@ const AdminVerticalNav = () => {
   return (
     <>
         <div className="vertical-menu" style={{minHeight:'100vh'}}>
-            <h2>DashBoard</h2>
+            <h2 className='mb-2'>DashBoard</h2>
             <div className="links">
-                <Link to='/adminProfile' className='link'>
+                <Link to='/adminpanel' className='link'>
                     <FontAwesomeIcon icon={faClock} /> Profile
                 </Link>
-                <br />
                 <Link to='/studentsdetails' className='link'>
                     <FontAwesomeIcon icon={faIdCard} /> View Student
                 </Link>
@@ -34,7 +33,12 @@ const AdminVerticalNav = () => {
                 <Link to='/reviewcheck' className='link'>
                     <FontAwesomeIcon icon={faStarHalfStroke} /> Reviews
                 </Link>
-                <br />
+                <Link to='/addemployee' className='link'>
+                    <FontAwesomeIcon icon={faUserPlus} /> Add Employee
+                </Link>
+                <Link to='/adminDetails' className='link'>
+                    <FontAwesomeIcon icon={faClock} /> Admin
+                </Link>
                 <Link to='/instractor' className='link'>
                     <FontAwesomeIcon icon={faClock} /> Instructor
                 </Link>

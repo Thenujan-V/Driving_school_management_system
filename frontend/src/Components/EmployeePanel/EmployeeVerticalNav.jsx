@@ -10,7 +10,7 @@ const EmployeeVerticalNav = () => {
     <div className="vertical-menu" style={{minHeight:'100vh'}}>
             <h2>DashBoard</h2>
             <div className="links">
-                <Link to='/employeeProfile' className='link'>
+                <Link to='/instracterpanel' className='link'>
                     <FontAwesomeIcon icon={faClock} /> Profile
                 </Link>
                 <br />

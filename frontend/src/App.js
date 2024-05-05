@@ -32,6 +32,8 @@ import EmployeeProfile from './Components/EmployeePanel/Profile';
 import ViewStudents from './Components/EmployeePanel/ViewStudents';
 import AssignDate from './Components/EmployeePanel/AssignDate';
 import Attendance from './Components/EmployeePanel/Attendance';
+import AddEmployee from './Components/AdminPanel/AddEmployee';
+import AdminDetails from './Components/AdminPanel/AdminDetails';
 
 
 const App = () => {
@@ -53,20 +55,22 @@ const App = () => {
         <Route path='/userdocuments' element={<UserDocuments />} />
         <Route path='/paymentDetails' element={<PaymentDetails />} />
         <Route path='/results' element={<Results />} />
-        <Route path='/adminverticalnav' element={<AdminVerticalNav />} />
+        {/* <Route path='/adminverticalnav' element={<AdminVerticalNav />} /> */}
         <Route path='/studentsdetails' element={<StudentsDetails />} />
         <Route path='/viewdetails/:user_id' element={<ViewDetails />} />
         <Route path='/userdetails' element={<UserDetails />} />
         <Route path='/examDate/:sId' element={<ExamDate />} />
         <Route path='/exam' element={<Exam />} />
         <Route path='/result' element={<Result />} />
-        <Route path='/review' element={<Review />} />
+        <Route path='/result' element={<Result />} />
+        <Route path='/addemployee' element={<AddEmployee />} />
         <Route path='/reviewcheck' element={<ReviewCheck />} />
         <Route path='/viewreview/:sId' element={<ViewReview />} />
         <Route path='/instractor' element={<Instractor />} />
-        <Route path='/adminProfile' element={<Profile />} />
-        <Route path='/employeeVerticalNav' element={<EmployeeVerticalNav />} />
-        <Route path='/employeeProfile' element={<EmployeeProfile />} />
+        <Route path='/adminDetails' element={<AdminDetails />} />
+        <Route path='/adminpanel' element={<Profile />} />
+        {/* <Route path='/employeeVerticalNav' element={<EmployeeVerticalNav />} /> */}
+        <Route path='/instracterpanel' element={<EmployeeProfile />} />
         <Route path='/viewStudents' element={<ViewStudents />} />
         <Route path='/assignDate/:sId' element={<AssignDate />} />
         <Route path='/attendance/:sId/:first_name' element={<Attendance />} />

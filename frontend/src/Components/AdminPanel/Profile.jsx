@@ -82,7 +82,7 @@ const Profile = () => {
     <div style={{display:'flex', Height:'90vh'}}>
         <AdminVerticalNav />
         <div className='container user-profile' style={{flex:'1', height:'100vh'}}>
-            <h1>user profile</h1>
+            <h1>Your profile</h1>
             <div className='profile'>
             <div className='pic'>
                 <p>{formData.first_name.charAt(0).toUpperCase()}</p>
