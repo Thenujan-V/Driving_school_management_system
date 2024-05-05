@@ -12,7 +12,7 @@ exports.addTime = async (req, res) => {
 }
 
 exports.attendance = async (req, res) => {
-    await timeModel.update_attendence(req.body, function(err, attendanceRes){
+    await timeModel.update_attendence(req.params.tId, function(err, attendanceRes){
         if(err){
             return res.send(err)
         }

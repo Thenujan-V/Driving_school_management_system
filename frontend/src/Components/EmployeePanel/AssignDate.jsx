@@ -19,7 +19,13 @@ const AssignDate = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            const response = await assignDateTime(formData)
+            const datas = {
+                practice_date: formData.practice_date[0],
+                practice_time: formData.practice_time[0],
+                sid:formData.sid
+            }
+            console.log('datas :',datas)
+            const response = await assignDateTime(datas)
             setSubmit(response.data)
         }
         catch(error){

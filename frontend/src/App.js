@@ -31,6 +31,7 @@ import EmployeeVerticalNav from './Components/EmployeePanel/EmployeeVerticalNav'
 import EmployeeProfile from './Components/EmployeePanel/Profile';
 import ViewStudents from './Components/EmployeePanel/ViewStudents';
 import AssignDate from './Components/EmployeePanel/AssignDate';
+import Attendance from './Components/EmployeePanel/Attendance';
 
 
 const App = () => {
@@ -68,6 +69,7 @@ const App = () => {
         <Route path='/employeeProfile' element={<EmployeeProfile />} />
         <Route path='/viewStudents' element={<ViewStudents />} />
         <Route path='/assignDate/:sId' element={<AssignDate />} />
+        <Route path='/attendance/:sId/:first_name' element={<Attendance />} />
         
       </Routes>
     </div>

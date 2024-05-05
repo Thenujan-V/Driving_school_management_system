@@ -21,9 +21,9 @@ timeTable.insert_time = function(time, result){
     })
 }
 
-timeTable.update_attendence = function(attendance, result){
-    console.log(attendance)
-    var sql = `UPDATE practice_time SET atendance = 1 WHERE sid = '${attendance.sId}'`
+timeTable.update_attendence = function(tId, result){
+    console.log('tid :',tId)
+    var sql = `UPDATE practice_time SET atendance = 1 WHERE tId = '${tId}'`
     dbconnection.execute(sql, function(err, res){
         if(err){
             result(err, null)
