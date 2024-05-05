@@ -13,6 +13,8 @@ const Attendance = () => {
     const [name, setName] = useState('')
     const [circle, setCircle] = useState([])
     const [attendance, setAttendance] = useState('')
+    const [dates, setDate] = useState('')
+
  
     useEffect(() => {
         setSid(url.sId)
@@ -20,6 +22,7 @@ const Attendance = () => {
         const fetchDates = async () => {
             try{
                 const response = await get_times(sid, name)
+                // constexamResponse = await 
                 setApiDate(response)
             }
             catch(error){
@@ -68,17 +71,22 @@ const Attendance = () => {
             setAttendance(null)
         }
     }
-    console.log('cri :',circle)
 
+    useEffect(() => {
+    const today = new Date()
+
+        setDate(today)
+    },[])
+    
   return (
     <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
         <EmployeeVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:1}}>
-            <h1 className='text-center mt-4'>Attendance</h1>
+            <h1 className='text-center mt-4'>Mark Attendance</h1>
             {
                 apiDate && 
                 <div className="showDates">
-                    <div className="details">
+                    <div className="details mb-5">
                         <p>STUDENT ID - {sid}</p>
                         <p>STUDENT NAME - {name}</p>
                     </div>
@@ -93,11 +101,18 @@ const Attendance = () => {
                                 <div className='row'>
                                     <p className='col-lg-4 col-md-4 col-4'>{formatDateString(new Date(date.practice_date).toLocaleDateString())}</p>
                                     <p className='col-lg-4 col-md-4 col-4'>{date.practice_time}</p>
-                                     <Link className='col-lg-4 col-md-4 col-4 verify'>
+                                     <Link className='col-lg-4 col-md-4 col-4 atendace'>
                                         {
-                                            !(circle === date.tId) ?
-                                            <FontAwesomeIcon icon={faCircle} size='2xl' onClick={() => changeCircle(date.tId)}/>:
-                                            <FontAwesomeIcon icon={faCircleCheck} size='2xl'/>
+                                            (date.atendance === 1) ? (
+                                                <FontAwesomeIcon icon={faCircleCheck} className='CircleCheck' size='2xl'/> ):
+                                                (
+                                                (( new Date(date.practice_date) < dates)) ? (
+                                                    <FontAwesomeIcon icon={faCircle} className='notcome' size='2xl'/> ) : (
+                                                        !(circle === date.tId) ? (
+                                                            <FontAwesomeIcon icon={faCircle} className='faCircle' size='2xl' onClick={() => changeCircle(date.tId)}/> ) : (
+                                                            <FontAwesomeIcon icon={faCircleCheck} className='faCircleCheck' color='rgb(150, 251, 107)' size='2xl'/>) )
+                                                        )
+                                            
                                         }
                                      </Link>
                                 </div>
