@@ -48,7 +48,7 @@ const Services = () => {
                                             <p class="card-text m-0" id='para'>{item.description}.</p>
                                             <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
                                             <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to={token? '/about' : 'signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <Link  to={token? '/about' : '/signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
 
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@ const Services = () => {
                                             <p class="card-text m-0" id='para'>{item.description}.</p>
                                             <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
                                             <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to={token? '/about' : 'signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <Link  to={token? '/about' : '/signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
                                         </div>
                                     </div>
                                 </div>

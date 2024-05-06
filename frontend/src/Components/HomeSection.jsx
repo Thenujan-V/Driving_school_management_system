@@ -14,8 +14,8 @@ const HomeSection = () => {
       ];
 
       const token = getToken();
-      const id = retrieveId()
-      console.log('id : ',id)
+    //   const id = retrieveId()
+    //   console.log('id : ',id)
 
   return (
     <>
@@ -174,7 +174,7 @@ const HomeSection = () => {
                 ))}
             </div>
             </div>
-        </section>
+        </section>]
     </>
   )
 }
