@@ -24,9 +24,13 @@ export const getToken = () => {
 export const retrieveId = () => {
     try{
         const token = localStorage.getItem("authToken")   
-        const decodedToken = jwtDecode(token)
-        const id = decodedToken.id
-        return id
+        if(token){
+            const decodedToken = jwtDecode(token)
+            return decodedToken 
+        }
+        else{
+            return null
+        }
     }
     catch(error){
         console.log('Error getting token: ', error)

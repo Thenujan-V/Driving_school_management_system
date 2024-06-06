@@ -14,6 +14,7 @@ const paymentRoutes = require('./src/Router/paymentRouter')
 const timeRouters = require('./src/Router/timeRouter')
 const examRouters = require('./src/Router/examRouter')
 const adminRouters = require('./src/Router/adminRouter')
+const serviceRouters = require('./src/Router/ServiceRouter')
 const e = require('express')
 
 
@@ -23,6 +24,7 @@ app.use('/api/payment',paymentRoutes)
 app.use('/api/time',timeRouters)
 app.use('/api/exam',examRouters)
 app.use('/api/admin', adminRouters)
+app.use('/api/service', serviceRouters)
 
 
 

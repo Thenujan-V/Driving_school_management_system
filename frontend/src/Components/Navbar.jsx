@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavbarStyle } from './Styles'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { retrieveId } from '../Services/getToken';
 
 
 const Navbar = () => {
+    const navigate = useNavigate()
+    const decodedToken = retrieveId()
+    const [user_id, setUser_id] = useState('')
+
+    useEffect(() => {
+        if(decodedToken){
+            setUser_id(decodedToken.id)
+    
+            // if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
+            //     navigate('/signin')
+            // }
+        }
+        else{
+            setUser_id('')
+        }
+    })
+    console.log('de :', decodedToken)
+
   return (
   
         <nav class="navbar navbar-expand-lg sticky-top">
@@ -30,7 +49,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <ul class="navbar-nav" id='nav-buttons'>
-                        <Link to='/userprofile' class="nav-link" aria-current="page" id='links'><FontAwesomeIcon icon={faUser}/></Link>
+                        <Link to={user_id ? '/userprofile' : '/signin'} class="nav-link" aria-current="page" id='links'><FontAwesomeIcon icon={faUser}/></Link>
                         <Link to='/signin' class="btn mt-2" id='signin'>SignIn</Link>
                     </ul>
                 </div>

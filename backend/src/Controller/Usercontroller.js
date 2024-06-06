@@ -6,7 +6,7 @@ var customerModel = require('../Model/userModel')
 
 exports.createCustomer =  (req, res) => {
 
-    var new_customer = new customerModel(req.body);
+    var new_customer = new customerModel(req.body); 
 
      customerModel.create_customer(new_customer,function(err,userres){
         if (err){
