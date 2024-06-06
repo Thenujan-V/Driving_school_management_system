@@ -14,10 +14,24 @@ const StudentEntroll = () => {
     {url:'4', title: 'Item 1', description: 'Description for item 1',price:'4500' }    
   ];
 
-  const navigate = useNavigate();
-  const id = retrieveId()
+  const navigate = useNavigate()
+    const decodedToken = retrieveId()
+    const [user_id, setUser_id] = useState('')
+
+    useEffect(() => {
+        if(decodedToken){
+            setUser_id(decodedToken.id)
+            if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
+                navigate('/signin')
+            }
+        }
+        else{
+            setUser_id('')
+        }
+    }, [decodedToken])
+
   const {index} = useParams()
-  console.log('insex : ',index)
+
 
   const [formData, setFormData] = useState({
     phone_number: '',
@@ -29,8 +43,18 @@ const StudentEntroll = () => {
     nic_soft_copy: '',
     medical_soft_copy: '',
     birth_certificate_soft_copy: '',
-    id:id
+    id:''
   });
+
+  useEffect(() => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      id: user_id
+    }));
+  }, [user_id]);
+  console.log('iddd :', formData.id)
+
+  
   const [errors, setErrors] = useState({});
   const [apiResponse, setApiResponse] = useState('');
   const [totalAmount, setTotalAmount] = useState('')
@@ -65,10 +89,10 @@ const StudentEntroll = () => {
     e.preventDefault();
     const errors = {};
     if (!formData.phone_number.trim()) {
-      errors.phone_number = 'First name is required';
+      errors.phone_number = 'phone number is required';
     }
     if (!formData.birth_date.trim()) {
-      errors.birth_date = 'Last name is required';
+      errors.birth_date = 'birth date is required';
     }
     if (!formData.nic_number.trim()) {
       errors.nic_number = 'nic_number is required';
@@ -101,6 +125,7 @@ const StudentEntroll = () => {
       try {
           const response = await student_entroll(formData);
           setApiResponse('Signup successfully!');
+          console.log('okey')
           navigate('/verifymsg'); 
         
           const paymentResponse = await addTotalAmount(totalAmount, formData.id);
@@ -116,6 +141,8 @@ const StudentEntroll = () => {
     }
   };
   return (
+    <>
+    <Navbar />
     <div className="container-fluid">
     <div className="row m-0 w-100" id='signupPage'>
         <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
@@ -207,8 +234,7 @@ const StudentEntroll = () => {
         </div>
     </div>
 </div>
-
-
+    </>
   )
 }
 

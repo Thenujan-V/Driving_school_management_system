@@ -73,32 +73,34 @@ const Payment = () => {
 
         setErrors(errors);
 
-        if (examResult === 0){
-            try{
-                const advanceAmount = courseAmount * 0.25
-                const paymentDetails = await addPaymentDetails(advanceAmount, uId)
-                setResponse('add successfully')
-                alert('payment successfully')
-                navigate('/')
+        if(errors === ''){
+            if (examResult === 0){
+                try{
+                    const advanceAmount = courseAmount * 0.25
+                    const paymentDetails = await addPaymentDetails(advanceAmount, uId)
+                    setResponse('add successfully')
+                    alert('payment successfully')
+                    navigate('/')
+                }
+                catch(error){
+                    console.log('error : ',error)
+                    setResponse('error')
+                }
             }
-            catch(error){
-                console.log('error : ',error)
-                setResponse('error')
-            }
-        }
-        else{
-            try{
-                const balanceAmount = courseAmount * 0.75
-                const paymentDetails = await addBalancePaymentDetails(balanceAmount, uId)
-                console.log('balance : ',formData.balanceAmount)
-                console.log('add success')
-                setResponse('add successfully')
-                alert('payment successfully')
-                navigate('/')
-            }
-            catch(error){
-                console.log('error : ',error)
-                setResponse('error')
+            else{
+                try{
+                    const balanceAmount = courseAmount * 0.75
+                    const paymentDetails = await addBalancePaymentDetails(balanceAmount, uId)
+                    console.log('balance : ',formData.balanceAmount)
+                    console.log('add success')
+                    setResponse('add successfully')
+                    alert('payment successfully')
+                    navigate('/')
+                }
+                catch(error){
+                    console.log('error : ',error)
+                    setResponse('error')
+                }
             }
         }
     };

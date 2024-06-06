@@ -23,7 +23,6 @@ const Navbar = () => {
             setUser_id('')
         }
     })
-    console.log('de :', decodedToken)
 
   return (
   
