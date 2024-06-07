@@ -13,7 +13,21 @@ const Documents = () => {
       ];
     
       const navigate = useNavigate();
-      const id = retrieveId()
+      const decodedToken = retrieveId()
+      const [user_id, setUser_id] = useState('')
+
+      useEffect(() => {
+          if(decodedToken){
+              setUser_id(decodedToken.id)
+      
+              if(decodedToken.role === 'admin' || decodedToken.role === 'instructor'){
+                  navigate('/signin')
+              }
+          }
+          else{
+              setUser_id('')
+          }
+      },[decodedToken])
       const {index} = useParams()
     
       const [formData, setFormData] = useState({
@@ -26,8 +40,13 @@ const Documents = () => {
         nic_soft_copy: '',
         medical_soft_copy: '',
         birth_certificate_soft_copy: '',
-        id:id
+        id:''
       });
+
+      useEffect(() => {
+        formData.id = user_id
+      },[user_id])
+      
       const [errors, setErrors] = useState({});
       const [apiResponse, setApiResponse] = useState('');
       const [totalAmount, setTotalAmount] = useState('')
@@ -35,17 +54,6 @@ const Documents = () => {
       const [documentsResponse, setDocumentsResponse] = useState('')
     
       const handleChange = (e) => {
-          // const { name, files, type, value } = e.target;
-    
-          // if (type === 'file') {
-          //     const file = files[0];
-          //     const newFormData = new FormData();
-          //     newFormData.append(name, file);
-          //     setFormData(newFormData);
-          // } else {
-          //     setFormData({ ...formData, [name]: value });
-          // }
-    
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
 
@@ -64,9 +72,9 @@ const Documents = () => {
         }, [formData.vechile_class, items]);
 
         useEffect(() => {
-            const fetchStudentsDocuments = async (id) => {
+            const fetchStudentsDocuments = async (user_id) => {
                 try{
-                    const responseDocuments = await student_details(id)
+                    const responseDocuments = await student_details(user_id)
                     console.log('documents :',responseDocuments)
                     setDocumentsResponse(responseDocuments)
                 }
@@ -75,8 +83,8 @@ const Documents = () => {
                     setDocumentsResponse("can't get datas")
                 }
             }
-            fetchStudentsDocuments(id)
-        },[])
+            fetchStudentsDocuments(user_id)
+        },[user_id])
         
         useEffect(() => {
             if(documentsResponse){
@@ -132,10 +140,10 @@ const Documents = () => {
           
           try {
             console.log('fdd : ',formData)
-              const response = await student_details_update(formData, id);
+              const response = await student_details_update(formData, user_id);
               setApiResponse('Signup successfully!');
-            //   ,navigate('/verifymsg'); 
-          } catch (error) {
+          } 
+          catch (error) {
               console.error('Error:', error);
               setApiResponse('An error occurred during the submission.');
           }
@@ -227,7 +235,7 @@ const Documents = () => {
                   </div>
                 </div> 
                 <div className="form-group mt-4">
-                    <button className='btn btn-primary' type="submit">Submit</button>
+                    <button className='btn' type="submit">Submit</button>
                 </div>
             </form>
         </div>

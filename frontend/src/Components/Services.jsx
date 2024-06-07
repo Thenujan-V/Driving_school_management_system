@@ -47,11 +47,6 @@ const Services = () => {
             fetchServices()
         }, [])
 
-
-
-      
-
-
   return (
     <section id='services'>
         <h1 className='text-center pt-4'>OUR SERVICES</h1>
@@ -77,8 +72,7 @@ const Services = () => {
                                             <p class="card-text m-0" id='para'>Vehicle Class - {item.service_class}.</p>
                                             <p class="card-text" id='price'>LKR {item.price} </p>
                                             <Link to='' class="btn btn-warning">Instructions</Link>
-                                            <Link  to={user_id? '/about' : '/signin'} class="btn" id='btn'>Buy Now</Link>
-
+                                            <Link  to={user_id? `/studentEntroll/${item.service_class}` : `signin`} class="btn" id='btn'>Buy Now</Link>
                                         </div>
                                     </div>
                                 </div>

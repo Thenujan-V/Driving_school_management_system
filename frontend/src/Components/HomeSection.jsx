@@ -1,21 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HomeSectionStyle } from './Styles'
 import {homeAbout,work,learn,lession,sefty} from './Assets'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {getToken} from '../Services/getToken'
 import { retrieveId } from '../Services/getToken'
+import { getServices } from '../Services/TrainingServices'
 
 const HomeSection = () => {
-    const items = [
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' }    
-      ];
+        const navigate = useNavigate()
+        const decodedToken = retrieveId()
+        const [user_id, setUser_id] = useState('')
 
-      const token = getToken();
-    //   const id = retrieveId()
-    //   console.log('id : ',id)
+        useEffect(() => {
+            if(decodedToken){
+                setUser_id(decodedToken.id)
+        
+                if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
+                    navigate('/signin')
+                }
+            }
+            else{
+                setUser_id('')
+            }
+        },[decodedToken])
+
+        const [items, setItems] = useState([])
+
+        useEffect(() => {
+            const fetchServices = async() => {
+                try{
+                    const response = await getServices()
+                    console.log(response)
+                    setItems(response)
+                }
+                catch(error){
+                    console.log('error occur :', error)
+                }
+            }
+            fetchServices()
+        }, [])
 
   return (
     <>
@@ -161,13 +184,14 @@ const HomeSection = () => {
             <div id='courses' className='row m-0 text-center'>
                 {items.map((item, index) => (
                     <div className="col-lg-3 col-md-3 col-sm-6 col-12 pt-4">
-                        <div class="card" key={index}>
+                        <div class="card">
                             <img src={homeAbout} class="card-img-top" alt="pic1" />
                             <div class="card-body">
-                                <h4 class="card-title ">{item.title}</h4>
-                                <p class="card-text m-0" id='para'>{item.description}.</p>
-                                <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                <Link to={token? `studentEntroll/${index}` : `signin`} class="btn btn-primary">Buy Now</Link>
+                                <h5 class="card-title ">{item.service_name}</h5>
+                                <p class="card-text m-0" id='para'>Vehicle Class - {item.service_class}.</p>
+                                <p class="card-text" id='price'>LKR {item.price} </p>
+                                <Link to='' class="btn btn-warning">Instructions</Link>
+                                <Link to={user_id? `/studentEntroll/${item.service_class}` : `signin`} class="btn" id='btn'>Buy Now</Link>
                             </div>
                         </div>
                     </div>
