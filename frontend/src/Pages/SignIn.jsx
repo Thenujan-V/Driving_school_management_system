@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { SigninStyle } from '../Components/Styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faL } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import {signinService} from '../Services/userService'
 import { useNavigate } from 'react-router-dom';
+import { adminSignin } from '../Services/adminService';
+import { retrieveId } from '../Services/getToken';
 
 
 
@@ -30,16 +32,33 @@ const SignIn = () => {
 
     try{
       const response = await signinService(email, password)
-      if(response == false){
-        alert('username or password is not valid')
-        setApiResponse('signin faild...!')
+        if(response == false){
+          const workerResponse = await adminSignin(email, password)
+          if(workerResponse == false){
+            alert('username or password is not valid')
+            setApiResponse('signin faild...!')
+          }
+          else{
+            localStorage.setItem('authToken', workerResponse.token);
+            setApiResponse("signin success")
+            const decoded = retrieveId()
+            if(decoded.role === 'admin'){
+              navigate('/adminpanel')
+            }
+            else if(decoded.role === 'instructor'){
+              navigate('/instracterpanel')
+            }
+          }
 
-      }
-      else{
-        localStorage.setItem('authToken', response.token);
-        setApiResponse("signin success")
-        navigate('/')
-      }
+        }
+        else{
+          localStorage.setItem('authToken', response.token);
+          setApiResponse("signin success")
+          const decoded = retrieveId()
+            if(decoded.role === 'user'){
+              navigate('/')
+            }
+        }
 
     }
     catch(error){
@@ -56,7 +75,7 @@ const SignIn = () => {
             <form onSubmit={handleSubmit} className=''>
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>
-                <input className="form-control" type="email" id='email' placeholder='Example@gmail.com' value={email} onChange={handleEmailChange} required />
+                <input className="form-control" type="text" id='email' placeholder='Example@gmail.com' value={email} onChange={handleEmailChange} required />
               </div>
               <div className="form-group mt-2">
                 <label htmlFor="password" className="form-label">Password</label>

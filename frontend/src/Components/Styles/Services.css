@@ -33,24 +33,24 @@
     border: 15px solid var(--green);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
-#services .card h4{
+#services .card h5{
     font-family: "Ubuntu", sans-serif;
     font-weight: bolder;
 }
 #services .card p{
     font-family: "Ubuntu", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
 }
 #services .card #price{
-    font-size: 16px;
+    font-size: 20px;
+    font-style: italic;
+    color:rgb(69, 42, 10);
+    font-weight: bold;
 }
-#services .card #price span{
-    text-decoration: line-through;
-    color: red;
-    font-size: 22px;
-}
+
 #services .card #btn{
     margin: 5px;
+    background-color: var(--shadeGreen);
 }
 #online-services div #service{
     border: 2vw solid var(--shadeGreen);

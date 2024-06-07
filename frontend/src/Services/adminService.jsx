@@ -13,6 +13,21 @@ export const signupService = async (formData) => {
         throw err
     }
 }
+export const adminSignin = async (phone_no, password) => {
+    try{
+        const requestData = {
+            phone_no : phone_no,
+            password : password
+        }
+       
+        const response = await axios.post(`${API_BASE_URL}/admin/workersignin`, requestData)
+        return response.data
+    }
+    catch(error){
+        throw error
+        
+    }
+}
 export const showAllAdmins = async () => {
     try{
         const response = await axios.get(`${API_BASE_URL}/admin/getadmins`)

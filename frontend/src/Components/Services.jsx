@@ -1,16 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ServicesStyle } from './Styles'
 import { homeAbout, work,sefty,free } from './Assets';
-import { Link } from 'react-router-dom';
-import {getToken} from '../Services/getToken'
+import { Link, useNavigate } from 'react-router-dom';
+import {getToken, retrieveId} from '../Services/getToken'
+import { getServices } from '../Services/TrainingServices';
 
 const Services = () => {
-    const items = [
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
-        {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' }    
-      ];
       const reNew = [
         {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' },
         {url:'', title: 'Item 1', description: 'Description for item 1',price:'8500', newprice:'7200' }
@@ -19,7 +14,41 @@ const Services = () => {
       const [getLicensePackage, setGetLicensePackage] = useState('')
       const [getRenewLicensePackage, setGetReNewLicensePackage] = useState('')
       
-      const token = getToken(); 
+        const navigate = useNavigate()
+        const decodedToken = retrieveId()
+        const [user_id, setUser_id] = useState('')
+
+        useEffect(() => {
+            if(decodedToken){
+                setUser_id(decodedToken.id)
+        
+                if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
+                    navigate('/signin')
+                }
+            }
+            else{
+                setUser_id('')
+            }
+        },[decodedToken])
+
+        const [items, setItems] = useState([])
+
+        useEffect(() => {
+            const fetchServices = async() => {
+                try{
+                    const response = await getServices()
+                    console.log(response)
+                    setItems(response)
+                }
+                catch(error){
+                    console.log('error occur :', error)
+                }
+            }
+            fetchServices()
+        }, [])
+
+
+
       
 
 
@@ -39,16 +68,16 @@ const Services = () => {
                     </p>
                     <div className="container">
                         <div className="row text-center ">
-                            {items.map((item, index) => (
+                            {items && items.length > 0 && items.map((item, index) => (
                                 <div className="col-lg-3 col-md-3 col-sm-6 col-12 pt-4">
                                     <div class="card">
                                         <img src={homeAbout} class="card-img-top" alt="pic1" />
                                         <div class="card-body">
-                                            <h4 class="card-title ">{item.title}</h4>
-                                            <p class="card-text m-0" id='para'>{item.description}.</p>
-                                            <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                            <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to={token? '/about' : '/signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <h5 class="card-title ">{item.service_name}</h5>
+                                            <p class="card-text m-0" id='para'>Vehicle Class - {item.service_class}.</p>
+                                            <p class="card-text" id='price'>LKR {item.price} </p>
+                                            <Link to='' class="btn btn-warning">Instructions</Link>
+                                            <Link  to={user_id? '/about' : '/signin'} class="btn" id='btn'>Buy Now</Link>
 
                                         </div>
                                     </div>
@@ -73,8 +102,8 @@ const Services = () => {
                                             <h4 class="card-title ">{item.title}</h4>
                                             <p class="card-text m-0" id='para'>{item.description}.</p>
                                             <p class="card-text" id='price'>LKR <span>{item.price}</span> {item.newprice} </p>
-                                            <Link to='' class="btn btn-primary" id='btn'>Instructions</Link>
-                                            <Link  to={token? '/about' : '/signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
+                                            <Link to='' class="btn btn-warning">Instructions</Link>
+                                            <Link  to={user_id? '/about' : '/signin'} class="btn btn-primary" id='btn'>Buy Now</Link>
                                         </div>
                                     </div>
                                 </div>

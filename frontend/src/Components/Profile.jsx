@@ -3,10 +3,27 @@ import { profile } from '../Components/Styles'
 import { retrieveId } from '../Services/getToken'
 import { userDetails } from '../Services/userService'
 import { updateUserProfile } from '../Services/userService'
+import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
-    const id = retrieveId()
-    const [formData, setFormData] = useState({
+  const navigate = useNavigate()
+  const decodedToken = retrieveId()
+  const [user_id, setUser_id] = useState('')
+
+  useEffect(() => {
+      if(decodedToken){
+          setUser_id(decodedToken.id)
+  
+          if(decodedToken.role === 'admin' || decodedToken.role === 'instructor'){
+              navigate('/signin')
+          }
+      }
+      else{
+          setUser_id('')
+      }
+  },[decodedToken])
+  
+  const [formData, setFormData] = useState({
         first_name:'',
         last_name:'',
         email:''
@@ -16,10 +33,9 @@ const Profile = () => {
     const [errors, setErrors] = useState('')
 
     useEffect(() => {
-      const getuser = async (id) => {
+      const getuser = async (user_id) => {
         try{
-          const userDetailsResponse = await userDetails(id)
-          console.log(userDetailsResponse)
+          const userDetailsResponse = await userDetails(user_id)
           setApiDetailsGetResponse(userDetailsResponse)
         }
         catch(error){
@@ -27,8 +43,8 @@ const Profile = () => {
           setApiDetailsGetResponse('did not get the user details')
         }
       }
-      getuser(id)
-    },[])
+      getuser(user_id)
+    },[user_id])
     useEffect(() => {
       if (apiDetailsGetResponse) {
           setFormData({
@@ -60,7 +76,7 @@ const Profile = () => {
         setErrors(errors);
         try{
             if(Object.keys(errors).length === 0){
-                const response = await updateUserProfile(formData,id)
+                const response = await updateUserProfile(formData,user_id)
                 setUpdateApiResponse('signup successfully...!')
                 // navigate('/signin')
             }
@@ -85,7 +101,7 @@ const Profile = () => {
             <h1>user profile</h1>
             <div className='profile'>
             <div className='pic'>
-                <p>{formData.first_name.charAt(0).toUpperCase()}</p>
+                <p>{formData && formData.first_name ? formData.first_name.charAt(0).toUpperCase() : ''}</p>
             </div>
             <form onSubmit={handleSubmit} className='form mt-3'>
               <div className="form-group mt-2">

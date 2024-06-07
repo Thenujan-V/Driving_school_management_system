@@ -15,9 +15,9 @@ const Navbar = () => {
         if(decodedToken){
             setUser_id(decodedToken.id)
     
-            // if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
-            //     navigate('/signin')
-            // }
+            if(decodedToken.role === 'admin' || decodedToken.role === 'instructer'){
+                navigate('/signin')
+            }
         }
         else{
             setUser_id('')

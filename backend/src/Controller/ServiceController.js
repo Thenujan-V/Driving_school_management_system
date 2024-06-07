@@ -13,7 +13,7 @@ exports.addServices = (req, res) => {
 }
 
 exports.getServices = (req, res) => {
-    servicesModel.get_services(function(err,serviceRes){        
+    servicesModel.get_services(req, function(err,serviceRes){        
        if (err){
         return res.status(400).send(err);  
        }             

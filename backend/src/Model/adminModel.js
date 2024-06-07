@@ -54,5 +54,20 @@ workers.show_all_instructers = function(result){
     })
 }
 
+workers.worker_signin = function(userInfo, result){
+    var sql = `SELECT *  FROM workers WHERE phone_number='${userInfo.phone_no}'`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err,null);     
+        } 
+        else{
+            // console.log('mail :',userInfo.email)
+            console.log('okey: ', res)
+            result(null,res)
+        }
+    })
+}
+
+
 
 module.exports = workers
