@@ -60,3 +60,14 @@ exports.workerSignin = async (req, res) => {
         
     })
 }
+
+exports.workersDetails = async (req, res) => {
+    await adminModel.workers_details(req.params.uId, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}

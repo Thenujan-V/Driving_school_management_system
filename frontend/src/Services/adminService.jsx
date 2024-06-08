@@ -46,3 +46,13 @@ export const showAllInstructers = async () => {
         throw error
     }
 }
+
+export const workersDetails = async (id) => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/admin/getworkersdetails/${id}`)
+        return response.data[0]
+    }
+    catch(error){
+        throw(error)
+    }
+}

@@ -7,5 +7,6 @@ router.post('/register',adminController.addEmployee)
 router.post('/workersignin',adminController.workerSignin)
 router.get('/getadmins',adminController.allAdmins)
 router.get('/getinstructers',adminController.allInstructers)
+router.get('/getworkersdetails/:uId',adminController.workersDetails)
 
 module.exports = router

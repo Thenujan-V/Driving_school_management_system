@@ -54,8 +54,7 @@ export const addTotalAmount = async (totalAmount, id) => {
 export const showDetails = async (id) => {
     try{
         const response = await axios.get(`${API_BASE_URL}/payment/showdetails/${id}`)
-        console.log('ressss : ',response.data[0])
-        return response.data[0]
+        return response
     }
     catch(error){
         console.log('error : ',error)

@@ -3,37 +3,58 @@ import Navbar from './Navbar'
 import VerticalNavbar from './VerticalNavbar'
 import { retrieveId } from '../Services/getToken'
 import { showDetails } from '../Services/paymentService'
+import { useNavigate } from 'react-router-dom'
 
 const PaymentDetails = () => {
-    const id = retrieveId()
+  const navigate = useNavigate();
+  const decodedToken = retrieveId()
+  const [user_id, setUser_id] = useState('')
+
+  useEffect(() => {
+      if(decodedToken){
+          setUser_id(decodedToken.id)
+  
+          if(decodedToken.role === 'admin' || decodedToken.role === 'instructor'){
+              navigate('/signin')
+          }
+      }
+      else{
+          setUser_id('')
+      }
+  },[decodedToken])
 
     const [apiPaymentResponse, setApiPaymentResponse] = useState('')
-
+    const [formattedTime, setFormattedTime] = useState('')
     useEffect(() => {
-      const showPaymentDetails = async (id) => {
+      const showPaymentDetails = async (user_id) => {
         try{
-          const response = await showDetails(id)
-          console.log('paymentRes : ',response)
-          setApiPaymentResponse(response)
+          const response = await showDetails(user_id)
+          console.log('paymentRes : ',response.data[0])
+          setApiPaymentResponse(response.data[0])
         }
         catch(error){
           console.log(error)
           setApiPaymentResponse(error)
         }
       }
-      showPaymentDetails(id)
-    },[])
+      showPaymentDetails(user_id)
+    },[user_id])
 
-    const dateObject = apiPaymentResponse.created_date
-    const time = new Date(dateObject)
-    console.log('date :',time)
-    const formattedTime = time.toLocaleString('en-GB', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    useEffect(() => {
+      if(apiPaymentResponse){
+        const dateObject = apiPaymentResponse.created_date
+        const time = new Date(dateObject)
+        console.log('date :',time)
+        const timeLocal = time.toLocaleString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        setFormattedTime(timeLocal)
+      }
+    }, [apiPaymentResponse])
 
   return (
     <div>
@@ -45,32 +66,35 @@ const PaymentDetails = () => {
                 <div className="details">
                   <div className="detail-row">
                     <p>Student Name :</p>
-                    <span>{apiPaymentResponse.first_name} {apiPaymentResponse.last_name}</span>
+                    {
+                      apiPaymentResponse ?
+                      <span>{apiPaymentResponse.first_name} {apiPaymentResponse.last_name}</span> : ''
+                    }
                   </div>
                   <div className="detail-row">
                     <p>Payment Method :</p>
-                    <span>{apiPaymentResponse.payment_method}</span>
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.paymentMethod}</span> : ''}
                   </div>
                   <div className="detail-row">
                     <p>Total Amount :</p>
-                    <span>{apiPaymentResponse.total_amount}</span>
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.total_amount}</span>: ''}
                   </div>
                   <div className="detail-row">
                     <p>Paid (Exam Amount) :</p>
-                    <span>{apiPaymentResponse.paid}</span>
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.balance_paid !== null ? (apiPaymentResponse.total_amount - apiPaymentResponse.balance_paid)  : <h6>NOT PAY</h6>}</span>: ''}
                   </div>
                   <div className="detail-row">
                     <p>Paid (Trial Amount) :</p>
-                    <span>{apiPaymentResponse.balance_paid}</span>
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.paid  === null ? <h6>NOT PAY</h6> : apiPaymentResponse.paid}</span> : ''}
                   </div>
-                  <div className="detail-row">
+                  {/* <div className="detail-row">
                     <p>Date (Exam Payment) :</p>
-                    <span>{formattedTime}</span>
+                    {apiPaymentResponse ? <span>{formattedTime}</span> : ''}
                   </div>
                   <div className="detail-row">
                     <p>Date (Trial Payment) :</p>
-                    <span>{formattedTime}</span>
-                  </div>
+                    {apiPaymentResponse ? <span>{formattedTime}</span>: ''}
+                  </div> */}
                 </div>
 
             </div>

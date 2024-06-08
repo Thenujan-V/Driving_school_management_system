@@ -23,7 +23,7 @@ const VerticalNavbar = () => {
                     <FontAwesomeIcon icon={faCreditCard} /> Payment Details
                 </Link>
                 <Link to='/content' className='link'>
-                    <FontAwesomeIcon icon={faCalendarDays} /> Exam Date & Practice Time
+                    <FontAwesomeIcon icon={faCalendarDays} /> Dates & Times
                 </Link>
                 <Link to='/results' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Results

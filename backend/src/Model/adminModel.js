@@ -68,6 +68,20 @@ workers.worker_signin = function(userInfo, result){
     })
 }
 
+workers.workers_details = function(uId, result){
+    console.log('uid : ', uId)
+    var sql = `SELECT * FROM workers WHERE wId = '${uId}'`
+    dbconnection.query(sql, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
+
 
 
 module.exports = workers

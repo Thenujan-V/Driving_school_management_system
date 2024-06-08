@@ -2,20 +2,27 @@ import React, { useEffect, useState } from 'react';
 import {visaLogo, mastercardLogo} from '../Components/Assets'
 import { addPaymentDetails, addBalancePaymentDetails } from '../Services/paymentService';
 import { retrieveId } from '../Services/getToken';
-import { student_details } from '../Services/studentService';
+import { student_details, student_details_update } from '../Services/studentService';
 import { show_exam_details } from '../Services/examServices';
 import { useNavigate } from 'react-router-dom';
+import { getServices } from '../Services/TrainingServices';
+import { updateUserProfile } from '../Services/userService';
 
 const Payment = () => {
-    const navigate = useNavigate()
-    const items = [
-        {url:'1', title: 'Item 1', description: 'Description for item 1',price:'1500', newprice:'7200' },
-        {url:'2', title: 'Item 1', description: 'Description for item 1',price:'2500', newprice:'7200' },
-        {url:'3', title: 'Item 1', description: 'Description for item 1',price:'3500', newprice:'7200' },
-        {url:'4', title: 'Item 1', description: 'Description for item 1',price:'4500', newprice:'7200' }    
-      ];
-
-    const uId = retrieveId()
+    const navigate = useNavigate();
+    const decodedToken = retrieveId();
+    const [user_id, setUser_id] = useState('');
+  
+    useEffect(() => {
+      if (decodedToken) {
+        setUser_id(decodedToken.id);
+        if (decodedToken.role === 'admin' || decodedToken.role === 'instructer') {
+          navigate('/signin');
+        }
+      } else {
+        setUser_id('');
+      }
+    }, [decodedToken]);
     
     const [errors, setErrors] = useState({});
     const [cardType, setCardType] = useState(null);
@@ -23,6 +30,8 @@ const Payment = () => {
     const[vechileClass, setVechileClass] = useState('')
     const [courseAmount, setCourseAmount] = useState('')
     const [examResult, setExamResult] = useState('')
+    const [items, setItems] = useState([])
+
     const [formData, setFormData] = useState({
         ownerName: '',
         cardNumber: '',
@@ -54,6 +63,58 @@ const Payment = () => {
         }
     };
 
+    useEffect(() => {
+        const vechile_class = async(user_id) => {
+        try{
+            const response = await student_details(user_id)
+            setVechileClass(response.data.vechile_class)
+        }
+        catch(error){
+            console.log('error :',error)
+            setVechileClass(error)
+        }   
+    }
+    vechile_class(user_id)
+    
+    
+    const get_exam_result = async(user_id) => {
+        try{
+            const response = await show_exam_details(user_id)
+            setExamResult(response)
+        }
+        catch(error){
+            console.log('error :',error)
+            setVechileClass(error)
+        }
+    }
+    get_exam_result(user_id)
+    },[user_id])
+
+
+    useEffect(() => {
+        const get_services = async() => {
+            try{
+                const response = await getServices()
+                setItems(response)
+            }
+            catch(error){
+                console.log('error occure :', error)
+            }
+        }
+        get_services()
+    },[vechileClass])
+
+    useEffect(() => {
+        const findAmount = (items) => {
+            items.map((item) => { 
+                if(item.service_class === vechileClass){
+                    setCourseAmount(item.price)
+                }
+            })
+        }
+        findAmount(items)
+    }, [items])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const errors = {};
@@ -73,11 +134,13 @@ const Payment = () => {
 
         setErrors(errors);
 
-        if(errors === ''){
-            if (examResult === 0){
+        if(Object.keys(errors).length === 0){
+            console.log('okey')
+            
+            if (typeof examResult === 'undefined'){
                 try{
                     const advanceAmount = courseAmount * 0.25
-                    const paymentDetails = await addPaymentDetails(advanceAmount, uId)
+                    const paymentDetails = await addPaymentDetails(advanceAmount, user_id)
                     setResponse('add successfully')
                     alert('payment successfully')
                     navigate('/')
@@ -90,7 +153,7 @@ const Payment = () => {
             else{
                 try{
                     const balanceAmount = courseAmount * 0.75
-                    const paymentDetails = await addBalancePaymentDetails(balanceAmount, uId)
+                    const paymentDetails = await addBalancePaymentDetails(balanceAmount, user_id)
                     console.log('balance : ',formData.balanceAmount)
                     console.log('add success')
                     setResponse('add successfully')
@@ -105,58 +168,7 @@ const Payment = () => {
         }
     };
 
-    useEffect(() => {
-        const vechile_class = async(uId) => {
-        try{
-            const response = await student_details(uId)
-            setVechileClass(response.vechile_class)
-        }
-        catch(error){
-            console.log('error :',error)
-            setVechileClass(error)
-        }   
-    }
-
-    const get_amount = (vechileClass) => {
-        console.log('class :',vechileClass)
-
-        items.map((item, index) => {        
-            if(index == vechileClass){
-                setCourseAmount(item.price)
-            }
-        })
-    }
-    const get_exam_result = async(uId) => {
-        try{
-            const response = await show_exam_details(uId)
-            console.log('result :',response.result)
-            setExamResult(response.result)
-        }
-        catch(error){
-            console.log('error :',error)
-            setVechileClass(error)
-        }
-    }
-    vechile_class(uId)
-    get_exam_result(uId)
-    get_amount(vechileClass)
-    },[])
-
-    const trialPayment = document.getElementById('trialPay')
-    const examPayment = document.getElementById('examPay')
-
-    if (trialPayment && examPayment) {
-        if (examResult === 0) {
-            examPayment.style.display = 'block';
-            trialPayment.style.display = 'none';
-
-        } else {
-            trialPayment.style.display = 'block';
-            examPayment.style.display = 'none';
-        }
-    } else {
-        console.error("One or both elements with IDs 'trialPay' and 'examPay' do not exist in the DOM.");
-    }
+console.log('cord :', examResult)
     return (
         <div id='payment'>
             <div className="container">
@@ -228,8 +240,10 @@ const Payment = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.25} LKR</button>
-                            <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now</button>
+                            {examResult === 0 || !examResult ?
+                                <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.25} LKR</button> : 
+                                <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now</button>
+                            }
                         </form>
                     </div>
                 </div>

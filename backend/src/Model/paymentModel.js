@@ -19,8 +19,8 @@ payments.add_total_amount = function(paymentInfo, sId, result){
     })
 }
 payments.add_payment = function(paymentInfo, sId, result){
-    console.log('amount :', paymentInfo.paid)
-    dbconnection.query(`update payment_details set paid = ? where sId = '${sId}'`, [paymentInfo.paid], function(err, res){
+    console.log('payment paid :', paymentInfo.paid)
+    dbconnection.query(`update payment_details set paid = ?, paymentStatus = ?, paymentMethod = ? where sId = '${sId}'`, [paymentInfo.paid, 'half', 'card'], function(err, res){
         if (err) {
             console.error('Error updating payment details:', err);
             result(err, null)
@@ -40,7 +40,7 @@ payments.add_payment = function(paymentInfo, sId, result){
 
 payments.add_balance_payment = function(paymentInfo, sId, result){
     console.log('amount :', paymentInfo.paid)
-    dbconnection.query(`update payment_details set balance_paid = ? where sId = '${sId}'`, [paymentInfo.paid], function(err, res){
+    dbconnection.query(`update payment_details set balance_paid = ?, paymentStatus = ? where sId = '${sId}'`, [paymentInfo.paid, 'full'], function(err, res){
         if (err) {
             console.error('Error updating payment details:', err);
             result(err, null)
@@ -69,8 +69,8 @@ payments.show_details = function(sId, result){
     })
 }
 payments.find_eligible_students = function(result){
-    const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id WHERE balance_paid IS NULL`
-    dbconnection.query(sql, function(err, res){
+    const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id WHERE paymentStatus = ?`
+    dbconnection.query(sql, ['half'], function(err, res){
         if(err){
             console.log('err :',err)
             result(err, null)

@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { CourseMeterialStyle, timeStyle } from './Styles'
 import { sefty,free, time } from './Assets';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import{retrieveId} from '../Services/getToken'
 import{show_exam_details} from '../Services/examServices'
 import{get_times} from '../Services/practiceService'
 
 
 const CourseMeterial = () => {
-    const id = retrieveId()
+  const navigate = useNavigate();
+  const decodedToken = retrieveId()
+  const [user_id, setUser_id] = useState('')
+
+  useEffect(() => {
+      if(decodedToken){
+          setUser_id(decodedToken.id)
+  
+          if(decodedToken.role === 'admin' || decodedToken.role === 'instructor'){
+              navigate('/signin')
+          }
+      }
+      else{
+          setUser_id('')
+      }
+  },[decodedToken])
+
     const [examResponse, setExamResponse] = useState('')
     const [timeResponse, setTimeResponse] = useState('')
     const [apiResponse, setApiResponse] = useState('')
 
   useEffect(() => {
-    const fetchExamDetails = async (id) => {
+    const fetchExamDetails = async (user_id) => {
         try{
-            const userExamData = await show_exam_details(id)
+            const userExamData = await show_exam_details(user_id)
             setExamResponse(userExamData)
             setApiResponse('success to retrivedata')
         }
@@ -26,9 +42,9 @@ const CourseMeterial = () => {
         }
     }
 
-    const fetchPracticeTime = async (id) => {
+    const fetchPracticeTime = async (user_id) => {
       try{
-        const practiceTime = await get_times(id)
+        const practiceTime = await get_times(user_id)
         setTimeResponse(practiceTime)
         setApiResponse('success to retrivedata')
       }
@@ -38,14 +54,14 @@ const CourseMeterial = () => {
       }
     }
 
-    fetchExamDetails(id)
-    fetchPracticeTime(id)
+    fetchExamDetails(user_id)
+    fetchPracticeTime(user_id)
 
-}, [id])
+}, [user_id])
 
 const examElement = document.getElementById('online-services');
 const trialElement = document.getElementById('time-table');
-console.log("errrr",examResponse)
+// console.log("errrr",examResponse)
   useEffect(() => {
     if(examResponse){
       const examResult = examResponse.result; 
@@ -56,7 +72,7 @@ console.log("errrr",examResponse)
         trialElement.style.display = 'none';
       }
     }
-  })
+  },[])
     
     function toggleExamDetails(result) {
         if (result === 0) {
@@ -68,10 +84,11 @@ console.log("errrr",examResponse)
           examElement.style.display = 'none';
         }
     }
-
+console.log('exam :', examResponse.result)
   return (
         <div id="exam">
-          <div id="online-services">
+          {(!examResponse) || (examResponse && (examResponse.result === 0) || (examResponse.result === null))&&
+            <div id="online-services">
               <h1>Exam Meterials</h1> 
               <p className='text-center pt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ducimus, nihil quos officiis minus reiciendis sed temporibus quisquam necessitatibus unde eum omnis? Temporibus, commodi maxime. Eveniet, corrupti? Accusamus, excepturi eveniet?
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias, itaque nisi nulla tenetur autem commodi fuga ullam accusantium dolore illum nam libero. Amet dolor excepturi ratione? Libero, maiores inventore.
@@ -98,9 +115,10 @@ console.log("errrr",examResponse)
                       </Link>
                   </div>
               </div>
-          </div>
+          </div>}
                 
-          <div id="time-table" className='container'>
+          {examResponse && examResponse.result === 1 &&
+            <div id="time-table" className='container'>
             <h1>Your Practice Time</h1>
             <div className="row" id='headings'>
               <div className="col-lg-4 col-md-4 col-6">Date</div>
@@ -127,7 +145,7 @@ console.log("errrr",examResponse)
               )
             }
 
-          </div>
+          </div>}
           
         </div>
   )

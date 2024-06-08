@@ -27,8 +27,9 @@ const VerifyMes = () => {
     useEffect(() => {
         const fetchStudentDetails = async (user_id) => {
           try{
-            const datas = await student_details(user_id);             
-            setResponse(datas)
+            const datas = await student_details(user_id);  
+            console.log('data :', datas.data)           
+            setResponse(datas.data)
           }
           catch (error){
             console.error('Error fetching student details:', error);
@@ -38,26 +39,7 @@ const VerifyMes = () => {
         fetchStudentDetails(user_id); 
       }, [user_id])
 
-      // useEffect(() => {
-      //   if(response){
-      //     const student_status = response.student_status
-      //     toggleVerifyData(student_status)
-      //   }
-      // }, [response])
-
-      // const verifingDatas = document.getElementById('verifing')
-      // const verifiedDatas = document.getElementById('verified')
-      
-      // const toggleVerifyData = (student_status) => {
-      //   if(student_status == null){
-      //       verifingDatas.style.display = 'block'
-      //       verifiedDatas.style.display = 'none'
-      //   }
-      //   else if(student_status == "verified"){
-      //     verifiedDatas.style.display = 'block'
-      //     verifingDatas.style.display = 'none'
-      //   }
-      // }
+     
       return (
       <div id='verify'>
         <Navbar />

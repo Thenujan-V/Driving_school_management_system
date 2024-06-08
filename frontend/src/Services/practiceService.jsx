@@ -4,11 +4,9 @@ const API_BASE_URL = 'http://localhost:4000/api'
 
 
 export const get_times = async (id, first_name) => {
-    console.log('baccc :',id)
     try{
         const response = await axios.get(`${API_BASE_URL}/time/showtime/${id}/${first_name}`)
         const time = response.data
-        console.log(time)
         return time
     }
     catch(error){

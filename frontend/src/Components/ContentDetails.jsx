@@ -3,19 +3,38 @@ import { ContentDetailsStyle } from './Styles'
 import{userDetails} from '../Services/userService'
 import{retrieveId} from '../Services/getToken'
 import{show_exam_details} from '../Services/examServices'
+import { Link, useNavigate } from 'react-router-dom'
+import { student_details } from '../Services/studentService'
+import { showDetails } from '../Services/paymentService'
 
 
 const ContentDetails = () => {
-    const id = retrieveId()
-    const [response, setResponse] = useState('')
+    const navigate = useNavigate();
+    const decodedToken = retrieveId()
+    const [user_id, setUser_id] = useState('')
+
+    useEffect(() => {
+        if(decodedToken){
+            setUser_id(decodedToken.id)
+    
+            if(decodedToken.role === 'admin' || decodedToken.role === 'instructor'){
+                navigate('/signin')
+            }
+        }
+        else{
+            setUser_id('')
+        }
+    },[decodedToken])
+
+    const [userresponse, setUserResponse] = useState('')
     const [examResponse, setExamResponse] = useState('')
     const [apiResponse, setApiResponse] = useState('')
     
     useEffect(() => {
-        const fetchStudentData = async (id) => {
+        const fetchStudentData = async (user_id) => {
             try{
-                const userData = await userDetails(id)
-                setResponse(userData)
+                const userData = await userDetails(user_id)
+                setUserResponse(userData)
                 setApiResponse('success to retrivedata')
             }
             catch(error){
@@ -24,9 +43,10 @@ const ContentDetails = () => {
         
         }
 
-        const fetchExamDetails = async (id) => {
+        const fetchExamDetails = async (user_id) => {
             try{
-                const userExamData = await show_exam_details(id)
+                const userExamData = await show_exam_details(user_id)
+                console.log('user   ',userExamData)
                 setExamResponse(userExamData)
                 setApiResponse('success to retrivedata')
             }
@@ -34,69 +54,94 @@ const ContentDetails = () => {
                 setApiResponse('Faild to retrivedata')
             }
         }
-        fetchStudentData(id)
-        fetchExamDetails(id)
+        fetchStudentData(user_id)
+        fetchExamDetails(user_id)
 
 
-    }, [id])
-// console.log('user : ',response)
+    }, [user_id])
+
+    const [response, setResponse] = useState('')
+
     useEffect(() => {
-        if(examResponse){
-            const examResult = examResponse.result; 
-            toggleExamDetails(examResult)
-        }
-        else{
-            notAssignd()
-        }
-    }, [examResponse])
-
-    const examElement = document.getElementById('foryou');
-    const examPassElement = document.getElementById('examPass');
-    const notAssigndExamDate = document.getElementById('notAssignd');
+        const fetchStudentDetails = async (user_id) => {
+          try{
+            const datas = await student_details(user_id);  
+            console.log('data :', datas.data)           
+            setResponse(datas.data)
+          }
+          catch (error){
+            console.error('Error fetching student details:', error);
+          }
+        };
     
-    function toggleExamDetails(result) {
-        if (result === 1) {
-            examPassElement.style.display = 'block';
-            examElement.style.display = 'none';
-            notAssigndExamDate.style.display = 'none';
-        } 
-        else if (result === 0) {
-            examElement.style.display = 'block';
-            examPassElement.style.display = 'none';
-            notAssigndExamDate.style.display = 'none';
-        }
-        
-    }
-    function notAssignd() {
-        if (examPassElement) {
-            examPassElement.style.display = 'none';
-        }
-        if (examElement) {
-            examElement.style.display = 'none';
-        }
-        if (notAssigndExamDate) {
-            notAssigndExamDate.style.display = 'block';
-        }
-    }
+        fetchStudentDetails(user_id); 
+      }, [user_id])
+    
+    const [payments, setPayments] = useState('')
 
+
+      useEffect(() => {
+        const fetchPaymentDetails = async (user_id) => {
+            try{
+                const paymentResponse = await showDetails(user_id)
+                console.log('pay :', paymentResponse.data)
+                setPayments(paymentResponse.data)
+            }
+            catch(error){
+                console.log('error :', error)
+            }
+        }
+        fetchPaymentDetails(user_id)
+
+      }, [user_id])
+    
   return (
     <div id='contentPage'>
-        <div className="container" id='content'>
+        <div className="container" id='content'>    
             <div className="row">
                 <div id="img" className='col-lg-6 col-md-6 col-12'></div>
-                <div id="notAssignd" className='col-lg-6 col-md-6 col-12'>
-                    <h1>For You</h1>
-                    <p>
-                        "Hello {response.first_name} <br /> You are eligible to take the examination!" <br />
-                        <span>waiting some hours for your exam date</span> <br /><br />
-                        You are allowed up to three attempts to pass the exam. If you do not pass after three attempts,
-                         you will need to restart from step one and pay 25% of the full course fee. <br /><br />Our driving school offers examination 
-                         preparation classes and practice exams, 
-                         which students are welcome to attend free of charge. These resources can help you succeed on your first attempt. <br /><br />
-                         If you successfully pass the exam, you may apply for the trial period after a 90-day wait
-                    </p>
-                </div>
-                <div id="foryou" className='col-lg-6 col-md-6 col-12'>
+                    <div className='col-lg-6 col-md-6 col-12' id="notAssignd">
+                        {
+                            response && response.student_status === null && payments && payments[0].paymentStatus === null &&
+                            <p id='verifing'>
+                                Hello {response && response.first_name},
+                                <br />
+                                "Your documents are currently being verified. Please allow a few hours for the verification process to complete. Once your documents have been verified, you will need to pay 25% of your total course fee to receive your exam date."
+                                <br /><br />
+                                Thankyou {response && response.first_name}. <br />
+                                <Link to='/' className='btn btn-warning mt-3'>Okey</Link>
+                            </p>
+                            }
+
+                            {
+                            response && response.student_status === "verified" && payments && payments[0].paymentStatus === null &&
+                            <p id='verified'>
+                                Hello {response && response.first_name},
+                                <br />
+                                <br />
+                                "Your documents have been successfully verified. To proceed, please make a payment of 25% to secure your exam date. Payment can be made using credit card, debit card, or other online methods.  Alternatively,<br /> you may visit our branch in person to complete the payment."
+                                <br /> <br />
+                                Thankyou {response && response.first_name}. <br /><br />
+                                <span>If you wish to make the payment online, please <Link to='/payment' id='btn' style={{color:'darkblue'}}>Click here</Link> to proceed.</span>
+
+                            </p>
+                        }
+                    </div>
+                    
+                        {!examResponse && payments && payments[0].paymentStatus === 'half' &&
+                            <div id="notAssignd" className='col-lg-6 col-md-6 col-12'>
+                            <h1>For You</h1>
+                            <p>
+                                "Hello {response.first_name} <br /> You are eligible to take the examination!" <br />
+                                <span>waiting some hours for your exam date</span> <br /><br />
+                                You are allowed up to three attempts to pass the exam. If you do not pass after three attempts,
+                                you will need to restart from step one and pay 25% of the full course fee. <br /><br />Our driving school offers examination 
+                                preparation classes and practice exams, 
+                                which students are welcome to attend free of charge. These resources can help you succeed on your first attempt. <br /><br />
+                                If you successfully pass the exam, you may apply for the trial period after a 90-day wait
+                            </p>
+                        </div>}
+                {examResponse && examResponse.result === null && <div id="foryou" className='col-lg-6 col-md-6 col-12'>
                     <h1>For You</h1>
                     <p>
                         "Hello {response.first_name} <br /> You are eligible to take the examination!" <br />
@@ -111,8 +156,8 @@ const ContentDetails = () => {
                          which students are welcome to attend free of charge. These resources can help you succeed on your first attempt. <br /><br />
                          If you successfully pass the exam, you may apply for the trial period after a 90-day wait
                     </p>
-                </div>
-                <div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                </div>}
+                {examResponse && examResponse.result === 1 && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
                     <h1>For You</h1>
                     <p>
                         "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
@@ -123,7 +168,7 @@ const ContentDetails = () => {
                         you to make the most of this opportunity and practice diligently.<br /><br />
                         Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
                     </p>
-                </div>
+                </div>}
             </div>
         </div>
     </div>

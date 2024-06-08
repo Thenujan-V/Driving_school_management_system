@@ -7,7 +7,7 @@ const UserDocuments = () => {
   return (
     <>
         <Navbar />
-        <div style={{ display: 'flex' , height: '90vh' }}>
+        <div style={{ display: 'flex' , minHeight: '90vh' }}>
             <VerticalNavbar />
             <div style={{ flex: 1 }}>
                 <Documents />

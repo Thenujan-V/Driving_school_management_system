@@ -14,7 +14,7 @@ body{
 }
 .userDocuments{
     background-color: var(--green);
-    height: 90vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

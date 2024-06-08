@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const path = require('path');
 
 var app = express()
 
@@ -15,6 +16,7 @@ const timeRouters = require('./src/Router/timeRouter')
 const examRouters = require('./src/Router/examRouter')
 const adminRouters = require('./src/Router/adminRouter')
 const serviceRouters = require('./src/Router/ServiceRouter')
+const trialRouters = require('./src/Router/TrialRouter')
 const e = require('express')
 
 
@@ -25,6 +27,27 @@ app.use('/api/time',timeRouters)
 app.use('/api/exam',examRouters)
 app.use('/api/admin', adminRouters)
 app.use('/api/service', serviceRouters)
+app.use('/api/trial', trialRouters)
+
+app.get('/files/:id', async (req, res) => {
+  const fileId = req.params.id;
+
+  try {
+    const fileData = await db.getFileDataById(fileId);
+
+    if (!fileData) {
+      return res.status(404).send('File not found');
+    }
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.set('Content-Type', 'application/pdf');
+        
+    res.send(fileData);
+  } catch (error) {
+    console.error('Error fetching file data:', error);
+    res.status(500).send('Internal server error');
+  }
+});
 
 
 

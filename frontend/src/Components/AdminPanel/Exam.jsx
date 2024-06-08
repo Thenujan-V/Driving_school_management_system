@@ -42,7 +42,9 @@ const Exam = () => {
                         <p className='col-lg-3 col-md-3 col-3'>{student.email}</p>
                         {/* <Link to={`/examDate/${student.id}`}  className='col-lg-3 col-md-3 col-3 view'>Assign Date</Link> */}
                         <div className='col-lg-5 col-md-5 col-5 d-flex justify-content-center'>
-                            <ExamDate />
+                            <ExamDate 
+                                student_id = {student.sId}
+                            />
                         </div>
                     </div>
                 ))

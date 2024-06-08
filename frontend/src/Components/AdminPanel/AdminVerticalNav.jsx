@@ -27,6 +27,9 @@ const AdminVerticalNav = () => {
                 <Link to='/exam' className='link'>
                     <FontAwesomeIcon icon={faCalendarDays} /> Add Exam Date
                 </Link>
+                <Link to='/trial' className='link'>
+                    <FontAwesomeIcon icon={faCalendarDays} /> Add Trial Date
+                </Link>
                 <Link to='/result' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Add Results
                 </Link>

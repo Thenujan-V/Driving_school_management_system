@@ -1,4 +1,5 @@
 var dbconnection = require('../Config/Db.config');
+const path = require('path');
 
 var students = function(student){
     this.phone_number = student.phone_number;
@@ -31,7 +32,15 @@ students.show_details = function(sId, result){
             result(err, null)
         }
         else{
-            result(null,res)
+            if (res.length) {
+                const student = res[0];
+                student.nic_soft_copy_url = `/files/${path.basename(student.nic_soft_copy.toString())}`;
+                student.medical_soft_copy_url = `/files/${path.basename(student.medical_soft_copy.toString())}`;
+                student.birth_certificate_soft_copy_url = `/files/${path.basename(student.birth_certificate_soft_copy.toString())}`;
+                result(null, student);
+            } else {
+                result({ kind: "not_found" }, null);
+            }
         }
     })
 }

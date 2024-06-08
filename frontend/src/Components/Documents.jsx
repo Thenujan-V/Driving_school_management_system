@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { documents } from './Styles'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { retrieveId } from '../Services/getToken';
 import { student_entroll, student_details, student_details_update } from '../Services/studentService';
 
@@ -75,8 +75,8 @@ const Documents = () => {
             const fetchStudentsDocuments = async (user_id) => {
                 try{
                     const responseDocuments = await student_details(user_id)
-                    console.log('documents :',responseDocuments)
-                    setDocumentsResponse(responseDocuments)
+                    console.log(responseDocuments.data)
+                    setDocumentsResponse(responseDocuments.data)
                 }
                 catch(error){
                     console.log(error)
@@ -95,9 +95,9 @@ const Documents = () => {
                     medical_date: documentsResponse.medical_date,
                     medical_number: documentsResponse.medical_number,
                     vechile_class: documentsResponse.vechile_class,
-                    nic_soft_copy: documentsResponse.nic_soft_copy,
-                    medical_soft_copy: documentsResponse.medical_soft_copy,
-                    birth_certificate_soft_copy: documentsResponse.birth_certificate_soft_copy,
+                    nic_soft_copy: documentsResponse.nic_soft_copy_url,
+                    medical_soft_copy: documentsResponse.medical_soft_copy_url,
+                    birth_certificate_soft_copy: documentsResponse.birth_certificate_soft_copy_url,
             })
             }
         },[documentsResponse])
@@ -210,21 +210,21 @@ const Documents = () => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="nic_soft_copy" className="form-label">NIC Soft Copy</label>
-                      <input className="form-control" type="file" id='nic_soft_copy' name='nic_soft_copy' onChange={handleChange} />
+                      <iframe src={formData.nic_soft_copy} title="NIC Soft Copy" width="100%" height="600"></iframe>
                       <p>{errors.nic_soft_copy}</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="medical_soft_copy" className="form-label">Medical Soft Copy</label>
-                      <input className="form-control" type="file" id='medical_soft_copy' name='medical_soft_copy' onChange={handleChange} />
+                      <iframe src={formData.medical_soft_copy} title="Medical Soft Copy" width="100%" height="600"></iframe>
                       <p>{errors.medical_soft_copy}</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                         <div className="form-group mb-3">
                         <label htmlFor="birth_certificate_soft_copy" className="form-label">Birth Certificate Soft Copy</label>
-                        <input className="form-control" type="file" id='birth_certificate_soft_copy' name='birth_certificate_soft_copy' onChange={handleChange} />
+                        <iframe src={formData.birth_certificate_soft_copy} title="Birth Certificate Soft Copy" width="100%" height="600"></iframe>
                         <p>{errors.birth_certificate_soft_copy}</p>
                         </div>
                     </div>

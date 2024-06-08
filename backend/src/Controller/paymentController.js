@@ -14,7 +14,6 @@ exports.addTotalPayment = async (req, res) => {
 }
 
 exports.addPayment = async (req, res) => {
-    console.log('req :',req.body)
     await paymentModel.add_payment(req.body, req.params.sId, function(err, paymentRes){
         console.log('pr : ',paymentRes)
         if(err){

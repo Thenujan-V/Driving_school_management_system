@@ -4,15 +4,9 @@ import { student_entroll } from '../Services/studentService';
 import { retrieveId } from '../Services/getToken';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addTotalAmount } from '../Services/paymentService';
+import { getServices } from '../Services/TrainingServices';
 
 const StudentEntroll = () => {
-  const items = [
-    { url: '1', title: 'Item 1', description: 'Description for item 1', price: '1500' },
-    { url: '2', title: 'Item 1', description: 'Description for item 1', price: '2500' },
-    { url: '3', title: 'Item 1', description: 'Description for item 1', price: '3500' },
-    { url: '4', title: 'Item 1', description: 'Description for item 1', price: '4500' }
-  ];
-
   const navigate = useNavigate();
   const decodedToken = retrieveId();
   const [user_id, setUser_id] = useState('');
@@ -54,6 +48,7 @@ const StudentEntroll = () => {
   const [apiResponse, setApiResponse] = useState('');
   const [totalAmount, setTotalAmount] = useState('');
   const [submitTriggered, setSubmitTriggered] = useState(false);
+  const [items, setItems] = useState([])
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -65,15 +60,29 @@ const StudentEntroll = () => {
   };
 
   useEffect(() => {
-    if (formData.vechile_class) {
-      const vechileClassIndex = parseInt(formData.vechile_class, 10);
-      const selectedItem = items.find((item, index) => index === vechileClassIndex);
-      if (selectedItem) {
-        setTotalAmount(selectedItem.price);
-      }
+    const get_services = async() => {
+        try{
+            const response = await getServices()
+            setItems(response)
+        }
+        catch(error){
+            console.log('error occure :', error)
+        }
     }
-  }, [formData.vechile_class, items]);
+    get_services()
+},[formData.vechile_class])
 
+useEffect(() => {
+    const findAmount = (items) => {
+        items.map((item) => { 
+            if(item.service_class === formData.vechile_class){
+                setTotalAmount(item.price)
+            }
+        })
+    }
+    findAmount(items)
+}, [items])
+console.log('tota :', totalAmount)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
@@ -121,6 +130,7 @@ const StudentEntroll = () => {
         const paymentResponse = await addTotalAmount(totalAmount, formData.id);
         console.log('Payment response:', paymentResponse);
         setApiResponse('ID added successfully!');
+
       } catch (error) {
         console.error('Error:', error);
         setApiResponse('An error occurred during the submission.');

@@ -34,6 +34,7 @@ import AssignDate from './Components/EmployeePanel/AssignDate';
 import Attendance from './Components/EmployeePanel/Attendance';
 import AddEmployee from './Components/AdminPanel/AddEmployee';
 import AdminDetails from './Components/AdminPanel/AdminDetails';
+import Trial from './Components/AdminPanel/Trial';
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
         <Route path='/userdetails' element={<UserDetails />} />
         <Route path='/examDate/:sId' element={<ExamDate />} />
         <Route path='/exam' element={<Exam />} />
+        <Route path='/trial' element={<Trial />} />
         <Route path='/result' element={<Result />} />
         <Route path='/result' element={<Result />} />
         <Route path='/addemployee' element={<AddEmployee />} />

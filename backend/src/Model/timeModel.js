@@ -7,7 +7,6 @@ var timeTable = function(time){
     this.sid = time.sid
 }
 timeTable.insert_time = function(time, result){
-    console.log(time)
     var sql = `insert into practice_time (practice_time, practice_date, sid) values (?, ?, ?)`
     dbconnection.execute(sql, [time.practice_time, time.practice_date, time.sid], function(err, res){
         if(err){
@@ -22,7 +21,6 @@ timeTable.insert_time = function(time, result){
 }
 
 timeTable.update_attendence = function(tId, result){
-    console.log('tid :',tId)
     var sql = `UPDATE practice_time SET atendance = 1 WHERE tId = '${tId}'`
     dbconnection.execute(sql, function(err, res){
         if(err){
