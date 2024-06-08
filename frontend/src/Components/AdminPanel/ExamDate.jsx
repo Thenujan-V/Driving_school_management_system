@@ -54,7 +54,7 @@ const ExamDate = ({ student_id }) => {
         }));
     };
 
-    console.log('exam res:', examRes);
+    console.log('exam res:', id);
 
     return (
         <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>

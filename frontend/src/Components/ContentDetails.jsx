@@ -157,7 +157,21 @@ const ContentDetails = () => {
                          If you successfully pass the exam, you may apply for the trial period after a 90-day wait
                     </p>
                 </div>}
-                {examResponse && examResponse.result === 1 && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                {examResponse && examResponse.result === 1 && payments && payments[0].paymentStatus === 'half' && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                    <h1>For You</h1>
+                    <p>
+                        "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
+                        As a successful candidate, you are now eligible to participate in the trial period after a waiting period of 90 days from the date of your exam results.<br />
+                        If you are under 18 years of age, you must wait until you turn 18 to attempt the trial. <br /><br />
+                        Furthermore, you are required to attend practice sessions regularly and practice with your vehicle to prepare for the trial. Consistent attendance at practice sessions is 
+                        essential for building the skills and confidence needed to succeed. If you do not attend practices regularly, you will not be permitted to attempt the trial. We encourage 
+                        you to make the most of this opportunity and practice diligently.<br /><br />
+                        Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
+                        <span>If you wish to make the balance payment online, please <Link to='/payment' id='btn' style={{color:'darkblue'}}>Click here</Link> to proceed.</span><br /><br />
+                    </p>
+                </div>}
+                {
+                    payments && payments[0].paymentStatus === 'full' && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
                     <h1>For You</h1>
                     <p>
                         "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
@@ -168,7 +182,9 @@ const ContentDetails = () => {
                         you to make the most of this opportunity and practice diligently.<br /><br />
                         Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
                     </p>
-                </div>}
+                </div>
+
+                }
             </div>
         </div>
     </div>

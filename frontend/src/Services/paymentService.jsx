@@ -72,3 +72,14 @@ export const examEligibleStudents = async () => {
         throw error
     }
 }
+
+export const trialEligibleStudents = async () => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/payment/trialeligiblestudents`)
+        return response.data
+    }
+    catch(error){
+        console.log('error : ',error)
+        throw error
+    }
+}

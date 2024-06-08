@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminVerticalNav from './AdminVerticalNav'
-import { examEligibleStudents } from '../../Services/paymentService'
+import { examEligibleStudents, trialEligibleStudents } from '../../Services/paymentService'
 import { Link } from 'react-router-dom'
 import ExamDate from './ExamDate'
 
@@ -10,7 +10,7 @@ const Trial = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try{
-                const response = await examEligibleStudents()
+                const response = await trialEligibleStudents()
                 setExamEligible(response)
             }
             catch(error){
@@ -37,12 +37,12 @@ const Trial = () => {
                     examEligible.filter(student => student.paymentStatus === 'full').length > 0 ? (
                         examEligible.map((student) => (
                             student.paymentStatus === 'full' && (
-                                <div className='row w-75' key={student.sId}>
-                                    <p className='col-lg-1 col-md-1 col-1'>{student.sId}</p>
+                                <div className='row w-75' key={student.id}>
+                                    <Link to={`/viewdetails/${student.sId}`} className='col-lg-1 col-md-1 col-1' style={{color:'darkBlue' , fontWeight:'bolder', fontSize:'18px'}}>{student.id}</Link>
                                     <p className='col-lg-3 col-md-3 col-3'>{student.first_name} {student.last_name}</p>
                                     <p className='col-lg-3 col-md-3 col-3'>{student.email}</p>
                                     <div className='col-lg-5 col-md-5 col-5 d-flex justify-content-center'>
-                                        <ExamDate student_id={student.sId} />
+                                        <ExamDate student_id={student.id} />
                                     </div>
                                 </div>
                             )

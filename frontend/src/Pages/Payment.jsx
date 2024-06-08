@@ -136,7 +136,7 @@ const Payment = () => {
 
         if(Object.keys(errors).length === 0){
             console.log('okey')
-            
+
             if (typeof examResult === 'undefined'){
                 try{
                     const advanceAmount = courseAmount * 0.25
@@ -242,7 +242,7 @@ console.log('cord :', examResult)
                             </div>
                             {examResult === 0 || !examResult ?
                                 <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.25} LKR</button> : 
-                                <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now</button>
+                                <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now {courseAmount*0.75} LKR</button>
                             }
                         </form>
                     </div>

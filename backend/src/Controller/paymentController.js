@@ -61,3 +61,14 @@ exports.examEligibleStudents = (req, res) => {
         }
     })
 }
+
+exports.trialEligibleStudents = (req, res) => {
+    paymentModel.find_trial_eligible_students(function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}

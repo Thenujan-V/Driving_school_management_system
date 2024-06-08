@@ -81,11 +81,11 @@ const PaymentDetails = () => {
                   </div>
                   <div className="detail-row">
                     <p>Paid (Exam Amount) :</p>
-                    {apiPaymentResponse ? <span>{apiPaymentResponse.balance_paid !== null ? (apiPaymentResponse.total_amount - apiPaymentResponse.balance_paid)  : <h6>NOT PAY</h6>}</span>: ''}
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.balance_paid !== null ? `${apiPaymentResponse.paid} LKR`  : <h6>NOT PAY</h6>}</span>: ''}
                   </div>
                   <div className="detail-row">
                     <p>Paid (Trial Amount) :</p>
-                    {apiPaymentResponse ? <span>{apiPaymentResponse.paid  === null ? <h6>NOT PAY</h6> : apiPaymentResponse.paid}</span> : ''}
+                    {apiPaymentResponse ? <span>{apiPaymentResponse.paid  === null ? <h6>NOT PAY</h6> : `${apiPaymentResponse.balance_paid} LKR`}</span> : ''}
                   </div>
                   {/* <div className="detail-row">
                     <p>Date (Exam Payment) :</p>
