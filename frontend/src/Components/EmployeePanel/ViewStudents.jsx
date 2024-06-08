@@ -28,12 +28,12 @@ const ViewStudents = () => {
                 studentsApi &&
                 studentsApi.map((studentDetail) => (
                     <div className='row'>
-                        <p className='col-lg-1 col-md-2 col-2'>{studentDetail.sId}</p>
+                        <p className='col-lg-1 col-md-2 col-2'>{studentDetail.id}</p>
                         <p className='col-lg-2 col-md-2 col-2'>{studentDetail.nic_number}</p>
                         <p className='col-lg-2 col-md-2 col-2'>{studentDetail.first_name}</p>
                         <p className='col-lg-2 col-md-2 col-2'>{studentDetail.phone_number}</p>
-                        <Link to={`/attendance/${studentDetail.sId}/${studentDetail.first_name}`} className='col-lg-2 col-md-2 col-2 view'>View</Link>
-                        <Link to={`/assignDate/${studentDetail.sId}`} className='col-lg-3 col-md-2 col-2 verify'>Assign Time</Link>
+                        <Link to={`/attendance/${studentDetail.id}/${studentDetail.first_name}`} className='col-lg-2 col-md-2 col-2 view'>View</Link>
+                        <Link to={`/assignDate/${studentDetail.id}`} className='col-lg-3 col-md-2 col-2 verify'>Assign Time</Link>
                     </div>
                 ))
             }

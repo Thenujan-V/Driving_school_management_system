@@ -22,7 +22,7 @@ const Profile = () => {
           setUser_id('')
       }
   },[decodedToken])
-  console.log(decodedToken)
+  
   const [formData, setFormData] = useState({
         first_name:'',
         last_name:'',

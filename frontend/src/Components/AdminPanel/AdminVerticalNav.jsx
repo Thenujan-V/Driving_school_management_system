@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faC, faIdCard, faStarHalfStroke, faUserAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
@@ -7,9 +7,34 @@ import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
+import { logout, retrieveId } from '../../Services/getToken';
 
 
 const AdminVerticalNav = () => {
+
+    const navigate = useNavigate()
+    const decodedToken = retrieveId()
+
+    const [user_id, setUser_id] = useState('')
+
+    useEffect(() => {
+        if(decodedToken){
+            setUser_id(decodedToken.id)
+    
+            if(decodedToken.role === 'user' || decodedToken.role === 'instructor'){
+                navigate('/signin')
+            }
+        }
+        else{
+            setUser_id('')
+            navigate('/signin')
+        }
+    },[decodedToken])
+
+    const handleLogout = () => {
+        logout()
+    }
+
   return (
     <>
         <div className="vertical-menu" style={{minHeight:'100vh'}}>
@@ -44,6 +69,9 @@ const AdminVerticalNav = () => {
                 </Link>
                 <Link to='/instractor' className='link'>
                     <FontAwesomeIcon icon={faClock} /> Instructor
+                </Link>
+                <Link onClick={handleLogout} className='link'>
+                    <FontAwesomeIcon icon={faClock} /> Logout
                 </Link>
             </div>
         </div>

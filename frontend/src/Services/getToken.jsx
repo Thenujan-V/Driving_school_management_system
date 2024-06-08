@@ -1,4 +1,6 @@
 import { jwtDecode } from 'jwt-decode';
+
+
 export const getToken = () => {
     try{
         const token = localStorage.getItem("authToken")   
@@ -36,4 +38,8 @@ export const retrieveId = () => {
         console.log('Error getting token: ', error)
         throw error
     }
+}
+
+export const logout = () => {
+    localStorage.removeItem("authToken")
 }

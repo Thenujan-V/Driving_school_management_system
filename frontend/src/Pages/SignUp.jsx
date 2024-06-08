@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {signupService} from '../Services/userService'
 import { SignupStyle } from '../Components/Styles'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
 
@@ -99,9 +99,10 @@ const SignUp = () => {
                 <p>{errors.confirmPassword}</p>
               </div>
               <div className="form-group mt-1 pb-4" id='btnTag'>
-                <button className='btn btn-primary mt-4' type="submit">SignUp</button>
+                <button className='btn btn-primary mt-3' type="submit">SignUp</button>
               </div>
             </form>
+            <Link to='/signin' style={{color:'#200E3A', fontSize:'18px', fontWeight:'500', paddingBottom:'3px'}}>Already have an account?</Link>
           </div>
         </div>
     </>

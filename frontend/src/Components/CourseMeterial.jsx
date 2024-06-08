@@ -45,6 +45,7 @@ const CourseMeterial = () => {
     const fetchPracticeTime = async (user_id) => {
       try{
         const practiceTime = await get_times(user_id)
+        console.log('ppp :', user_id)
         setTimeResponse(practiceTime)
         setApiResponse('success to retrivedata')
       }
@@ -59,31 +60,9 @@ const CourseMeterial = () => {
 
 }, [user_id])
 
-const examElement = document.getElementById('online-services');
-const trialElement = document.getElementById('time-table');
-// console.log("errrr",examResponse)
-  useEffect(() => {
-    if(examResponse){
-      const examResult = examResponse.result; 
-      toggleExamDetails(examResult)
-    }
-    else{
-      if(trialElement){
-        trialElement.style.display = 'none';
-      }
-    }
-  },[])
-    
-    function toggleExamDetails(result) {
-        if (result === 0) {
-          examElement.style.display = 'block';
-          trialElement.style.display = 'none';
-        } 
-        else if (result === 1) {
-          trialElement.style.display = 'block';
-          examElement.style.display = 'none';
-        }
-    }
+
+
+
 console.log('exam :', examResponse)
   return (
         <div id="exam">
@@ -129,15 +108,22 @@ console.log('exam :', examResponse)
               timeResponse && Array.isArray(timeResponse) ? (
                 timeResponse.map((time, index) => (
                   <div key={index} id='times' className='row'>
-
                     <p id='date' className='col-lg-4 col-md-4 col-6'>{new Date(time.practice_date).toLocaleDateString('en-GB', {
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric'
                     })}</p>
                     <p id='time' className='col-lg-4 col-md-4 col-6'>{time.practice_time}</p>
-                    <p id='atendance' className='col-lg-4 col-md-4 col-6'>{time.atendance === 0 ? "didn't come" : 'come'
-                    }</p>
+                    {
+                      time.atendance === 0 ? 
+                        (new Date(time.practice_date) < new Date() ? 
+                            <p id='atendance' className='col-lg-4 col-md-4 col-6' style={{backgroundColor:'red'}}>Didn't Come</p> :
+                               <p id='atendance' className='col-lg-4 col-md-4 col-6' style={{backgroundColor:'#200E3A'}}>Waiting</p>) : 
+                                  <p id='atendance' className='col-lg-4 col-md-4 col-6' style={{backgroundColor:'Green'}}>Come</p>
+                    }
+
+                    {/* <p id='atendance' className='col-lg-4 col-md-4 col-6'>{time.atendance === 0 ? (new Date(time.practice_date) < new Date() ? "didn't come" : 'waitng') : 'come'
+                    }</p> */}
                   </div>
                 ))
               ) : (
