@@ -84,10 +84,10 @@ const trialElement = document.getElementById('time-table');
           examElement.style.display = 'none';
         }
     }
-console.log('exam :', examResponse.result)
+console.log('exam :', examResponse)
   return (
         <div id="exam">
-          {(!examResponse) || (examResponse && (examResponse.result === 0) || (examResponse.result === null))&&
+          {(typeof examResponse === 'undefined' || examResponse.result === 0 || examResponse.result === null) &&
             <div id="online-services">
               <h1>Exam Meterials</h1> 
               <p className='text-center pt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ducimus, nihil quos officiis minus reiciendis sed temporibus quisquam necessitatibus unde eum omnis? Temporibus, commodi maxime. Eveniet, corrupti? Accusamus, excepturi eveniet?

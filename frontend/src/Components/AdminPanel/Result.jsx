@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { show_exam_students, update_result } from '../../Services/examServices'
 import AdminVerticalNav from './AdminVerticalNav'
 import { Link } from 'react-router-dom'
+import { show_trial_details, show_trial_students, update_trial_result } from '../../Services/TrialServices'
 
 const Result = () => {
 
     const [showDetails, setShowDetails] = useState([])
+    const [showTrialDetails, setShowTrialDetails] = useState([])
     const [showExam, setShowExam] = useState('')
     const [showTrial, setShowTrial] = useState('')
 
@@ -14,6 +16,9 @@ const Result = () => {
             try{
                 const response = await show_exam_students()
                 setShowDetails(response)
+
+                const trialResponse = await show_trial_students()
+                setShowTrialDetails(trialResponse)
             }
             catch(error){
                 setShowDetails(error)
@@ -22,29 +27,33 @@ const Result = () => {
         studentsDetails()
     },[])
 
-    const resultPass = async (id) =>{
+    const examResult = async (id, result) =>{
         
         try{
             const examResult = {
-                result :'1',
+                result :result,
                 sId :id
             }
-            const response = await update_result(examResult)
-            console.log(response.data)
+            await update_result(examResult)
+
+            const trialResponse = await show_trial_students()
+            setShowTrialDetails(trialResponse)
         }
         catch(error){
             console.log('error :',error)
         }
     }
-    const resultFail = async (id) =>{
+    const trialResult = async (id, result) =>{
         
         try{
             const examResult = {
-                result :'0',
+                result :result,
                 sId :id
             }
-            const response = await update_result(examResult)
-            console.log(response.data)
+            await update_trial_result(examResult)
+
+            const trialResponse = await show_trial_students()
+            setShowTrialDetails(trialResponse)
         }
         catch(error){
             console.log('error :',error)
@@ -59,6 +68,7 @@ const Result = () => {
         setShowExam(null)
         setShowTrial('1')
     }
+    console.log('sssss :', showTrialDetails)
 
   return (
     <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
@@ -77,22 +87,22 @@ const Result = () => {
                             <p className='col-lg-1 col-md-2 col-2'>{studentDetail.id}</p>
                             <p className='col-lg-2 col-md-2 col-2'>{studentDetail.first_name} {studentDetail.last_name}</p>
                             <p className='col-lg-2 col-md-2 col-2'>{new Date(studentDetail.exam_date).toLocaleDateString()}</p>
-                            <Link className='btn col-lg-3 col-md-2 col-2 notVerify' onClick={() => resultPass(studentDetail.id)}>Pass</Link>
-                            <Link className='btn col-lg-2 col-md-2 col-2 verify' onClick={() => resultFail(studentDetail.id)}>Fail</Link> 
+                            <Link className='btn col-lg-3 col-md-2 col-2 notVerify' onClick={() => examResult(studentDetail.id, '1')}>Pass</Link>
+                            <Link className='btn col-lg-2 col-md-2 col-2 verify' onClick={() => examResult(studentDetail.id, '0')}>Fail</Link> 
                         </div>
                     ))
                 :null
             }
             {
                 showTrial ? 
-                    showDetails &&
-                        showDetails.map((studentDetail) => (
+                    showTrialDetails &&
+                    showTrialDetails.map((studentDetail) => (
                             <div className='row'>
-                                <p className='col-lg-1 col-md-2 col-2'>{studentDetail.id}</p>
+                                <Link to={`/viewdetails/${studentDetail.sId}`} className='col-lg-1 col-md-1 col-1' style={{color:'darkBlue' , fontWeight:'bolder', fontSize:'18px'}}>{studentDetail.id}</Link>
                                 <p className='col-lg-2 col-md-2 col-2'>{studentDetail.first_name} {studentDetail.last_name}</p>
-                                <p className='col-lg-2 col-md-2 col-2'>{new Date(studentDetail.exam_date).toLocaleDateString()}</p>
-                                <Link className='btn col-lg-3 col-md-2 col-2 notVerify' onClick={() => resultPass(studentDetail.id)}>Pass</Link>
-                                <Link className='btn col-lg-2 col-md-2 col-2 verify' onClick={() => resultFail(studentDetail.id)}>Fail</Link> 
+                                <p className='col-lg-2 col-md-2 col-2'>{new Date(studentDetail.trial_date).toLocaleDateString()}</p>
+                                <Link className='btn col-lg-3 col-md-2 col-2 notVerify' onClick={() => trialResult(studentDetail.id, '1')}>Pass</Link>
+                                <Link className='btn col-lg-2 col-md-2 col-2 verify' onClick={() => trialResult(studentDetail.id, '0')}>Fail</Link> 
                             </div>
                         ))
                     :null

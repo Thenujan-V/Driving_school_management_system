@@ -201,6 +201,7 @@ const ContentDetails = () => {
                                 waiting for trial date {new Date(trialDetails.trial_date).toLocaleDateString()}  (write something long and meaning fully)
                             </p>
                         </div>) : null
+
                 }
             </div>
         </div>

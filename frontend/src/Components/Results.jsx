@@ -70,6 +70,8 @@ const Results = () => {
         fetchTrialDetails(user_id)
 
     }, [user_id])
+
+    console.log('exam :', examResponse)
   return (
     <div>
         <Navbar />
@@ -90,15 +92,15 @@ const Results = () => {
                                     </div> ) : <p>Wait</p>
                         }
                     </div>}
-                    {(typeof trialResponse !== 'undefined') && (trialResponse && trialResponse.result === '') ? (<div className="trial col-lg-6">
+                    {(typeof trialResponse !== 'undefined') && (trialResponse && trialResponse.result) ? (<div className="trial col-lg-6">
                         <h2>Driving Exam Result</h2>
 
                         {trialResponse.result === 1 ? 
                         (<div id="trialPass">
-                            <p>Congrats...! You Passed the trail.</p>
+                            <p>Congrats...! You Passed the trial examination.</p>
                         </div>) : trialResponse.result === 0 ?
                         (<div id="trailFail">
-                            <p>Sorry you faild the trail.</p>
+                            <p>Sorry you faild the trial examination.</p>
                         </div>) : ''}
                     </div>) : ''
                     }

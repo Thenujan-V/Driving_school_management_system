@@ -34,8 +34,7 @@ export const show_trial_students = async () => {
         throw error 
     }
 }
-export const update_result = async (trialResult) => {
-    console.log('eresu : ',trialResult)
+export const update_trial_result = async (trialResult) => {
     try{
         const response = await axios.put(`${API_BASE_URL}/trial/result`,trialResult)
         return response.data
