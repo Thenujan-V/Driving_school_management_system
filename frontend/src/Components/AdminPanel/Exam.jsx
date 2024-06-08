@@ -31,19 +31,19 @@ const Exam = () => {
                 <p className='col-lg-1 col-md-1 col-1'>Id</p>
                 <p className='col-lg-3 col-md-3 col-3'>Full Name</p>
                 <p className='col-lg-3 col-md-3 col-3'>Email</p>
-                <p className='col-lg-5 col-md-5 col-5 text-center'>Assing Date</p>
+                <p className='col-lg-5 col-md-5 col-5 text-center'>Assign Date</p>
             </div>
             {
                 examEligible && 
                 examEligible.map((student) => (
                     <div className='row w-75 '>
-                        <p className='col-lg-1 col-md-1 col-1'>{student.sId}</p>
+                        <Link to={`/viewdetails/${student.sId}`} className='col-lg-1 col-md-1 col-1' style={{color:'darkBlue' , fontWeight:'bolder', fontSize:'18px'}}>{student.id}</Link>
                         <p className='col-lg-3 col-md-3 col-3'>{student.first_name} {student.last_name}</p>
                         <p className='col-lg-3 col-md-3 col-3'>{student.email}</p>
                         {/* <Link to={`/examDate/${student.id}`}  className='col-lg-3 col-md-3 col-3 view'>Assign Date</Link> */}
                         <div className='col-lg-5 col-md-5 col-5 d-flex justify-content-center'>
                             <ExamDate 
-                                student_id = {student.sId}
+                                student_id = {student.id}
                             />
                         </div>
                     </div>

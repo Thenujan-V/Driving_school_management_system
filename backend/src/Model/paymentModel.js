@@ -69,14 +69,12 @@ payments.show_details = function(sId, result){
     })
 }
 payments.find_eligible_students = function(result){
-    const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id WHERE paymentStatus = ?`
+    const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id join students s on s.id = p.sId  WHERE paymentStatus = ?`
     dbconnection.query(sql, ['half'], function(err, res){
         if(err){
-            console.log('err :',err)
             result(err, null)
         }
         else{
-            console.log('res :',res)
             result(null,res)
         }
     })
@@ -86,11 +84,9 @@ payments.find_trial_eligible_students = function(result){
     const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id join students s on s.id = p.sId WHERE paymentStatus = ?`
     dbconnection.query(sql, ['full'], function(err, res){
         if(err){
-            console.log('err :',err)
             result(err, null)
         }
         else{
-            console.log('res :',res)
             result(null,res)
         }
     })

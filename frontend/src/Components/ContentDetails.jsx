@@ -6,6 +6,7 @@ import{show_exam_details} from '../Services/examServices'
 import { Link, useNavigate } from 'react-router-dom'
 import { student_details } from '../Services/studentService'
 import { showDetails } from '../Services/paymentService'
+import { show_trial_details } from '../Services/TrialServices'
 
 
 const ContentDetails = () => {
@@ -29,6 +30,7 @@ const ContentDetails = () => {
     const [userresponse, setUserResponse] = useState('')
     const [examResponse, setExamResponse] = useState('')
     const [apiResponse, setApiResponse] = useState('')
+    const [trialDetails, setTrialDetails] = useState('')
     
     useEffect(() => {
         const fetchStudentData = async (user_id) => {
@@ -94,6 +96,21 @@ const ContentDetails = () => {
         fetchPaymentDetails(user_id)
 
       }, [user_id])
+
+      useEffect(() => {
+        const fetchPaymentDetails = async (user_id) => {
+            try{
+                const paymentResponse = await show_trial_details(user_id)
+                setTrialDetails(paymentResponse)
+            }
+            catch(error){
+                console.log('error :', error)
+            }
+        }
+        fetchPaymentDetails(user_id)
+
+      }, [user_id])
+      console.log('tra :', trialDetails)
     
   return (
     <div id='contentPage'>
@@ -171,19 +188,19 @@ const ContentDetails = () => {
                     </p>
                 </div>}
                 {
-                    payments && payments[0].paymentStatus === 'full' && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
-                    <h1>For You</h1>
-                    <p>
-                        "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
-                        As a successful candidate, you are now eligible to participate in the trial period after a waiting period of 90 days from the date of your exam results.<br />
-                        If you are under 18 years of age, you must wait until you turn 18 to attempt the trial. <br /><br />
-                        Furthermore, you are required to attend practice sessions regularly and practice with your vehicle to prepare for the trial. Consistent attendance at practice sessions is 
-                        essential for building the skills and confidence needed to succeed. If you do not attend practices regularly, you will not be permitted to attempt the trial. We encourage 
-                        you to make the most of this opportunity and practice diligently.<br /><br />
-                        Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
-                    </p>
-                </div>
-
+                    payments && payments[0].paymentStatus === 'full' ? !trialDetails ?
+                        (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                            <h1>For You</h1>
+                            <p>
+                                waiting for trial date  (write something long and meaning fully)
+                            </p>
+                        </div>) : 
+                        (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                            <h1>For You</h1>
+                            <p>
+                                waiting for trial date {new Date(trialDetails.trial_date).toLocaleDateString()}  (write something long and meaning fully)
+                            </p>
+                        </div>) : null
                 }
             </div>
         </div>

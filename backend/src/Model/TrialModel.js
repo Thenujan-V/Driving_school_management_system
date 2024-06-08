@@ -8,8 +8,8 @@ var trials = function(trial){
 
 trials.update_trial_date = function(trialDate, result){
     console.log('trialdateee : ',trialDate)
-    dbconnection.execute("INSERT INTO trialdetails (trial_date, sid) VALUES (?, ?)",
-     [trialDate.trial_date,trialDate.sid] ,function(err,res){
+    dbconnection.execute("INSERT INTO trial_details (trial_date, sid) VALUES (?, ?)",
+     [trialDate.exam_date,trialDate.sid] ,function(err,res){
         if(err){
             console.log(err)
             result(err,null);             
@@ -23,7 +23,7 @@ trials.update_trial_date = function(trialDate, result){
 
 trials.update_result = function(trialResult, result){
     console.log(trialResult)
-    dbconnection.execute("UPDATE trialdetails SET result = ? where sid = ? ", [trialResult.result,trialResult.sId] ,function(err,res){
+    dbconnection.execute("UPDATE trial_details SET result = ? where sid = ? ", [trialResult.result,trialResult.sId] ,function(err,res){
         if(err){
             result(err,null);             
         } 
@@ -35,8 +35,9 @@ trials.update_result = function(trialResult, result){
 }
 
 trials.show_trial_details = function(sId, result){
-    dbconnection.execute(`select * from trialdetails join students on trialdetails.sid = students.id where trialdetails.sid = ?`,[sId], function(err, res){
+    dbconnection.execute(`select * from trial_details t join students s on t.sid = s.id where t.sid = ?`,[sId], function(err, res){
         if(err){
+
             result(err,null);             
         } 
         else{
@@ -45,7 +46,7 @@ trials.show_trial_details = function(sId, result){
     })
 }
 trials.show_trial_students = function(result){
-    dbconnection.execute(`select * from trialdetails e join new_customers c on e.sid = c.id where e.result is null`, function(err, res){
+    dbconnection.execute(`select * from trial_details e join new_customers c on e.sid = c.id where e.result is null`, function(err, res){
         if(err){
             result(err,null);             
         } 

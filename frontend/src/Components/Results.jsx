@@ -90,16 +90,16 @@ const Results = () => {
                                     </div> ) : <p>Wait</p>
                         }
                     </div>}
-                    {typeof trialResponse !== 'undefined' ? (<div className="trial col-lg-6">
+                    {(typeof trialResponse !== 'undefined') && (trialResponse && trialResponse.result === '') ? (<div className="trial col-lg-6">
                         <h2>Driving Exam Result</h2>
 
                         {trialResponse.result === 1 ? 
                         (<div id="trialPass">
                             <p>Congrats...! You Passed the trail.</p>
-                        </div>) :
+                        </div>) : trialResponse.result === 0 ?
                         (<div id="trailFail">
                             <p>Sorry you faild the trail.</p>
-                        </div>)}
+                        </div>) : ''}
                     </div>) : ''
                     }
                 </div>

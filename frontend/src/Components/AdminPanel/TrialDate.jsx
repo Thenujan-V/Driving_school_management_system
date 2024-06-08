@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import AdminVerticalNav from './AdminVerticalNav';
-import { addExamDate, show_exam_details } from '../../Services/examServices';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import AdminVerticalNav from './AdminVerticalNav'
+import { examEligibleStudents } from '../../Services/paymentService'
+import { Link } from 'react-router-dom'
+import ExamDate from './ExamDate'
+import { addExamDate, show_exam_details } from '../../Services/examServices'
+import { addTrialDate, show_trial_details } from '../../Services/TrialServices'
 
-const ExamDate = ({ student_id }) => {
+
+const TrialDate = ({student_id}) => {
     const id = student_id;
 
     const [examDate, setExamDate] = useState({
@@ -23,7 +27,9 @@ const ExamDate = ({ student_id }) => {
     useEffect(() => {
         const fetchExamDetails = async (id) => {
             try {
-                const examResponse = await show_exam_details(id);
+                const examResponse = await show_trial_details(id);
+                console.log('exam res:', examResponse);
+
                 setExamRes(examResponse);
             } catch (error) {
                 console.log('error:', error);
@@ -36,10 +42,10 @@ const ExamDate = ({ student_id }) => {
         e.preventDefault();
         if (examDate) {
             try {
-                await addExamDate(examDate);
+                await addTrialDate(examDate);
                 console.log('Successfully added');
-                // Fetch the updated exam details after adding the date
-                const updatedExamResponse = await show_exam_details(id);
+
+                const updatedExamResponse = await show_trial_details(id)
                 setExamRes(updatedExamResponse);
             } catch (error) {
                 console.log('error:', error);
@@ -54,12 +60,11 @@ const ExamDate = ({ student_id }) => {
         }));
     };
 
-    console.log('exam res:', id);
 
-    return (
-        <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>
+  return (
+    <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>
             <div className="container studentsDetailsShow" style={{ flex: '1' }}>
-                {!examRes || !examRes.exam_date ? (
+                {!examRes || !examRes.trial_date ? (
                     <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
                         <div className="form-group">
                             <input
@@ -78,7 +83,7 @@ const ExamDate = ({ student_id }) => {
                     </form>
                 ) : (
                     <div className='d-flex' style={{gap:'30px'}}>
-                        <p>{new Date(examRes.exam_date).toLocaleDateString()}</p>
+                        <p>{new Date(examRes.trial_date).toLocaleDateString()}</p>
                         {
                             examRes && examRes.result === 1 ? (<p style={{color:'yellow'}}>PASS</p>) : examRes && examRes.result === 0 ? (<p style={{color:'red'}}>FAIL</p>) :  (<p style={{color:'wheat', width:'10vw'}}>NOT ASSIGND</p>)
 
@@ -87,7 +92,7 @@ const ExamDate = ({ student_id }) => {
                 )}
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default ExamDate;
+export default TrialDate

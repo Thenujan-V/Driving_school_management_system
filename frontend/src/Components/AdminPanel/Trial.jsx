@@ -3,6 +3,7 @@ import AdminVerticalNav from './AdminVerticalNav'
 import { examEligibleStudents, trialEligibleStudents } from '../../Services/paymentService'
 import { Link } from 'react-router-dom'
 import ExamDate from './ExamDate'
+import TrialDate from './TrialDate'
 
 const Trial = () => {
     const [examEligible, setExamEligible] = useState([])
@@ -30,7 +31,7 @@ const Trial = () => {
                 <p className='col-lg-1 col-md-1 col-1'>Id</p>
                 <p className='col-lg-3 col-md-3 col-3'>Full Name</p>
                 <p className='col-lg-3 col-md-3 col-3'>Email</p>
-                <p className='col-lg-5 col-md-5 col-5 text-center'>Assing Date</p>
+                <p className='col-lg-5 col-md-5 col-5 text-center'>Assign Date</p>
             </div>
             {
                 examEligible && examEligible.length > 0 ? (
@@ -42,7 +43,7 @@ const Trial = () => {
                                     <p className='col-lg-3 col-md-3 col-3'>{student.first_name} {student.last_name}</p>
                                     <p className='col-lg-3 col-md-3 col-3'>{student.email}</p>
                                     <div className='col-lg-5 col-md-5 col-5 d-flex justify-content-center'>
-                                        <ExamDate student_id={student.id} />
+                                        <TrialDate student_id={student.id} />
                                     </div>
                                 </div>
                             )
