@@ -17,20 +17,34 @@ const TrialDate = ({student_id}) => {
 
     const [examRes, setExamRes] = useState(null);
 
+    const [attempt, setAttempt] = useState('')
+    const [result, setResult] = useState('')
+
     useEffect(() => {
-        setExamDate((prevData) => ({
-            ...prevData,
-            sid: id
-        }));
-    }, [id]);
+        examRes && examRes.length > 0 && examRes.map((res) => {
+            const attempt = res.attempt
+            setAttempt(attempt)
+
+            const trialResult = res.result
+            setResult(trialResult)
+        })    
+    }, [examRes])
+
+    useEffect(() => {
+            setExamDate((prevData) => ({
+                ...prevData,
+                sid: id,
+                attempt: attempt + 1
+            }));
+    }, [id, attempt])
+
 
     useEffect(() => {
         const fetchExamDetails = async (id) => {
             try {
                 const examResponse = await show_trial_details(id);
-                console.log('exam res:', examResponse);
+                setExamRes(examResponse.data);
 
-                setExamRes(examResponse);
             } catch (error) {
                 console.log('error:', error);
             }
@@ -64,11 +78,11 @@ const TrialDate = ({student_id}) => {
   return (
     <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>
             <div className="container studentsDetailsShow" style={{ flex: '1' }}>
-                {!examRes || !examRes.trial_date ? (
+                {!examRes || (examRes && examRes.length > 0 && !examRes[0].trial_date) ? (
                     <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
                         <div className="form-group">
                             <input
-                                className="form-control"
+                                className="form-control"  
                                 type="date"
                                 id="date"
                                 value={examDate.exam_date}
@@ -82,13 +96,59 @@ const TrialDate = ({student_id}) => {
                         </button>
                     </form>
                 ) : (
-                    <div className='d-flex' style={{gap:'30px'}}>
-                        <p>{new Date(examRes.trial_date).toLocaleDateString()}</p>
-                        {
-                            examRes && examRes.result === 1 ? (<p style={{color:'yellow'}}>PASS</p>) : examRes && examRes.result === 0 ? (<p style={{color:'red'}}>FAIL</p>) :  (<p style={{color:'wheat', width:'10vw'}}>NOT ASSIGND</p>)
-
-                        }
-                    </div>
+                    (
+                        <div>
+                            
+                            {
+                                attempt < 3 && result === 0 &&
+                                <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
+                                    <div className="form-group">
+                                        <input
+                                            className="form-control"
+                                            type="date"
+                                            id="date"
+                                            value={examDate.exam_date}
+                                            onChange={handleDateChange}
+                                            required
+                                        />
+                                    </div>
+                                    <input className="form-control" type="hidden" id="userId" value={examDate.sid} />
+                                    <button className="btn btn-warning" type="submit">
+                                        Submit
+                                    </button>
+                                </form>
+                            }
+                        
+                            {examRes && examRes.length > 0 && examRes.map((examRes) => (
+                                <div className='text-center' style={{gap:'30px'}}>
+    
+                                    <p>{new Date(examRes.trial_date).toLocaleDateString()}</p>
+                                    {
+                                        examRes && (
+                                            examRes.result === 1 ? (
+                                                <p style={{ color: 'yellow' }}>PASS</p>
+                                            ) : examRes.result === 0 ? (
+                                                <div className='d-flex flex-column justify-content-center align-items-center mb-3'>
+                                                    <p style={{ color: '#B31312', width: '10vw' }}>
+                                                        FAIL 
+                                                        <span style={{ color: '#071952' }}> 
+                                                            (Attempt {examRes.attempt})
+                                                        </span>
+                                                    </p>
+                                                    
+                                                </div>
+                                            ) : (
+                                                <p className='text-center' style={{ color: 'wheat', width: '18vw',  }}>NOT ASSIGNED</p>
+                                            )
+                                        )
+                                    }
+    
+                                </div>
+                            ))}
+                        
+                        </div>
+    
+                    )
                 )}
             </div>
         </div>

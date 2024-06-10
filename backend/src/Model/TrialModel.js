@@ -8,8 +8,8 @@ var trials = function(trial){
 
 trials.update_trial_date = function(trialDate, result){
     console.log('trialdateee : ',trialDate)
-    dbconnection.execute("INSERT INTO trial_details (trial_date, sid) VALUES (?, ?)",
-     [trialDate.exam_date,trialDate.sid] ,function(err,res){
+    dbconnection.execute("INSERT INTO trial_details (trial_date, sid, attempt) VALUES (?, ?, ?)",
+     [trialDate.exam_date, trialDate.sid, trialDate.attempt] ,function(err,res){
         if(err){
             console.log(err)
             result(err,null);             

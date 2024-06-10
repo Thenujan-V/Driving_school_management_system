@@ -35,11 +35,16 @@ const ExamDate = ({ student_id }) => {
     // }, [examRes])
 
     const [attempt, setAttempt] = useState('')
+    const [result, setResult] = useState('')
+
 
     useEffect(() => {
         examRes && examRes.length > 0 && examRes.map((res) => {
             const attempt = res.attempt
             setAttempt(attempt)
+
+            const examResult = res.result
+            setResult(examResult)
         })    
     }, [examRes])
 
@@ -98,7 +103,7 @@ const ExamDate = ({ student_id }) => {
                     <div>
                         
                         {
-                            attempt < 3 && 
+                            attempt < 3 && result === 0 &&
                             <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
                                 <div className="form-group">
                                     <input

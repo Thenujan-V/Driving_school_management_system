@@ -5,7 +5,7 @@ const API_BASE_URL = 'http://localhost:4000/api'
 export const show_trial_details = async (id) => {
     try{
         const response = await axios.get(`${API_BASE_URL}/trial/trialdetails/${id}`)
-        return response.data[0]
+        return response
     } 
     catch(error){
         console.error('Error fetching trial details:', error);
