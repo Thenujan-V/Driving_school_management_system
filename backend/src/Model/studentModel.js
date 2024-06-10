@@ -34,9 +34,9 @@ students.show_details = function(sId, result){
         else{
             if (res.length) {
                 const student = res[0];
-                student.nic_soft_copy_url = `/files/${path.basename(student.nic_soft_copy.toString())}`;
-                student.medical_soft_copy_url = `/files/${path.basename(student.medical_soft_copy.toString())}`;
-                student.birth_certificate_soft_copy_url = `/files/${path.basename(student.birth_certificate_soft_copy.toString())}`;
+                student.nic_soft_copy_url = `uploads/${path.basename(student.nic_soft_copy.toString())}`;
+                student.medical_soft_copy_url = `uploads/${path.basename(student.medical_soft_copy.toString())}`;
+                student.birth_certificate_soft_copy_url = `uploads/${path.basename(student.birth_certificate_soft_copy.toString())}`;
                 result(null, student);
             } else {
                 result({ kind: "not_found" }, null);

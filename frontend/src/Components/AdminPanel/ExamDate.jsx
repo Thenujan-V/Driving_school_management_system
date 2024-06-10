@@ -63,8 +63,7 @@ const ExamDate = ({ student_id }) => {
                 await addExamDate(examDate);
                 console.log('Successfully added');
                 // Fetch the updated exam details after adding the date
-                const updatedExamResponse = await show_exam_details(id);
-                setExamRes(updatedExamResponse);
+                window.location.reload()
             } catch (error) {
                 console.log('error:', error);
             }
@@ -77,12 +76,12 @@ const ExamDate = ({ student_id }) => {
             exam_date: e.target.value
         }));
     };
-
+console.log('ex :', examRes)
 
     return (
         <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>
             <div className="container studentsDetailsShow" style={{ flex: '1' }}>
-                {!examRes || (examRes && examRes.length > 0 && !examRes[0].exam_date) ? (
+                {!examRes || (examRes && examRes.length === 0) ? (
                     <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
                         <div className="form-group">
                             <input

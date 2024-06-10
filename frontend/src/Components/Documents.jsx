@@ -5,12 +5,7 @@ import { retrieveId } from '../Services/getToken';
 import { student_entroll, student_details, student_details_update } from '../Services/studentService';
 
 const Documents = () => {
-    const items = [
-        {url:'1', title: 'Item 1', description: 'Description for item 1',price:'1500' },
-        {url:'2', title: 'Item 1', description: 'Description for item 1',price:'2500' },
-        {url:'3', title: 'Item 1', description: 'Description for item 1',price:'3500' },
-        {url:'4', title: 'Item 1', description: 'Description for item 1',price:'4500' }    
-      ];
+    
     
       const navigate = useNavigate();
       const decodedToken = retrieveId()
@@ -61,15 +56,15 @@ const Documents = () => {
         
       })
 
-      useEffect(() => {
-        if (formData.vechile_class) {
-            const vechileClassIndex = parseInt(formData.vechile_class, 10);
-            const selectedItem = items.find((item, index) => index === vechileClassIndex);
-            if (selectedItem) {
-                setTotalAmount(selectedItem.price);
-            }
-        }
-        }, [formData.vechile_class, items]);
+      // useEffect(() => {
+      //   if (formData.vechile_class) {
+      //       const vechileClassIndex = parseInt(formData.vechile_class, 10);
+      //       const selectedItem = items.find((item, index) => index === vechileClassIndex);
+      //       if (selectedItem) {
+      //           setTotalAmount(selectedItem.price);
+      //       }
+      //   }
+      //   }, [formData.vechile_class, items]);
 
         useEffect(() => {
             const fetchStudentsDocuments = async (user_id) => {
@@ -207,24 +202,25 @@ const Documents = () => {
                     
                 </div>
                 <div className="row mb-3">
-                  <div className="col-md-4">
+                  <div className="col-md-12">
                     <div className="form-group mb-3">
                       <label htmlFor="nic_soft_copy" className="form-label">NIC Soft Copy</label>
-                      <iframe src={formData.nic_soft_copy} title="NIC Soft Copy" width="100%" height="600"></iframe>
+                      <iframe src={`http://localhost:4000/${formData.nic_soft_copy}`} title="NIC Soft Copy" width="100%" height="300"></iframe>
+                      {console.log('pdf :', formData.nic_soft_copy)}
                       <p>{errors.nic_soft_copy}</p>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-12">
                     <div className="form-group mb-3">
                       <label htmlFor="medical_soft_copy" className="form-label">Medical Soft Copy</label>
-                      <iframe src={formData.medical_soft_copy} title="Medical Soft Copy" width="100%" height="600"></iframe>
+                      <iframe src={`http://localhost:4000/${formData.medical_soft_copy}`} title="Medical Soft Copy" width="100%" height="300"></iframe>
                       <p>{errors.medical_soft_copy}</p>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-12">
                         <div className="form-group mb-3">
                         <label htmlFor="birth_certificate_soft_copy" className="form-label">Birth Certificate Soft Copy</label>
-                        <iframe src={formData.birth_certificate_soft_copy} title="Birth Certificate Soft Copy" width="100%" height="600"></iframe>
+                        <iframe src={`http://localhost:4000/${formData.birth_certificate_soft_copy}`} title="Birth Certificate Soft Copy" width="100%" height="300"></iframe>
                         <p>{errors.birth_certificate_soft_copy}</p>
                         </div>
                     </div>
@@ -234,9 +230,6 @@ const Documents = () => {
                     </div>
                   </div>
                 </div> 
-                <div className="form-group mt-4">
-                    <button className='btn' type="submit">Submit</button>
-                </div>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@ const API_BASE_URL = 'http://localhost:4000/api'
 export const show_exam_details = async (id) => {
     try{
         const response = await axios.get(`${API_BASE_URL}/exam/examdetails/${id}`)
-        return response
+    return response
     }
     catch(error){
         console.error('Error fetching exam details:', error);

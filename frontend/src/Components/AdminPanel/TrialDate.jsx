@@ -78,7 +78,7 @@ const TrialDate = ({student_id}) => {
   return (
     <div style={{ display: 'flex', minHeight: '10vh', width: '10vw', backgroundColor: 'var(--green)' }}>
             <div className="container studentsDetailsShow" style={{ flex: '1' }}>
-                {!examRes || (examRes && examRes.length > 0 && !examRes[0].trial_date) ? (
+                {!examRes || (examRes && examRes.length === 0) ? (
                     <form onSubmit={addDate} className="d-flex" style={{ gap: '20px' }}>
                         <div className="form-group">
                             <input

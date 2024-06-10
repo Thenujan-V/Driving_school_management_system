@@ -46,7 +46,7 @@ const Results = () => {
         const fetchExamDetails = async (user_id) => {
             try{
                 const userExamData = await show_exam_details(user_id)
-                setExamResponse(userExamData)
+                setExamResponse(userExamData.data)
                 setApiResponse('success to retrivedata')
             }
             catch(error){
@@ -57,8 +57,7 @@ const Results = () => {
         const fetchTrialDetails = async (user_id) => {
             try{
                 const userTrialData = await show_trial_details(user_id)
-                console.log('user   ',userTrialData)
-                setTrialResponse(userTrialData)
+                setTrialResponse(userTrialData.data)
             }
             catch(error){
                 console.log('error :', error)
@@ -70,40 +69,49 @@ const Results = () => {
         fetchTrialDetails(user_id)
 
     }, [user_id])
-
-    console.log('exam :', examResponse)
-  return (
+console.log('rrr :', trialResponse)
+    return (
     <div>
         <Navbar />
-        <div style={{display:'flex', height:'90vh'}}>
+        <div style={{display:'flex', minHeight:'100vh'}}>
             <VerticalNavbar />
-            <div style={{flex:'1'}} className='results'>
+            <div style={{flex:'1', minHeight:'100vh'}} className='results'>
                 <h1>Your Result</h1>
                 <div className="boxes">
                     { examResponse && 
-                        <div className="exam col-lg-6">
-                        <h2>Written Exam Result</h2>
-                        {examResponse.result === 1 ?
-                            <div id="examPass">
-                                <p>Congrats...! You Passed the examination</p>
-                            </div>: examResponse.result === 0 ? 
-                                    (<div id="examFail">
-                                        <p>Sorry you faild the examination.</p>
-                                    </div> ) : <p>Wait</p>
-                        }
-                    </div>}
-                    {(typeof trialResponse !== 'undefined') && trialResponse && trialResponse.result !== null ? (<div className="trial col-lg-6">
-                        <h2>Driving Exam Result</h2>
-
-                        {trialResponse.result === 1 ? 
-                        (<div id="trialPass">
-                            <p className='mt-2 text-center'>Congrats...! You Passed the trial examination.</p>
-                            <p className='p-3 text-center' style={{color:'#071952', fontWeight:'bold'}}>We'd love to hear your feedback! Please take a moment to leave us a review: <br /><Link to='/review' style={{color:'#F2F7A1', fontWeight:'bold'}}>Review Here</Link>. Thank you!</p>
-                        </div>) : trialResponse.result === 0 ?
-                        (<div id="trailFail">
-                            <p>Sorry you faild the trial examination.</p>
-                        </div>) : ''}
-                    </div>) : ''
+                        examResponse.map((res) => (
+                            <div className="exam col-lg-6">
+                                <h2>Written Exam Result</h2>
+                                {res.result === 1 ?
+                                    <div id="examPass">
+                                        <p className='text-center'>Attempt - {res.attempt}</p>
+                                        <p>Congrats...! You Passed the examination</p>
+                                    </div>: res.result === 0 ? 
+                                            (<div id="examFail">
+                                                <p className='text-center'>Attempt - {res.attempt}</p>
+                                                <p>Sorry you faild the examination.</p>
+                                            </div> ) : <p>Wait</p>
+                                }
+                            </div>
+                        ))
+                        
+                    }
+                    {(trialResponse.length > 0) && trialResponse && 
+                        trialResponse.map((trialResponse) => (
+                            <div className="trial col-lg-6">
+                                <h2>Driving Exam Result</h2>
+                                {trialResponse.result === 1 ? 
+                                (<div id="trialPass">
+                                    <p className='text-center'>Attempt - {trialResponse.attempt}</p>
+                                    <p className='mt-2 text-center'>Congrats...! You Passed the trial examination.</p>
+                                    <p className='p-3 text-center' style={{color:'#071952', fontWeight:'bold'}}>We'd love to hear your feedback! Please take a moment to leave us a review: <br /><Link to='/review' style={{color:'#F2F7A1', fontWeight:'bold'}}>Review Here</Link>. Thank you!</p>
+                                </div>) : trialResponse.result === 0 ?
+                                (<div id="trailFail">
+                                    <p className='text-center'>Attempt - {trialResponse.attempt}</p>
+                                    <p>Sorry you faild the trial examination.</p>
+                                </div>) : ''}
+                            </div>
+                        ))
                     }
                 </div>
             </div>

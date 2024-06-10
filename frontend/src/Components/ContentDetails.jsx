@@ -49,7 +49,7 @@ const ContentDetails = () => {
             try{
                 const userExamData = await show_exam_details(user_id)
                 console.log('user   ',userExamData)
-                setExamResponse(userExamData)
+                setExamResponse(userExamData.data)
                 setApiResponse('success to retrivedata')
             }
             catch(error){
@@ -78,7 +78,7 @@ const ContentDetails = () => {
     
         fetchStudentDetails(user_id); 
       }, [user_id])
-    
+     
     const [payments, setPayments] = useState('')
 
 
@@ -101,7 +101,7 @@ const ContentDetails = () => {
         const fetchPaymentDetails = async (user_id) => {
             try{
                 const paymentResponse = await show_trial_details(user_id)
-                setTrialDetails(paymentResponse)
+                setTrialDetails(paymentResponse.data)
             }
             catch(error){
                 console.log('error :', error)
@@ -110,7 +110,7 @@ const ContentDetails = () => {
         fetchPaymentDetails(user_id)
 
       }, [user_id])
-      console.log('tra :', trialDetails)
+      console.log('tra :', examResponse)
     
   return (
     <div id='contentPage'>
@@ -145,7 +145,7 @@ const ContentDetails = () => {
                         }
                     </div>
                     
-                        {!examResponse && payments && payments[0].paymentStatus === 'half' &&
+                        {examResponse && examResponse.length === 0 && payments && payments[0].paymentStatus === 'half' &&
                             <div id="notAssignd" className='col-lg-6 col-md-6 col-12'>
                             <h1>For You</h1>
                             <p>
@@ -158,51 +158,69 @@ const ContentDetails = () => {
                                 If you successfully pass the exam, you may apply for the trial period after a 90-day wait
                             </p>
                         </div>}
-                {examResponse && examResponse.result === null && <div id="foryou" className='col-lg-6 col-md-6 col-12'>
-                    <h1>For You</h1>
-                    <p>
-                        "Hello {response.first_name} <br /> You are eligible to take the examination!" <br />
-                        <span>Your exam date is scheduled for {new Date(examResponse.exam_date).toLocaleDateString('en-GB', {
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric'
-                    })}</span> <br /><br />
-                        You are allowed up to three attempts to pass the exam. If you do not pass after three attempts,
-                         you will need to restart from step one and pay 25% of the full course fee. <br /><br />Our driving school offers examination 
-                         preparation classes and practice exams, 
-                         which students are welcome to attend free of charge. These resources can help you succeed on your first attempt. <br /><br />
-                         If you successfully pass the exam, you may apply for the trial period after a 90-day wait
-                    </p>
-                </div>}
-                {examResponse && examResponse.result === 1 && payments && payments[0].paymentStatus === 'half' && <div id="examPass" className='col-lg-6 col-md-6 col-12'>
-                    <h1>For You</h1>
-                    <p>
-                        "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
-                        As a successful candidate, you are now eligible to participate in the trial period after a waiting period of 90 days from the date of your exam results.<br />
-                        If you are under 18 years of age, you must wait until you turn 18 to attempt the trial. <br /><br />
-                        Furthermore, you are required to attend practice sessions regularly and practice with your vehicle to prepare for the trial. Consistent attendance at practice sessions is 
-                        essential for building the skills and confidence needed to succeed. If you do not attend practices regularly, you will not be permitted to attempt the trial. We encourage 
-                        you to make the most of this opportunity and practice diligently.<br /><br />
-                        Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
-                        <span>If you wish to make the balance payment online, please <Link to='/payment' id='btn' style={{color:'darkblue'}}>Click here</Link> to proceed.</span><br /><br />
-                    </p>
-                </div>}
-                {
-                    payments && payments[0].paymentStatus === 'full' ? !trialDetails ?
-                        (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
-                            <h1>For You</h1>
-                            <p>
-                                waiting for trial date  (write something long and meaning fully)
-                            </p>
-                        </div>) : 
-                        (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
-                            <h1>For You</h1>
-                            <p>
-                                waiting for trial date {new Date(trialDetails.trial_date).toLocaleDateString()}  (write something long and meaning fully)
-                            </p>
-                        </div>) : null
 
-                }
+                        {examResponse && examResponse.length > 0 &&  
+                            examResponse.map((res) => (
+                                res.result === null ?
+                                <div id="foryou" className='col-lg-6 col-md-6 col-12'>
+                                    <h1>For You</h1>
+                                    <p>
+                                        "Hello {response.first_name} <br /> You are eligible to take the examination!"<br />
+                                        <span>Your exam date is scheduled for {new Date(res.exam_date).toLocaleDateString('en-GB', {
+                                    year: 'numeric', 
+                                    month: 'long', 
+                                    day: 'numeric'
+                                    })}</span> <br /><br />
+                                        You are allowed up to three attempts to pass the exam. If you do not pass after three attempts,
+                                        you will need to restart from step one and pay 25% of the full course fee. <br /><br />Our driving school offers examination 
+                                        preparation classes and practice exams, 
+                                        which students are welcome to attend free of charge. These resources can help you succeed on your first attempt. <br /><br />
+                                        If you successfully pass the exam, you may apply for the trial period after a 90-day wait
+                                    </p>
+                                </div> : ''
+                            ))
+                        }
+
+                        {
+                            examResponse && examResponse.length > 0 && payments && payments[0].paymentStatus === 'half' && 
+                            examResponse.map((res) => (
+                                res.result === 1 ?
+                                <div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                                    <h1>For You</h1>
+                                    <p>
+                                        "Congratulations {response.first_name} on passing your driving school examination!"<br /><br />
+                                        As a successful candidate, you are now eligible to participate in the trial period after a waiting period of 90 days from the date of your exam results.<br />
+                                        If you are under 18 years of age, you must wait until you turn 18 to attempt the trial. <br /><br />
+                                        Furthermore, you are required to attend practice sessions regularly and practice with your vehicle to prepare for the trial. Consistent attendance at practice sessions is 
+                                        essential for building the skills and confidence needed to succeed. If you do not attend practices regularly, you will not be permitted to attempt the trial. We encourage 
+                                        you to make the most of this opportunity and practice diligently.<br /><br />
+                                        Additionally, all exam pass students must pay the full course fee prior to the trial, as failure to do so will result in ineligibility to participate. <br /><br />
+                                        <span>If you wish to make the balance payment online, please <Link to='/payment' id='btn' style={{color:'darkblue'}}>Click here</Link> to proceed.</span><br /><br />
+                                    </p>
+                                </div> : ''
+                            ))
+                            
+                        }
+                        {
+                            payments && payments[0].paymentStatus === 'full' ? !trialDetails ?
+                                (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                                    <h1>For You</h1>
+                                    <p>
+                                        waiting for trial date  (write something long and meaning fully)
+                                    </p>
+                                </div>) : 
+                                (<div id="examPass" className='col-lg-6 col-md-6 col-12'>
+                                    {trialDetails.map((trialDetail) => (
+                                        trialDetail.result !== 0 &&
+                                        <div>
+                                            <h1>For You</h1>
+                                            <p>
+                                                waiting for trial date {new Date(trialDetail.trial_date).toLocaleDateString()}  (write something long and meaning fully)
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>) : null
+                        }
             </div>
         </div>
     </div>

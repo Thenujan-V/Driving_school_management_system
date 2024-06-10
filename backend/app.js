@@ -19,6 +19,8 @@ const serviceRouters = require('./src/Router/ServiceRouter')
 const trialRouters = require('./src/Router/TrialRouter')
 const e = require('express')
 
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 
 app.use('/api/customers', userRoutes);
 app.use('/api/students',studentsRoutes)
@@ -49,6 +51,7 @@ app.get('/files/:id', async (req, res) => {
   }
 });
 
+app.use('/uploads', express.static(path.join(__dirname, 'Backend/uploads')));
 
 
 module.exports = app;

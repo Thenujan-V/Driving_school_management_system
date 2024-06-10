@@ -80,7 +80,7 @@ const Payment = () => {
     const get_exam_result = async(user_id) => {
         try{
             const response = await show_exam_details(user_id)
-            setExamResult(response)
+            setExamResult(response.data)
         }
         catch(error){
             console.log('error :',error)
@@ -137,7 +137,7 @@ const Payment = () => {
         if(Object.keys(errors).length === 0){
             console.log('okey')
 
-            if (typeof examResult === 'undefined'){
+            if (examResult.length === 0){
                 try{
                     const advanceAmount = courseAmount * 0.25
                     const paymentDetails = await addPaymentDetails(advanceAmount, user_id)
@@ -161,7 +161,7 @@ const Payment = () => {
                     navigate('/')
                 }
                 catch(error){
-                    console.log('error : ',error)
+                    console.log('error : ',error)   
                     setResponse('error')
                 }
             }
@@ -240,7 +240,7 @@ console.log('cord :', examResult)
                                     </div>
                                 </div>
                             </div>
-                            {examResult === 0 || !examResult ?
+                            {examResult === 0 || !examResult || examResult.length === 0 ?
                                 <button type="submit" className="btn btn-warning mt-3" id='examPay'>Pay Now {courseAmount*0.25} LKR</button> : 
                                 <button type="submit" className="btn btn-warning mt-3" id='trialPay'>Pay Now {courseAmount*0.75} LKR</button>
                             }
