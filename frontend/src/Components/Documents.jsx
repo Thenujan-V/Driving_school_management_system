@@ -70,7 +70,6 @@ const Documents = () => {
             const fetchStudentsDocuments = async (user_id) => {
                 try{
                     const responseDocuments = await student_details(user_id)
-                    console.log(responseDocuments.data)
                     setDocumentsResponse(responseDocuments.data)
                 }
                 catch(error){
@@ -206,7 +205,6 @@ const Documents = () => {
                     <div className="form-group mb-3">
                       <label htmlFor="nic_soft_copy" className="form-label">NIC Soft Copy</label>
                       <iframe src={`http://localhost:4000/${formData.nic_soft_copy}`} title="NIC Soft Copy" width="100%" height="300"></iframe>
-                      {console.log('pdf :', formData.nic_soft_copy)}
                       <p>{errors.nic_soft_copy}</p>
                     </div>
                   </div>
