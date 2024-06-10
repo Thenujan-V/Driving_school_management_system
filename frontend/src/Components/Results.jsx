@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import VerticalNavbar from './VerticalNavbar'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { retrieveId } from '../Services/getToken';
 import { userDetails } from '../Services/userService';
 import { show_exam_details } from '../Services/examServices';
@@ -92,12 +92,13 @@ const Results = () => {
                                     </div> ) : <p>Wait</p>
                         }
                     </div>}
-                    {(typeof trialResponse !== 'undefined') && (trialResponse && trialResponse.result) ? (<div className="trial col-lg-6">
+                    {(typeof trialResponse !== 'undefined') && trialResponse && trialResponse.result !== null ? (<div className="trial col-lg-6">
                         <h2>Driving Exam Result</h2>
 
                         {trialResponse.result === 1 ? 
                         (<div id="trialPass">
-                            <p>Congrats...! You Passed the trial examination.</p>
+                            <p className='mt-2 text-center'>Congrats...! You Passed the trial examination.</p>
+                            <p className='p-3 text-center' style={{color:'#071952', fontWeight:'bold'}}>We'd love to hear your feedback! Please take a moment to leave us a review: <br /><Link to='/review' style={{color:'#F2F7A1', fontWeight:'bold'}}>Review Here</Link>. Thank you!</p>
                         </div>) : trialResponse.result === 0 ?
                         (<div id="trailFail">
                             <p>Sorry you faild the trial examination.</p>
