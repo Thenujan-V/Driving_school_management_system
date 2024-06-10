@@ -23,7 +23,7 @@ trials.update_trial_date = function(trialDate, result){
 
 trials.update_result = function(trialResult, result){
     console.log(trialResult)
-    dbconnection.execute("UPDATE trial_details SET result = ? where sid = ? ", [trialResult.result,trialResult.sId] ,function(err,res){
+    dbconnection.execute("UPDATE trial_details SET result = ? where sid = ? order by attempt desc limit 1", [trialResult.result,trialResult.sId] ,function(err,res){
         if(err){
             result(err,null);             
         } 

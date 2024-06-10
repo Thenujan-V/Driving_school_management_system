@@ -23,7 +23,7 @@ exams.update_exam_date = function(examDate, result){
 
 exams.update_result = function(examResult, result){
     console.log(examResult)
-    dbconnection.execute("UPDATE exam_details SET result = ? where sid = ? ", [examResult.result,examResult.sId] ,function(err,res){
+    dbconnection.execute("UPDATE exam_details SET result = ? where sid = ? order by attempt desc limit 1", [examResult.result,examResult.sId] ,function(err,res){
         if(err){
             result(err,null);             
         } 
