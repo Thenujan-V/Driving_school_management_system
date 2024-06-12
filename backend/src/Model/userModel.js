@@ -86,6 +86,20 @@ customer.show_all_users = function(result){
     })
 }
 
+customer.delete_user = function(user_id, result){
+    var sql = `update new_customers set active = ? where id = ?`
+    dbconnection.query(sql, [0, user_id], function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
+
+
 
 
 module.exports = customer

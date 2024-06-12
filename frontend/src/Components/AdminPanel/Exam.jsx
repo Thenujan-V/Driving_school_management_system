@@ -36,6 +36,7 @@ const Exam = () => {
             {
                 examEligible && 
                 examEligible.map((student) => (
+                    student.active === 1 &&
                     <div className='row w-75 '>
                         <Link to={`/viewdetails/${student.sId}`} className='col-lg-1 col-md-1 col-1' style={{color:'darkBlue' , fontWeight:'bolder', fontSize:'18px'}}>{student.id}</Link>
                         <p className='col-lg-3 col-md-3 col-3'>{student.first_name} {student.last_name}</p>

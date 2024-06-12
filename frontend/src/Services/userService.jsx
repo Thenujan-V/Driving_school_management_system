@@ -57,3 +57,13 @@ export const showAllUsers = async () => {
         throw error
     }
 }
+
+export const deleteAccount = async (user_id) => {
+    try{
+        const response = await axios.delete(`${API_BASE_URL}/customers/deleteuser/${user_id}`)
+        return response.data
+    }
+    catch(error){
+        throw error
+    }
+}

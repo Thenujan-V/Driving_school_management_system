@@ -43,3 +43,4 @@ export const retrieveId = () => {
 export const logout = () => {
     localStorage.removeItem("authToken")
 }
+

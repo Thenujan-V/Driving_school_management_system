@@ -37,6 +37,7 @@ const Trial = () => {
                 examEligible && examEligible.length > 0 ? (
                     examEligible.filter(student => student.paymentStatus === 'full').length > 0 ? (
                         examEligible.map((student) => (
+                            student.active === 1 &&
                             student.paymentStatus === 'full' && (
                                 <div className='row w-75' key={student.id}>
                                     <Link to={`/viewdetails/${student.sId}`} className='col-lg-1 col-md-1 col-1' style={{color:'darkBlue' , fontWeight:'bolder', fontSize:'18px'}}>{student.id}</Link>

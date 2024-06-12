@@ -7,7 +7,7 @@ import { faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { showStudents, student_details } from '../Services/studentService';
-import { retrieveId } from '../Services/getToken';
+import { logout, retrieveId } from '../Services/getToken';
 import { showAllUsers } from '../Services/userService';
 
 const VerticalNavbar = () => {
@@ -43,6 +43,12 @@ const VerticalNavbar = () => {
 
     const foundStudent = user && user.find(student => student.id === user_id)
 
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+        window.location.reload()
+    }
+
   return (
     <>
         <div className="vertical-menu">
@@ -66,6 +72,9 @@ const VerticalNavbar = () => {
                 </Link>}
                 {foundStudent &&<Link to='/results' className='link'>
                     <FontAwesomeIcon icon={faSquarePollHorizontal} /> Results
+                </Link>}
+                {<Link onClick={handleLogout} className='link'>
+                    <FontAwesomeIcon icon={faSquarePollHorizontal} /> Logout
                 </Link>}
             </div>
         </div>

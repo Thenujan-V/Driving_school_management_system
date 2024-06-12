@@ -78,3 +78,15 @@ exports.allUsers = async (req, res) => {
         }
     })
 }
+
+exports.deleteUser = async (req, res) => {
+    console.log('oo')
+    await customerModel.delete_user(req.params.user_id, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}

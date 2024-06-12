@@ -78,9 +78,9 @@ const AddEmployee = () => {
 
     }
   return (
-    <div style={{display:'flex', Height:'90vh'}}>
+    <div style={{display:'flex'}}>
         <AdminVerticalNav />
-        <div className='container user-profile' style={{flex:'1', height:'100vh'}}>
+        <div className='container user-profile' style={{flex:'1', minHeight:'100vh'}}>
             <h1>Your profile</h1>
             <div className='profile w-75 p-0'>
             <form onSubmit={handleSubmit} className='form mt-3'>

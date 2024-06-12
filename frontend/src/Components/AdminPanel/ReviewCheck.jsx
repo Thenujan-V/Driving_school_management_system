@@ -25,7 +25,7 @@ const ReviewCheck = () => {
     console.log(getReview)
 
   return (
-    <div style={{display:'flex', height:'100vh', backgroundColor:'var(--green)'}}>
+    <div style={{display:'flex', backgroundColor:'var(--green)'}}>
         <AdminVerticalNav />
         <div style={{flex:1}} className='container reviews'>
             <h1>CUSTOMER MANAGEMENT</h1>
