@@ -26,14 +26,6 @@ const ExamDate = ({ student_id }) => {
         fetchExamDetails(id);
     }, [id]);
 
-    // useEffect(() => {
-    //     if(examRes && examRes.attempt){
-    //         setExamDate{
-    //             attempt : examRes.attempt
-    //         }
-    //     }
-    // }, [examRes])
-
     const [attempt, setAttempt] = useState('')
     const [result, setResult] = useState('')
 
@@ -62,7 +54,6 @@ const ExamDate = ({ student_id }) => {
             try {
                 await addExamDate(examDate);
                 console.log('Successfully added');
-                // Fetch the updated exam details after adding the date
                 window.location.reload()
             } catch (error) {
                 console.log('error:', error);

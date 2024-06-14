@@ -8,5 +8,6 @@ router.post('/workersignin',adminController.workerSignin)
 router.get('/getadmins',adminController.allAdmins)
 router.get('/getinstructers',adminController.allInstructers)
 router.get('/getworkersdetails/:uId',adminController.workersDetails)
+router.delete('/deleteAdmin/:id',adminController.adminDelete)
 
 module.exports = router

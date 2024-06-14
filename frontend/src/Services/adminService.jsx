@@ -56,3 +56,13 @@ export const workersDetails = async (id) => {
         throw(error)
     }
 }
+
+export const deleteAdmin = async (id) => {
+    try{
+        const response = await axios.delete(`${API_BASE_URL}/admin/deleteAdmin/${id}`)
+        return response.data[0]
+    }
+    catch(error){
+        throw(error)
+    }
+}

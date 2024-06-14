@@ -81,6 +81,19 @@ workers.workers_details = function(uId, result){
     })
 }
 
+workers.admin_delete = function(id, result){
+    var sql = `update workers set active = ? WHERE wId = ?`
+    dbconnection.query(sql, [0,id], function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(res)
+        }
+    })
+}
+
+
 
 
 

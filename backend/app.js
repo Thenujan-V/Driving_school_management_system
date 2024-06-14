@@ -17,6 +17,7 @@ const examRouters = require('./src/Router/examRouter')
 const adminRouters = require('./src/Router/adminRouter')
 const serviceRouters = require('./src/Router/ServiceRouter')
 const trialRouters = require('./src/Router/TrialRouter')
+const reviewRouter = require('./src/Router/ReviewRouter')
 const e = require('express')
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
@@ -30,6 +31,7 @@ app.use('/api/exam',examRouters)
 app.use('/api/admin', adminRouters)
 app.use('/api/service', serviceRouters)
 app.use('/api/trial', trialRouters)
+app.use('/api/review', reviewRouter)
 
 app.get('/files/:id', async (req, res) => {
   const fileId = req.params.id;

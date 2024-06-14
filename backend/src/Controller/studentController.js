@@ -22,7 +22,6 @@ exports.addStudent = (req, res) => {
         { name: 'medical_soft_copy', maxCount: 1 },
         { name: 'birth_certificate_soft_copy', maxCount: 1 }
     ])(req, res, (err) => {
-        console.log('rew :', req.body)
 
         if (err) {
 console.log(err)
@@ -41,7 +40,6 @@ console.log(err)
             birth_certificate_soft_copy: req.files.birth_certificate_soft_copy ? req.files.birth_certificate_soft_copy[0].path : null,
             id: req.body.id
         };
-console.log(newStudent)
     studentsModel.new_student(newStudent, function(err,studentRes){        
        if (err){
         return res.status(400).send(err);  

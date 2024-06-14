@@ -104,7 +104,7 @@ console.log('rrr :', trialResponse)
                                 (<div id="trialPass">
                                     <p className='text-center'>Attempt - {trialResponse.attempt}</p>
                                     <p className='mt-2 text-center'>Congrats...! You Passed the trial examination.</p>
-                                    <p className='p-3 text-center' style={{color:'#071952', fontWeight:'bold'}}>We'd love to hear your feedback! Please take a moment to leave us a review: <br /><Link to='/review' style={{color:'#F2F7A1', fontWeight:'bold'}}>Review Here</Link>. Thank you!</p>
+                                    <p className='p-3 text-center' style={{color:'#071952', fontWeight:'bold'}}>We'd love to hear your feedback! Please take a moment to leave us a review: <br /><Link to={`/review/${user_id}`} style={{color:'#F2F7A1', fontWeight:'bold'}}>Review Here</Link>. Thank you!</p>
                                 </div>) : trialResponse.result === 0 ?
                                 (<div id="trailFail">
                                     <p className='text-center'>Attempt - {trialResponse.attempt}</p>

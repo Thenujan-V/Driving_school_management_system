@@ -31,9 +31,10 @@ exports.signinCustomer = async (req, res) => {
         else{
             var results = JSON.parse(JSON.stringify(customerRes))
             const res_password = results[0].password
+            const activeStatus = results[0].active
             const req_password = req.body.password
 
-            if(res_password == req_password){
+            if((res_password == req_password) && activeStatus === 1){
                 const token = jwt.sign({id: results[0].id, email: results[0].email, role:results[0].role}, secretKey, {expiresIn:'24h'})
 
                 return res.json({ success: true, token });

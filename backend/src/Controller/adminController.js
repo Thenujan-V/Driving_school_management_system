@@ -46,9 +46,10 @@ exports.workerSignin = async (req, res) => {
         else{
             var results = JSON.parse(JSON.stringify(workerRes))
             const res_password = results[0].password
+            const activeStatus = results[0].active
             const req_password = req.body.password
 
-            if(res_password == req_password){
+            if((res_password == req_password)  && activeStatus === 1){
                 const token = jwt.sign({id: results[0].wId, role: results[0].role}, secretKey, {expiresIn:'24h'})
                 console.log(token)
                 return res.json({ success: true, token });
@@ -63,6 +64,17 @@ exports.workerSignin = async (req, res) => {
 
 exports.workersDetails = async (req, res) => {
     await adminModel.workers_details(req.params.uId, function(err, customerRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(customerRes)
+        }
+    })
+}
+
+exports.adminDelete = async (req, res) => {
+    await adminModel.admin_delete(req.params.id, function(err, customerRes){
         if(err){
             return res.send(err)
         }

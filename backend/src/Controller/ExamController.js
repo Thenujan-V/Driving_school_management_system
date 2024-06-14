@@ -1,20 +1,16 @@
 var examDetailsModel = require('../Model/examDetailsModel')
 
 exports.examDate = (req, res) => {
-    console.log('req ',req.body)
     examDetailsModel.update_exam_date(req.body, function(err, studentRes){
         if (err){
-            console.log(err)
             return res.status(400).send(err);  
            }            
            else{
-            console.log(studentRes)
                return res.status(200).send(studentRes)
            }
        })
 }
 exports.examResult = (req, res) => {
-    console.log(req.body)
     examDetailsModel.update_result(req.body, function(err, studentRes){
         if (err){
             return res.status(400).send(err);  
