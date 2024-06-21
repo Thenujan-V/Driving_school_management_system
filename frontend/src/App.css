@@ -1,0 +1,12 @@
+.admin{
+    display: flex;
+    /* flex-direction: row; */
+}
+.adminContents{
+    flex: 1;
+    overflow-y: auto;
+}
+.adminVerticalNav{
+    flex: 0 0 200px;
+    
+}

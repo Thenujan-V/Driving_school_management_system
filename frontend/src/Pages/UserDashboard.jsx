@@ -7,7 +7,6 @@ import Content from './Content'
 const UserDashboard = () => {
   return (
     <>
-        <Navbar />
         <VerticalNavbar />
     </>
   )

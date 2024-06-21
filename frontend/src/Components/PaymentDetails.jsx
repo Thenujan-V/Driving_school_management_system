@@ -58,7 +58,6 @@ const PaymentDetails = () => {
 
   return (
     <div>
-        <Navbar />
         <div style={{display:'flex', height:'90vh'}}>
             <VerticalNavbar />
             <div className='UserPaymentDetails' style={{flex:'1'}}>

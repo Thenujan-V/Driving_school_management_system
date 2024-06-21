@@ -12,9 +12,10 @@ import time from './time.png'
 import mastercardLogo from './master.png'
 import visaLogo from './visa.png'
 import payment from './payment.jpg'
+import landing from './landingPic.png'
 
 
 
 
 
-export {homeAbout,work,learn,lession,sefty,free,time,mobile,phone,mail,home,mastercardLogo,visaLogo, payment}
+export {homeAbout,work,learn,lession,sefty,free,time,mobile,phone,mail,home,mastercardLogo,visaLogo, payment, landing}

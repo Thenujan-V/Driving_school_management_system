@@ -42,7 +42,6 @@ const VerifyMes = () => {
      
       return (
       <div id='verify'>
-        <Navbar />
         {
           response && response.student_status === null && 
           <p id='verifing'>

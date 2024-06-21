@@ -71,8 +71,6 @@ const Result = () => {
     console.log('sssss :', showTrialDetails)
 
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:1}}>
             <h1 className='text-center mt-4'>Results</h1>
             <div className="row">
@@ -109,7 +107,6 @@ const Result = () => {
                 
             }
         </div>
-    </div>
   )
 }
 

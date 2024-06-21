@@ -97,9 +97,7 @@ const Profile = () => {
 
     }
   return (
-    <div style={{display:'flex'}}>
-        <AdminVerticalNav />
-        <div className='container user-profile' style={{flex:'1', minHeight:'100vh'}}>
+        <div className='container user-profile' style={{minHeight:'120vh'}}>
             <h1>Your profile</h1>
             <div className='profile'>
             <div className='pic'>
@@ -127,7 +125,6 @@ const Profile = () => {
             </form>
             </div>
         </div>
-    </div>
   )
 }
 

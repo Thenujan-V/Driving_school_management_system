@@ -6,7 +6,6 @@ import Services from '../Components/Services'
 const Service = () => {
   return (
     <>
-        <Navbar />
         <ServiceIndex />
         <Services />
     </>

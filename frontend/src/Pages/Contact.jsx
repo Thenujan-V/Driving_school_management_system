@@ -6,7 +6,6 @@ import Navbar from '../Components/Navbar'
 const Contact = () => {
   return (
     <>
-        <Navbar />
         <ContactIndex />
         <ContactSection />
     </>

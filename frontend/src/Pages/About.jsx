@@ -6,7 +6,6 @@ import AboutSection from '../Components/AboutSection'
 const About = () => {
   return (
     <>
-        <Navbar />
         <AboutIndex />
         <AboutSection />
     </>

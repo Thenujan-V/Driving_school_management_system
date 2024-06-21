@@ -142,7 +142,6 @@ console.log('tota :', totalAmount)
 
   return (
     <>
-      <Navbar />
       <div className="container-fluid">
         <div className="row m-0 w-100" id='signupPage'>
           <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">

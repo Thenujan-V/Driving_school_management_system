@@ -6,7 +6,6 @@ import Documents from '../Components/Documents'
 const UserDocuments = () => {
   return (
     <>
-        <Navbar />
         <div style={{ display: 'flex' , minHeight: '90vh' }}>
             <VerticalNavbar />
             <div style={{ flex: 1 }}>

@@ -6,7 +6,6 @@ import Profile from '../Components/Profile'
 const UserProfile = () => {
   return (
     <>
-        <Navbar />
         <div style={{ display: 'flex' , height: '90vh' }}>
             <VerticalNavbar />
             <div style={{ flex: 1 }}>

@@ -23,8 +23,6 @@ const Exam = () => {
 
 
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
             <h1 className='text-center mt-4'>Exam Eligible Students</h1>
             <div className="head w-75 " style={{display:'flex', fontSize:'26px', fontWeight:'bold', borderBottom:'4px solid black'}}>
@@ -51,7 +49,6 @@ const Exam = () => {
                 ))
             }    
         </div>
-    </div>
   )
 }
 

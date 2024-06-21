@@ -36,9 +36,7 @@ const Instractor = () => {
     }
 
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
-        <div className='container studentsDetailsShow' style={{flex:'1'}}>
+        <div className='container studentsDetailsShow'>
             <h1 className='text-center mt-4'>Instractors Details</h1>
             {
                 usersApi &&
@@ -56,7 +54,6 @@ const Instractor = () => {
                 ))
             }
         </div>
-    </div>
   )
 }
 

@@ -7,7 +7,6 @@ import VerticalNavbar from '../Components/VerticalNavbar'
 const Content = () => {
   return (
     <>
-      <Navbar />
       <div style={{ display: 'flex' , minHeight: '90vh' }}>
         <VerticalNavbar />
         <div style={{ flex: 1 }}>

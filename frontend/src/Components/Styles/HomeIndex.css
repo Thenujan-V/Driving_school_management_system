@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root{
@@ -43,4 +43,66 @@ body{
     font-family: "Ubuntu", sans-serif;
     font-size: 20px;
     
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rowdies&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --violate:#200E3A;
+    --liteViolate:#38419D;
+    --shadeGreen:#52D3D8;
+    --green:#3887BE;
+}
+.landingPage{
+    background: radial-gradient(circle at top left, #dcb0dc, transparent 40%),
+                        radial-gradient(circle at top right, #ecf0b3, transparent 50%),
+                        radial-gradient(circle at center, #52D3D8, transparent 50%);
+
+}
+
+.landingPage .paras{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.landingPage .paras svg{
+    height: 40vh;
+    width: 20vw;
+    
+}
+.landingPage .paras .mainPara{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 42px;
+    font-weight: bolder;
+    color: var(--violate);
+
+}
+.landingPage .paras .subPara{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    color: var(--violate);
+    font-weight: 350;
+    /* margin-top: 1px; */
+}
+.landingPage .paras .buttons{
+    display: flex;
+    gap: 20px;
+    /* margin-top: 20px; */
+}
+.landingPage .paras .get{
+    background-color: var(--violate);
+    color: var(--shadeGreen);
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.landingPage .paras .let{
+    /* background-color: var(--violate); */
+    border: 3px solid var(--shadeGreen);
+    color: var(--violate);
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }

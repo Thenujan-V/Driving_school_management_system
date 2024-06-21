@@ -78,8 +78,6 @@ const ViewDetails = () => {
     console.log('response :', payments)
     
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
         <div className='container showDetails' style={{flex:'1'}}>
             {
                 student && 
@@ -183,7 +181,6 @@ const ViewDetails = () => {
                 </div>
             }
         </div>
-    </div>
   )
 }
 

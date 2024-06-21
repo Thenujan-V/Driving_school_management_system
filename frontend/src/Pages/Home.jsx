@@ -7,7 +7,6 @@ import HomeSection from '../Components/HomeSection'
 const Home = () => {
   return (
     <div>
-        <Navbar />
         <HomeIndex />
         <HomeSection />
     </div>

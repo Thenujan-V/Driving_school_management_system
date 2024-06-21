@@ -37,8 +37,6 @@ const AdminDetails = () => {
     }
 
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
         <div className='container studentsDetailsShow' style={{flex:'1'}}>
             <h1 className='text-center mt-4'>Admins Details</h1>
             <div className="row head w-75 text-center">
@@ -66,7 +64,6 @@ const AdminDetails = () => {
                 ))
             }
         </div>
-    </div>
   )
 }
 

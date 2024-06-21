@@ -72,7 +72,6 @@ const Results = () => {
 console.log('rrr :', trialResponse)
     return (
     <div>
-        <Navbar />
         <div style={{display:'flex', minHeight:'100vh'}}>
             <VerticalNavbar />
             <div style={{flex:'1', minHeight:'100vh'}} className='results'>

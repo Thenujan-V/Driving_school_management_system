@@ -31,8 +31,6 @@ const ViewReview = () => {
 console.log(custReview)
   return (
     <div>
-        <div style={{display:'flex', height:'90vh',backgroundColor:'var(--green)'}}>
-        <AdminVerticalNav />
         <div style={{flex:1}} className='container viewReview'>
             <h1>Review</h1>
             {
@@ -50,7 +48,6 @@ console.log(custReview)
             }
         </div>
         </div>
-    </div>
   )
 }
 

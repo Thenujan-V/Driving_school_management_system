@@ -43,7 +43,6 @@ const Review = () => {
   
   return (
     <>
-        <Navbar />
         <div className='container-fluid review'>
           <h1 className='text-center mt-5'>Please provide your valuable rating</h1>
           <div className="input">
