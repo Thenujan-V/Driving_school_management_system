@@ -29,7 +29,7 @@ const ReviewCheck = () => {
             <h1>CUSTOMER MANAGEMENT</h1>
             {
                 getReview &&
-                <div className='details mt-5' style={{width:'70vw'}}>
+                <div className='details mt-5' style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}}>
                     {
                         getReview.map((review) => (
                             <div className="row m-0 d-flex justify-content-center mt-2" >

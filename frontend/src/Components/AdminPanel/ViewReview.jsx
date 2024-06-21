@@ -31,7 +31,7 @@ const ViewReview = () => {
 console.log(custReview)
   return (
     <div>
-        <div style={{flex:1}} className='container viewReview'>
+        <div style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}} className='container viewReview'>
             <h1>Review</h1>
             {
                 custReview && 

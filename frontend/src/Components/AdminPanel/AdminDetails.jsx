@@ -37,7 +37,7 @@ const AdminDetails = () => {
     }
 
   return (
-        <div className='container studentsDetailsShow' style={{flex:'1'}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)',minHeight:'120vh'}}>
             <h1 className='text-center mt-4'>Admins Details</h1>
             <div className="row head w-75 text-center">
                 <p className='col-lg-1 col-md-1 col-1'>id</p>

@@ -100,9 +100,7 @@ const Profile = () => {
     }
 
   return (
-    <div style={{display:'flex', Height:'90vh'}}>
-        <EmployeeVerticalNav />
-        <div className='container user-profile' style={{flex:'1', height:'100vh'}}>
+        <div className='container user-profile' style={{ backgroundColor:'var(--green)', height:'100vh'}}>
             <h1>Your profile</h1>
             <div className='profile'>
             <div className='pic'>
@@ -130,7 +128,6 @@ const Profile = () => {
             </form>
             </div>
         </div>
-    </div>
   )
 }
 

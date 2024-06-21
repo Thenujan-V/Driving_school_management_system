@@ -35,7 +35,7 @@ const UserDetails = () => {
 
 
   return (
-        <div className='container studentsDetailsShow' style={{flex:'1'}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}}>
             <h1 className='text-center mt-4'>User Details</h1>
             {
                 usersApi &&

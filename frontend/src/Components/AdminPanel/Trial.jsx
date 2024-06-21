@@ -23,7 +23,7 @@ const Trial = () => {
     console.log('resss : ',examEligible)
   return (
     <div>
-        <div className='container studentsDetailsShow' style={{flex:'1'}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}}>
             <h1 className='text-center mt-4'>Trial Eligible Students</h1>
             <div className="head w-75 " style={{display:'flex', fontSize:'26px', fontWeight:'bold', borderBottom:'4px solid black'}}>
                 <p className='col-lg-1 col-md-1 col-1'>Id</p>

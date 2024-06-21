@@ -1,6 +1,5 @@
 .admin{
     display: flex;
-    /* flex-direction: row; */
 }
 .adminContents{
     flex: 1;
@@ -9,4 +8,15 @@
 .adminVerticalNav{
     flex: 0 0 200px;
     
+}
+.instructer{
+    display: flex;
+}
+.EmployeeVerticalNav{
+    flex: 0 0 200px;
+}
+.intructerContents{
+    flex: 1;
+    overflow-y: auto;
+
 }

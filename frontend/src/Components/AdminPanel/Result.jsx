@@ -71,7 +71,7 @@ const Result = () => {
     console.log('sssss :', showTrialDetails)
 
   return (
-        <div className='container studentsDetailsShow' style={{flex:1}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}}>
             <h1 className='text-center mt-4'>Results</h1>
             <div className="row">
                 <div className="col-4 addExamination" onClick={examResultShow}>Add Examination Results</div>

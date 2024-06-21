@@ -78,7 +78,7 @@ const ViewDetails = () => {
     console.log('response :', payments)
     
   return (
-        <div className='container showDetails' style={{flex:'1'}}>
+        <div className='container showDetails' style={{ backgroundColor:'var(--green)' ,minHeight:'120vh'}}>
             {
                 student && 
                 <div className="studentDetail">

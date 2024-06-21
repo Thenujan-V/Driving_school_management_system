@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Routes, Route, BrowserRouter as Router  } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router, useLocation  } from 'react-router-dom';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Home from './Pages/Home';
@@ -47,25 +47,43 @@ const App = () => {
   useEffect(() => {
     if(decodedToken){
       const userRole = decodedToken.role
-      console.log('rrr :' , userRole)
       setRole(userRole)
     }
     else{
       setRole('')
     }
   }, [decodedToken])
+
   return (
     <Router>
-      {(!role || role === 'user') &&<div className='users'>
-        <Navbar />
+        <MainApp role = {role}/>
+    </Router>
+  )
+}
+
+const MainApp = ({role}) => {
+  const location = useLocation()
+  const currentPath = location.pathname
+
+  const shouldShowNavbar = !(role === 'admin' || role === 'instructor' || currentPath === '/signin' || currentPath === '/signup' )
+  return (
+        <div>
+        {shouldShowNavbar && <Navbar />}
+          <div>
+            <Routes>
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/' element={<Home />}/>
+              <Route path='/about' element={<About />} />
+              <Route path='/service' element={<Service />} />
+              <Route path='/contact' element={<Contact />} />
+            </Routes>
+          </div>
+        
+      {(role === 'user') &&<div className='users'>
+        {/* <Navbar /> */}
         <div className='userContents'>
           <Routes>
-            <Route path='/signin' element={<SignIn />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/' element={<Home />}/>
-            <Route path='/about' element={<About />} />
-            <Route path='/service' element={<Service />} />
-            <Route path='/contact' element={<Contact />} />
             <Route path='/studententroll/:vehicle_class' element={<StudentEntroll />} />
             <Route path='/verifymsg' element={<VerifyMsg />} />
             <Route path='/content' element={<Content />} />
@@ -103,8 +121,8 @@ const App = () => {
       </div>}
 
       {role && role === 'instructor' && <div className='instructer'>
-        <EmployeeVerticalNav />
-        <div className='intructerContents'>
+        <EmployeeVerticalNav  className="EmployeeVerticalNav"/>
+        <div className='intructerContents' >
           <Routes>
             <Route path='/instracterpanel' element={<EmployeeProfile />} />
             <Route path='/viewStudents' element={<ViewStudents />} />
@@ -113,7 +131,7 @@ const App = () => {
           </Routes>
         </div>
       </div>}
-    </Router>
+    </div>
   )
 }
 

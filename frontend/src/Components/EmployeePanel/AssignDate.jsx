@@ -43,9 +43,7 @@ const AssignDate = () => {
         }
     }
   return (
-    <div style={{display:'flex', Height:'90vh'}}>
-        <EmployeeVerticalNav />
-        <div className='container assignDate' style={{flex:'1', height:'100vh'}}>
+        <div className='container assignDate' style={{ backgroundColor:'var(--green)', height:'100vh'}}>
             <h1>Assign Practice Date & Time</h1>
             <form onSubmit={handleSubmit} className='form'>
                 <div className="form-control">
@@ -59,7 +57,6 @@ const AssignDate = () => {
                 <button className='btn form-group' type='submit'>Assign</button>
             </form>
         </div>
-    </div>
   )
 }
 

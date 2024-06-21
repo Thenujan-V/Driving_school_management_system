@@ -79,9 +79,7 @@ const Attendance = () => {
     },[])
     
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <EmployeeVerticalNav />
-        <div className='container studentsDetailsShow' style={{flex:1}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)'}}>
             <h1 className='text-center mt-4'>Mark Attendance</h1>
             {
                 apiDate && 
@@ -124,7 +122,6 @@ const Attendance = () => {
             }
             
         </div>
-    </div>
   )
 }
 

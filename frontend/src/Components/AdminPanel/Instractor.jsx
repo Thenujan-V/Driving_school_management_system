@@ -36,7 +36,7 @@ const Instractor = () => {
     }
 
   return (
-        <div className='container studentsDetailsShow'>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)',minHeight:'120vh'}}>
             <h1 className='text-center mt-4'>Instractors Details</h1>
             {
                 usersApi &&

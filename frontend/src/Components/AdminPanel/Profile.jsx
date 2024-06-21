@@ -97,7 +97,7 @@ const Profile = () => {
 
     }
   return (
-        <div className='container user-profile' style={{minHeight:'120vh'}}>
+        <div className='container user-profile' style={{minHeight:'120vh',  backgroundColor:'var(--green)'}}>
             <h1>Your profile</h1>
             <div className='profile'>
             <div className='pic'>

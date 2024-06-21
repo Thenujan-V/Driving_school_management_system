@@ -20,9 +20,7 @@ const ViewStudents = () => {
         fetchStudentsDetails()
     },[])
   return (
-    <div style={{display:'flex', minHeight:'90vh', backgroundColor:'var(--green)'}}>
-        <EmployeeVerticalNav />
-        <div className='container studentsDetailsShow' style={{flex:1}}>
+        <div className='container studentsDetailsShow' style={{ backgroundColor:'var(--green)', minHeight:'100vh'}}>
             <h1 className='text-center mt-4'>Student Details</h1>
             {
                 studentsApi &&
@@ -39,8 +37,6 @@ const ViewStudents = () => {
                 ))
             }
         </div>
-
-    </div>
   )
 }
 
