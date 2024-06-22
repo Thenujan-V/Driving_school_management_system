@@ -27,10 +27,12 @@ import review from './Review.css'
 import reviewCheck from './ReviewCheck.css'
 import viewReview from './ViewReview.css'
 import assignDate from './AssignDate.css'
+import dashboard from './Dashboard.css'
+
 
 
 export {HomeSectionStyle, NavbarStyle, SigninStyle, SignupStyle, HomeIndexStyle, results, viewDetails, examDate, review, reviewCheck,
     FooterStyle, AboutIndexStyle, AboutSectionStyle, ServiceStyle, ServicesStyle, profile, documents, paymentDetails, viewReview, 
     ContactStyle, ContactIndexStyle, VerifyMsgStyle, ContentDetailsStyle, CourseMeterialStyle, timeStyle, payment, verticalNavbar,
-    assignDate
+    assignDate, dashboard
 }

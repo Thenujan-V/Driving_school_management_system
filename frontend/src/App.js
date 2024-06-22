@@ -39,6 +39,7 @@ import Navbar from './Components/Navbar';
 import VerticalNavbar from './Components/VerticalNavbar';
 import { retrieveId } from './Services/getToken';
 import './App.css'
+import Dashboard from './Components/AdminPanel/Dashboard';
 
 
 const App = () => {
@@ -122,6 +123,7 @@ console.log('role :', role)
             <Route path='/instractor' element={<Instractor />} />
             <Route path='/adminDetails' element={<AdminDetails />} />
             <Route path='/adminpanel' element={<Profile />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </div>
       </div>}

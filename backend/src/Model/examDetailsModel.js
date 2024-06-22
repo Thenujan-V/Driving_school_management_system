@@ -57,4 +57,16 @@ exams.show_exam_students = function(result){
         } 
     })
 }
+
+exams.show_all_exam_students = function(result){
+    dbconnection.execute(`select * from exam_details e join new_customers c on e.sid = c.id`, function(err, res){
+        if(err){
+            result(err,null);             
+        } 
+        else{
+            console.log(res);
+            result(null, res);
+        } 
+    })
+}
 module.exports = exams

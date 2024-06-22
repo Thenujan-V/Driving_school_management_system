@@ -43,6 +43,9 @@ const AdminVerticalNav = () => {
                 <Link to='/adminpanel' className='link'>
                     <FontAwesomeIcon icon={faClock} /> Profile
                 </Link>
+                <Link to='/dashboard ' className='link'>
+                    <FontAwesomeIcon icon={faClock} /> Dashboard
+                </Link>
                 <Link to='/studentsdetails' className='link'>
                     <FontAwesomeIcon icon={faIdCard} /> View Student
                 </Link>

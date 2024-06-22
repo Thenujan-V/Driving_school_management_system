@@ -45,3 +45,13 @@ export const update_result = async (examResult) => {
         throw error 
     }
 }
+export const show_all_exam_students = async () => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/exam/studentsalldetails`)
+        return response.data
+    }
+    catch(error){
+        console.error('Error:', error);
+        throw error 
+    }
+}
