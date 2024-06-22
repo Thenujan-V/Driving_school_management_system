@@ -42,9 +42,25 @@ import './App.css'
 
 
 const App = () => {
+  
+
+
+  return (
+    <Router>
+        <MainApp/>
+    </Router>
+  )
+}
+
+const MainApp = () => {
+  const location = useLocation()
+  const currentPath = location.pathname
+  console.log('role :aaaaaaaaa')
   const decodedToken = retrieveId()
   const [role, setRole] = useState('')
   useEffect(() => {
+console.log('role :')
+
     if(decodedToken){
       const userRole = decodedToken.role
       setRole(userRole)
@@ -53,17 +69,7 @@ const App = () => {
       setRole('')
     }
   }, [decodedToken])
-
-  return (
-    <Router>
-        <MainApp role = {role}/>
-    </Router>
-  )
-}
-
-const MainApp = ({role}) => {
-  const location = useLocation()
-  const currentPath = location.pathname
+console.log('role :', role)
 
   const shouldShowNavbar = !(role === 'admin' || role === 'instructor' || currentPath === '/signin' || currentPath === '/signup' )
   return (
@@ -98,7 +104,7 @@ const MainApp = ({role}) => {
         </div>
       </div>}
 
-      {role && role === 'admin' && <div className='admin'>
+      {role === 'admin' && <div className='admin'>
         <AdminVerticalNav className='adminVerticalNav'/>
         <div className='adminContents'>
           <Routes>
@@ -120,7 +126,7 @@ const MainApp = ({role}) => {
         </div>
       </div>}
 
-      {role && role === 'instructor' && <div className='instructer'>
+      {role === 'instructor' && <div className='instructer'>
         <EmployeeVerticalNav  className="EmployeeVerticalNav"/>
         <div className='intructerContents' >
           <Routes>

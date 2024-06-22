@@ -16,9 +16,9 @@ const Profile = () => {
       if(decodedToken){
           setUser_id(decodedToken.id)
   
-          if(decodedToken.role === 'user' || decodedToken.role === 'admin'){
-              navigate('/signin')
-          }
+          // if(decodedToken.role === 'user' || decodedToken.role === 'admin'){
+          //     navigate('/signin')
+          // }
       }
       else{
           setUser_id('')
