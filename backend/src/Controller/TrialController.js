@@ -1,4 +1,4 @@
-var trialDetailsModel = require('../Model/TrialModel')
+ var trialDetailsModel = require('../Model/TrialModel')
 
 exports.trialDate = (req, res) => {
     console.log('req ',req.body)
@@ -47,3 +47,13 @@ exports.showStudents = (req,res) => {
     })
 }
 
+exports.showAllStudents = (req,res) => {
+    trialDetailsModel.show_all_trial_students(function(err, studentRes){
+        if(err){
+            return res.send(err)
+        }
+        else{
+            return res.send(studentRes)
+        }
+    })
+}

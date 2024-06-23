@@ -56,4 +56,16 @@ trials.show_trial_students = function(result){
         } 
     })
 }
+
+trials.show_all_trial_students = function(result){
+    dbconnection.execute(`select * from trial_details e join new_customers c on e.sid = c.id`, function(err, res){
+        if(err){
+            result(err,null);             
+        } 
+        else{
+            console.log(res);
+            result(null, res);
+        } 
+    })
+}
 module.exports = trials

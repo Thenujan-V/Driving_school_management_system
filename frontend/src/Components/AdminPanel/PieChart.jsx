@@ -45,7 +45,7 @@ const PieChart = ({ data }) => {
     };
 
     return (
-        <div style={{ width: '30vw', marginBottom: "1%", padding: "2vw", display: 'flex', flexDirection: '', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ width: '25vw', marginBottom: "1%", padding: "2vw", display: 'flex', flexDirection: '', justifyContent: 'center', alignItems: 'center' }}>
             <Doughnut
                 data={chartDataWithPercentages}
                 options={options}

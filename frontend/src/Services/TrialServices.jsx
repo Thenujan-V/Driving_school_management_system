@@ -13,6 +13,17 @@ export const show_trial_details = async (id) => {
     }
 }
 
+export const show_all_trial_details = async (id) => {
+    try{
+        const response = await axios.get(`${API_BASE_URL}/trial/showAllStudents`)
+        return response
+    } 
+    catch(error){
+        console.error('Error fetching trial details:', error);
+        throw error 
+    }
+}
+
 export const addTrialDate = async (formData) => {
     try{
         const response = await axios.post(`${API_BASE_URL}/trial/addtrialdate`,formData)

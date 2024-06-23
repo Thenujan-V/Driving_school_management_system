@@ -155,6 +155,7 @@ const ViewDetails = () => {
                     { documents && 
                       <iframe src={`http://localhost:4000/${documents.nic_soft_copy_url}`} title="NIC Soft Copy" width="100%" height="300"></iframe>
                     }
+                     {documents && console.log('doc :', documents.nic_soft_copy_url)}
                     </div>
                   </div>
                   <div className="col-md-12">
