@@ -1,7 +1,7 @@
 var paymentModel = require('../Model/paymentModel')
 
-exports.addTotalPayment = async (req, res) => {
-    await paymentModel.add_total_amount(req.body, req.params.sId, function(err, paymentRes){
+exports.addTotalPayment =  (req, res) => {
+    paymentModel.add_total_amount(req.body, req.params.sId, function(err, paymentRes){
         if(err){
             return res.status(400).send(err);  
        }            
@@ -11,8 +11,8 @@ exports.addTotalPayment = async (req, res) => {
     })
 }
 
-exports.addPayment = async (req, res) => {
-    await paymentModel.add_payment(req.body, req.params.sId, function(err, paymentRes){
+exports.addPayment = (req, res) => {
+    paymentModel.add_payment(req.body, req.params.sId, function(err, paymentRes){
         if(err){
             return res.status(400).send(err);  
        }            
@@ -21,8 +21,8 @@ exports.addPayment = async (req, res) => {
        }
     })
 }
-exports.addBalancePayment = async (req,res) => {
-    await paymentModel.add_balance_payment(req.body, req.params.sId, function(err, paymentRes){
+exports.addBalancePayment =  (req,res) => {
+    paymentModel.add_balance_payment(req.body, req.params.sId, function(err, paymentRes){
         if(err){
             return res.status(400).send(err);  
        }            
@@ -31,8 +31,20 @@ exports.addBalancePayment = async (req,res) => {
        }
     })
 }
-exports.showPayment = async (req, res) => {
-    await paymentModel.show_details(req.params.sId, function(err, paymentRes){
+exports.showPayment =  (req, res) => {
+    paymentModel.show_details(req.params.sId, function(err, paymentRes){
+        if(err){
+
+            return res.status(400).send(err);  
+       }            
+       else{
+           return res.status(200).send(paymentRes)
+       }
+
+    })
+}
+exports.showAllPayment =  (req, res) => {
+    paymentModel.show_all_details(req, function(err, paymentRes){
         if(err){
 
             return res.status(400).send(err);  

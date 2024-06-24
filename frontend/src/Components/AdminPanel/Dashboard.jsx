@@ -5,12 +5,14 @@ import PieChart from './PieChart'
 import { show_all_exam_students, show_exam_students } from '../../Services/examServices'
 import { show_all_trial_details } from '../../Services/TrialServices'
 import BarChart from './BarChart'
+import { showAllDetails } from '../../Services/paymentService'
 
 const Dashboard = () => {
     const [students, setStudents] = useState('')
     const [users, setUsers] = useState('')
     const [examDetails, setExamDetails] = useState('')
     const [trialDetails, setTrialDetails] = useState('')
+    const [paymentsDetails, setPaymentsDetails] = useState('')
 
     useEffect(() => {
         const studentsDetails = async () => {
@@ -23,6 +25,8 @@ const Dashboard = () => {
                 setExamDetails(examRes)
                 const trialRes = await show_all_trial_details()
                 setTrialDetails(trialRes.data)
+                const paymentsRes = await showAllDetails()
+                setPaymentsDetails(paymentsRes.data)
             }
             catch(error){
                 console.log('error :', error)
@@ -55,6 +59,7 @@ const Dashboard = () => {
         values: [trialFailStudentsCount, trialPassStudentsCount],
     }
 
+
     const getMonthFromDate = (created_date) => {
         const date = new Date(created_date)
         return date.getMonth()
@@ -71,17 +76,27 @@ const Dashboard = () => {
     const entrollmentsCounts = entrollmentsPerMonth(students)
 
     const entrollmentsData = {
+        label : 'Entrollments',
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         values: entrollmentsCounts
     }
 
-    console.log('eeee :', entrollmentsCounts)
-    // console.log('eeee :', trialPassStudentsCount)
-   
-    
-    
+    const paymentsPerMonth = (paymentsDetails) => {
+        const amount = Array(12).fill(0)
+        paymentsDetails && paymentsDetails.forEach((payment) => {
+            const month = getMonthFromDate(payment.created_date)
+            amount[month] = amount[month] + payment.paid + payment.balance_paid
+        })
+        return amount
+    }
+    const payments = paymentsPerMonth(paymentsDetails)
 
-    
+    const paymentsData = {
+        label : 'Amount',
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        values: payments
+    }
+   
   return (
     <div className='container-fluid'>
         <h1 className='text-center'>Admin Dashboard</h1>
@@ -101,6 +116,10 @@ const Dashboard = () => {
             <div className="col-12" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding:'0 10vw 10vw 10vw' }}>
                 <h3 className="text-center">Student Enrollments per Month</h3>
                 <BarChart data={entrollmentsData} />
+            </div>
+            <div className="col-12" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding:'0 10vw 10vw 10vw' }}>
+                <h3 className="text-center">Incomes per Month</h3>
+                <BarChart data={paymentsData} />
             </div>
         </div>
         

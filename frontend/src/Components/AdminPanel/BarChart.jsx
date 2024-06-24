@@ -10,7 +10,7 @@ const BarChart = ({ data }) => {
     labels: data.labels,
     datasets: [
       {
-        label: 'Enrollments per Month',
+        label: data.label,
         data: data.values,
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',

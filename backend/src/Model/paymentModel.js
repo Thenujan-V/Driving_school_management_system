@@ -68,6 +68,18 @@ payments.show_details = function(sId, result){
         }
     })
 }
+
+payments.show_all_details = function(sId, result){
+    dbconnection.query(`select * from payment_details p join new_customers c on p.sId = c.id`, function(err, res){
+        if(err){
+            result(err, null)
+        }
+        else{
+            result(null, res)
+        }
+    })
+}
+
 payments.find_eligible_students = function(result){
     const sql = `SELECT * FROM payment_details p JOIN new_customers c ON p.sId = c.id join students s on s.id = p.sId  WHERE paymentStatus = ?`
     dbconnection.query(sql, ['half'], function(err, res){
